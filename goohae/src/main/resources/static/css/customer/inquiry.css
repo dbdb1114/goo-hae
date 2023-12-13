@@ -1,0 +1,223 @@
+.selectBox {
+    width: 100%;
+    height: 165px;
+    line-height: 100px;
+    border: 1px solid silver;
+    padding: 25px 10%;
+    text-align: left;
+    display: flex;
+    align-items: center;
+}
+
+.selectBox span {
+    flex: 1;
+    font-size: 14px;
+}
+
+.selectBox select {
+    width: 70%;
+    height: 40px;
+    padding-left: 10px;
+    margin-left: 40px;
+    border: 1px solid silver;
+    flex: 7;
+}
+
+
+
+
+/* ==========================  분류별문의 박스 공통   ======================== */
+#inquiryForm {
+    width: 70%;
+    margin: auto;
+}
+
+.optionBox {
+    margin-top: 50px;
+    text-align: left;
+}
+
+.optionBox form>ul {
+    border: 1px solid silver;
+    padding: 0 10%;
+}
+
+.optionBox form>ul>li {
+    margin: 30px 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.optionBox form>ul>li>input,
+.optionBox form>ul li .colorBox,
+.optionBox form>ul li textarea,
+.optionBox form>ul .fileBox {
+    flex: 7;
+}
+
+.optionBox form>ul li>label {
+    flex: 1.5;
+    line-height: 40px;
+    font-size: 14px;
+    letter-spacing: -1.5px;
+}
+
+.optionBox form>ul li input[type="text"] {
+    height: 40px;
+    border: 1px solid silver;
+    padding-left: 5px;
+    width: 100%;
+}
+
+.optionBox form>ul .fileBox input[type="file"] {
+    line-height: 46px;
+    display: none;
+}
+
+.optionBox form>ul .fileBox label {
+    cursor: pointer;
+    display: inline-block;
+    width: 120px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 14px;
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.optionBox form>ul li textarea {
+    height: 120px;
+    resize: none;
+    padding: 10px 5px;
+    border: 1px solid silver;
+}
+
+.go {
+    background-color: black;
+    width: 400px;
+    height: 60px;
+    line-height: 60px;
+    margin: 80px auto;
+    color: white;
+    display: block;
+    font-size: 18px;
+}
+
+
+
+/* 배송/설치 문의 , 주문/결제/취소 문의, 교환/반품 문의 공통 라디오버튼 */
+
+.optionBox ul li .radioBox {
+    flex: 7;
+}
+
+.optionBox ul li .radioBox>li {
+    display: flex;
+}
+
+.optionBox ul li .radioBox .checkBoxcover {
+    display: flex;
+    align-items: center;
+}
+
+.optionBox ul li .radioBox label {
+    letter-spacing: 0;
+    margin-top: -2px;
+}
+
+/* 제품문의 박스 */
+
+.option1 ul li .colorBox span {
+    font-size: 12px;
+    letter-spacing: -1.5px;
+}
+
+
+/* 교환/반품 문의 */
+
+.option4 ul li.textBox {
+    justify-content: flex-end;
+}
+
+.option4 ul li p {
+    width: 82.5%;
+    background-color: #F0F0F0;
+    font-size: 14px;
+    padding: 2% 2.5%;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+    display: none;
+}
+
+input[type="checkbox"]+label,
+input[type="radio"]+label {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border: 1px solid silver;
+    position: relative;
+    margin-top: 4px;
+    margin-right: 3px;
+}
+
+input[type="radio"]+label {
+    border-radius: 50%;
+}
+
+input[class="check1"]:checked+label::after {
+    content: '✔';
+    font-size: 14px;
+    width: 14px;
+    height: 14px;
+    text-align: center;
+    position: absolute;
+    left: 0;
+    top: -4px;
+}
+
+input[class="radio"]:checked+label::after {
+    content: "";
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    position: absolute;
+    left: 2px;
+    top: 2px;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* .optionBox{
+    display: none;
+} */
+
+.inquiryContainer {
+    width: 100%;
+}
+
+.notLogin {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.notLogin>span {
+    font-size: 1.5rem;
+    padding: 5px;
+}
+
+.notLogin>a {
+    border: 1px solid black;
+    font-size: 1.3rem;
+    padding: 5px;
+    margin-top: 5px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+}

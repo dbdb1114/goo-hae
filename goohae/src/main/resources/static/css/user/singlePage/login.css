@@ -1,0 +1,176 @@
+*{
+    color: #1A1B23;
+    font-family: 'NanumGothic';
+}
+body {
+    background-color: #F5F5F5;
+    ;
+}
+
+.loginContainer>ul:nth-of-type(1),
+input {
+    border: 1px solid #1A1B23
+}
+
+/*---------------컨테이너 중앙, 균등 ---------------*/
+.loginMain::after,
+.loginMain::before {
+    content: " ";
+    display: block;
+    flex-grow: 1;
+    height: 1em;
+    width: 100%;
+}
+
+.loginMain {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+/* .loginMain > * {
+    font-size:1.4rem;
+    font-family:'Nanum Gothic' ;
+    box-sizing: border-box;
+} */
+
+/* ------------개별 요소들--------------------- */
+.loginContainer {
+    width: 400px;
+    height: 592px;
+    background: #FFFFFF;
+    border: 1px solid #F7F7FB;
+    box-shadow: 0px 2px 50px rgba(6, 7, 10, 0.4);
+    border-radius: 5px;
+
+}
+.loginInnerContainer{
+    padding:54px 40px 0;
+    width: 320px;
+}
+
+.loginHead>.loginHeadLogo {
+    display: block;
+    height: 70px;
+    width: 200px;
+    margin: 0px 60px 34px;
+    text-indent: -9999em;
+   }
+.loginHead>.loginHeadLogo>a{
+ display: block;
+    height: 70px;
+    width: 200px;
+}
+
+.loginHead>.loginHeadListWrap {
+    display: flex;
+    justify-content: stretch;
+    height: 40px;
+    width: 320px;
+    list-style-type: none;
+}
+
+.loginHead> .loginHeadListWrap >.loginHeadList {
+    height: 100%;
+    width: 160px;
+    text-align: center;
+}
+
+.loginHead>.loginHeadListWrap> .loginHeadList .loginHeadLink {
+    display: block;
+    height: 100%;
+    margin:auto ;
+    padding: .7rem 0px;
+    font-size: 14px;
+
+}
+
+/* ------------------------ */
+
+.loginIdPwForm,
+.loginBody{
+    width: 320px;
+}
+
+.loginIdPwForm {
+    text-align: center;
+    padding-top: 41px;
+}
+.loginInput {
+    width: 320px;
+    height: 36px;
+    margin: 0 0 8px;
+    border: #1A1B23 1px solid;
+    box-sizing: border-box;
+}
+.idCheck{
+    text-align: start;
+}
+
+.idCheck> * {
+    color: #1A1B23;
+    display: inline-block;
+    font-size: 12px;
+}
+
+.idCheck .idCheckInput {
+    margin-right: 10px;
+    width: 14px;
+    font-family: 'Nanum Gothic';
+}
+
+.loginIdPwForm  .errorMassageBox{
+    padding-top: 15px;
+    height: 30px;
+}
+
+.loginIdPwForm  .errorMassageBox .loginError,
+.loginIdPwForm  .errorMassageBox .errormsg{
+    font-size:12px;
+    text-align: left;
+    color: #FF655B;
+   text-aline:left;
+}
+
+.redInputBox{
+    border: 1px solid #FF655B;
+}
+
+.noneDisplay{
+    display: none;
+}
+
+.loginButton {
+    display: block;
+    width: 320px;
+    height: 36px;
+    margin: 10px auto 0px;
+    border: 0;
+    font-size: 1.4rem;
+    background-color:#9497AB;
+    color: whitesmoke;
+    font-family:Nanum Gothic;
+}
+
+.foot {
+    list-style: none;
+    padding: 0;
+}
+.foot li{
+    margin:15px auto;
+}
+.foot li a{
+    color: #9497AB;
+    font-size: 12px;
+    text-decoration: underline;
+}
+
+/* .loginButtonUnActive{
+    background-color:#9497AB;
+    color: whitesmoke;
+} */
+.loginButtonActive{
+    background-color: #1A1B23;
+    color: whitesmoke;
+}

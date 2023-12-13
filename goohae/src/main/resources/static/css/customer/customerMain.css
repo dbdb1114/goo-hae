@@ -1,0 +1,95 @@
+.customerMain {
+    width: 70%;
+    /* height: calc(100vh - 490px); */
+    margin-top: 300px;
+    margin-left: 15%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.phoneBox {
+    width: 80%;
+
+    box-sizing: border-box;
+    border: 1px #c8c8c8 solid;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.phoneBox li {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+}
+
+.phoneBox li:nth-child(1) strong {
+    margin-right: 10px;
+    font-size: 1.5rem;
+}
+
+.phoneBox li:nth-child(3) span:nth-child(2),
+.phoneBox li:nth-child(3) span:nth-child(4),
+.phoneBox li:nth-child(3) span:nth-child(6) {
+    margin-right: 10px;
+}
+
+
+.phoneBox li:nth-child(3) .day,
+.phoneBox li:nth-child(3) .lunch {
+    margin-right: 10px;
+}
+
+.phoneBox li:nth-child(3) .day {
+    width: 50px;
+    padding: 3px;
+    border: 1px silver solid;
+}
+
+.phoneBox li:nth-child(3) .day:nth-child(2) {
+    color: blue;
+}
+
+.phoneBox li:nth-child(3) div {
+    margin-top: 20px;
+    color: crimson;
+}
+
+.customerMain h1 {
+    font-size: 3.5rem;
+    font-weight: bold;
+    color: black;
+    margin-bottom: 40px;
+}
+
+.categoryBox {
+    width: 70%;
+    height: 24px;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.categoryBox li {
+    height: 24px;
+    font-size: 1.8rem;
+    cursor: pointer;
+}
+
+.customerMain .categoryBox li:hover {
+    height: 24px;
+    box-sizing: border-box;
+    font-weight: bold;
+
+}
+
+.preview{
+    height : 100%;
+}
+
+.preview > img{
+    width : 150px;
+    height : 50px;
+}

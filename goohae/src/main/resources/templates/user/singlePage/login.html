@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <!--    <link rel="stylesheet" href="../../../static/css/user/singlePage/config.css">-->
+    <!--    <script defer src="../../../static/js/user/singlePage/login.js"></script>-->
+    <!--    <link rel="stylesheet" href="../../../static/css/user/singlePage/login.css">-->
+    <link rel="stylesheet" href="/css/user/singlePage/config.css">
+    <script defer src="/js/user/singlePage/login.js"></script>
+    <link rel="stylesheet" href="/css/user/singlePage/login.css">
+</head>
+
+<body>
+<main class="loginMain">
+    <div class="loginContainer">
+        <div class="loginInnerContainer">
+            <div class="loginHead">
+                <div class="loginHeadLogo">
+                    <a href="/" style="background-image: url('/images/icon/logo.png')"> logo</a>
+                </div>
+                <!--                <ul class="loginHe  adListWrap">-->
+                <!--                    <li class="loginHeadList">-->
+                <!--                        <a href="/Login" class="loginHeadLink">로그인</a>-->
+                <!--                    </li>-->
+                <!--                    <li class="loginHeadList">-->
+                <!--                        <a href="/nonMemberInquire" class="loginHeadLink">비회원 배송조회 </a>-->
+                <!--                    </li>-->
+                <!--                </ul>-->
+            </div>
+            <div class="loginBody">
+                <div th:if="${message}">
+                    <script th:inline="javascript">
+                        alert([[${message}]]);
+                    </script>
+                </div>
+                <form class='loginIdPwForm' th:action="@{/user/login}" method="post" th:object="${vo}">
+                    <p style="color: #505dd0; font-size: 20px;" th:if="findId != null" th:text="${findId}"></p>
+                    <div class="loginInputContainer">
+                        <!--아이디 , 비밀번호  최소 글자 안정함...-->
+                        <input type="text" id="loginId" class="loginInput" name="id" autofocus required
+                               placeholder="아이디"/>
+                        <input type="password" id="loginPw" class="loginInput" name="password" autoFocus required
+                               placeholder="비밀번호"/>
+                    </div>
+                    <!--                    <div class="idCheck">-->
+                    <!--                        <input type="idCheckbox" class="idCheckInput" name="loginCheck"/>-->
+                    <!--                        <p>아이디저장</p>-->
+                    <!--                    </div>-->
+
+                    <div class="errorMassageBox">
+                        <!--                        <p th:if="${message!=null}" th:text="${message}" class="loginError"></p>-->
+                        <p class="noneDisplay errormsg">아이디를 입력해주세요</p>
+                        <p class="noneDisplay errormsg">비밀번호를 입력해주세요</p>
+                    </div>
+
+                    <!-- 로그인 -->
+                    <button type="submit" class="loginButton">로그인</button>
+                    <ul class="foot">
+                        <li><a href="/user/join">회원가입</a></li>
+                        <li><a href="/user/findid">아이디 비밀번호 찾기</a></li>
+                    </ul>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+
+</html>

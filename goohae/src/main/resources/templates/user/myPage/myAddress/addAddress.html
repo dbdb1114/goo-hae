@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+	<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>GooHae-addAddress</title>
+		<link rel="stylesheet" href="../css/common.css">
+		<link rel="stylesheet" href="/addAddress.css">
+	</head>
+
+	<body>
+		<main>
+			<section class="addAddressWrap">
+				<article class="addressCaution">
+					<p>
+						배송주소등록
+					</p>
+				</article>
+				<div action="#" name="addressInfo" class="addAddressForm">
+					<div>
+						<p>배송지명</p>
+						<input type="text" name="addressName" required />
+						<span class="hidden">필수입력사항입니다.</span>
+					</div>
+					<div>
+						<p>이름</p>
+						<input type="text" name="getPostName" required />
+						<span class="hidden">필수입력사항입니다.</span>
+					</div>
+					<div class="addressInputWrap">
+						<p>주소</p>
+						<div class="addressInput">
+							<div><input type="text" name="postNum" required /><a href="#">우편번호 찾기</a></div>
+							<div><input type="text" name="basicAddress" required placeholder="기본 주소를 입력해주세요" /></div>
+							<div><input type="text" name="detailedAddress" required placeholder="상세 주소를 입력해주세요" /></div>
+						</div>
+						<span class="hidden">필수입력사항입니다.</span>
+					</div>
+					<div class="tell">
+						<p>일반전화</p>
+						<input>
+
+					</div>
+					<div class="tell">
+						<p>휴대전화</p>
+						<input type="tel" name="firstSmartphoneNum"  minLength=11 maxLength=11 readOnly />
+					</div>
+					<div><input type="checkbox" name="defaultAddress" /> <span>기본 주소지로 저장</span></div>
+					<p class="addressFormButtonWrap">
+						<button type="button" class="addAddressBtn" id="addCancel">취소</button>
+						<button type="submit" class="addAddressBtn">수정</button>
+					</p>
+				</div>
+			</section>
+		</main>
+	</body>
+
+	</html>

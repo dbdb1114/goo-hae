@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>practise</title>
+    <link rel="stylesheet" href="/css/admin/common.css">
+    <link rel="stylesheet" href="/css/admin/regProduct.css">
+</head>
+
+<body>
+    <header th:replace="admin/fragment :: adminHeader"></header>
+
+    <div class="reg_container">
+        <h2>상품 등록</h2>
+
+        <form action="/admin/reg-pro" enctype="multipart/form-data" method="post">
+            <select class="select_cate" name="categoryCode" required>
+                <option value="1" selected>소파</option>
+                <option value="2">테이블</option>
+                <option value="3">의자-거실</option>
+                <option value="4">TV콘솔</option>
+                <option value="5">침대</option>
+                <option value="6">매트리스</option>
+                <option value="7">협탁</option>
+                <option value="8">식탁</option>
+                <option value="9">의자-주방</option>
+                <option value="10">행거</option>
+                <option value="11">수납장</option>
+                <option value="12">화장대</option>
+            </select>
+
+            <input type="text" name="productName" placeholder="상품 이름" required>
+
+            <input type="text" name="price" placeholder="가격" required>
+
+            <input type="text" name="discount" placeholder="할인율" value="0">
+
+            <input type="text" name="productOption" placeholder="상품 옵션-색상">
+
+            <input type="text" name="productInfo" placeholder="상품 정보-공백 가능">
+
+            <input type="file" id="uploadImg" multiple name="files">
+            <div class="preview">
+
+            </div>
+
+            <input type="submit" class="reg_btn" value="등 록 하 기">
+        </form>
+
+        <p class="message" th:text="${message}"></p>
+    </div>
+    <script defer src="/js/admin/admin.js"></script>
+</body>
+
+</html>

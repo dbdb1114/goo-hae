@@ -1,0 +1,83 @@
+.table {
+    width: 720px;
+    box-sizing: border-box;
+}
+
+thead {
+    width: 100%;
+}
+
+thead>tr {
+    width: 100%;
+    height: 48px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 0.3px solid #c8c8c8;
+}
+
+thead>tr>th {
+    border: none;
+    font-size: 1.4rem;
+    margin: auto;
+}
+
+tbody {
+    width: 100%;
+}
+
+tbody>tr {
+    width: 100%;
+    height: 36px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 0.3px solid #c8c8c8;
+}
+
+tbody>tr:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+}
+
+tbody>tr>td {
+    border: none;
+    font-size: 1.4rem;
+    margin: auto;
+}
+
+tbody>tr>td:nth-of-type(3),
+tbody>tr>td:nth-of-type(4) {
+    margin-right: 5px;
+}
+
+.modal {
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    margin: auto;
+
+    position: absolute;
+    top: 158px;
+    left: 0;
+    z-index: -9999rem;
+}
+
+.modalWrap {
+    width: 360px;
+    height: 180px;
+    background-color: white;
+    z-index: 1;
+
+    margin: auto;
+    vertical-align: middle;
+}
+
+.modalCancel {
+    color: white;
+    margin: 15px;
+    width: 75px;
+    height: 75px;
+    z-index: 1;
+
+    cursor: pointer;
+}

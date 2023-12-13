@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>findId</title>
+  <link rel="stylesheet" href="/css/user/singlePage/findId.css">
+  <script defer src="/js/user/singlePage/findId.js"></script>
+</head>
+<body>
+<main class="findIdMain">
+  <div class="findIdContainer">
+    <div class="findIdInnerContainer">
+      <div class="findIdHead">
+        <div class="findIdHeadLogo">
+          <a href="/" style="background-image: url('/images/icon/logo.png')">
+            logo
+          </a>
+        </div>
+        <ul class="findIdHeadListWrap">
+          <li class="findIdHeadList">
+            <a href="/user/findid" class="findIdLink">아이디 찾기</a>
+          </li>
+          <li class="findIdHeadList">
+            <a href="/user/findpw" class="findPwLink">비밀번호 찾기</a>
+          </li>
+        </ul>
+      </div>
+
+      <form th:action="@{/user/findId}"class="findIdForm" action method="post" >
+        <label htmlFor="findId_id" class="findIdLabel">이름</label>
+        <input type="text" id="fiName" name="name" class="findIdInput" required placeholder="이름" />
+        <p class="errorMassage hidden">이름을 입력해주세요</p>
+        <!--        <label htmlFor="findiw_name" class="findIdLabel">이메일</label>-->
+        <!--        <div class="findIEemailWrap">-->
+        <!--          <input type="text" id="fiEmail" name="fiEmail" class="findIdInput" minLength=5 autofocus-->
+        <!--                 required />-->
+        <!--          @-->
+        <!--          <select class="fIEmailDomain">-->
+        <!--            <option value="gmail.com">gmail.com</option>-->
+        <!--            <option value="naver.com">naver.com</option>-->
+        <!--            <option value="daum.net">daum.net</option>-->
+        <!--            <option value="hanmail.net">hanmail.net</option>-->
+        <!--            <option value="nate.com">nate.com</option>-->
+        <!--            <option value="hotmail.com">hotmail.com</option>-->
+        <!--            <option value="outlook.com">outlook.com</option>-->
+        <!--            <option value="icloud.com">icloud.com</option>-->
+        <!--          </select>-->
+        <!--        </div>-->
+        <!--        <p class="errorMassage hidden">이메일을 입력해주세요</p>-->
+        <label  class="findIdLabel">휴대전화</label>
+        <div class="findIdPhoneWrap">
+          <input type="text" name="phoneNumber" class="findIdInput fiMobile" minLength="11" maxLength="11"
+                 required onkeyup="this.value=this.value.replace(/[^0-9]/g,'');" />
+        </div>
+        <p class="errorMassage hidden">휴대전화를 입력해주세요</p>
+        <div th:if="${session.message}">
+          <p th:text="${session.message}"></p>
+        </div>
+
+        <input type="submit" class="findIdBtn" value="아이디 찾기"/>
+      </form>
+      <a href="/user/login" class="findIdLinkToLogin">로그인으로 돌아가기</a>
+    </div>
+  </div>
+</main>
+</body>
+</html>

@@ -1,0 +1,25 @@
+.ProductBanner {
+    width: 90%;
+    margin: auto;
+    margin-top: 6%;
+    height: 30vw;
+}
+
+.ProductBanner>img {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.ProductInfo {
+    width: 60%;
+    margin: auto;
+    margin-top: 6%;
+    height: 50vw;
+}
+
+.ProductInfo>img {
+    display: block;
+    width: 100%;
+    height: 100%;
+}

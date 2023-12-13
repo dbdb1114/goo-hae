@@ -1,0 +1,227 @@
+*{
+    font-size: 10px;
+    color: #1A1B23;
+}
+
+findPw.findPwFormContainer {
+    background-color: #F5F5F5;
+    ;
+}
+
+.container>.findPwHeadListWrap:nth-of-type(1),
+input {
+    border: 1px solid #1A1B23
+}
+
+/*---------------컨테이너 중앙, 균등 ---------------*/
+.findPwMain::after,
+.findPwMain::before {
+    content: " ";
+    display: block;
+    flex-grow: 1;
+    height: 1em;
+    width: 100%;
+}
+
+.findPwMain {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 14px;
+}
+
+/* ------------개별 요소들--------------------- */
+.container {
+    width: 400px;
+    height: 721px;
+    box-sizing: border-box;
+    background: #FFFFFF;
+    border: 1px solid #F7F7FB;
+    box-shadow: 0px 2px 50px rgba(80, 93, 208, 0.4);
+    border-radius: 5px;
+}
+
+.innerContainer{
+    padding:54px 40px 0;
+    width:320px;
+}
+
+
+.findPwHead>.findPwHeadLogo{
+    display: block;
+    height: 70px;
+    width: 200px;
+    margin: 0px 60px 50px;
+    text-indent: -9999em;
+    background: url(../../../stores/images/icon/logo.png) no-repeat center top/contain;
+}
+
+.findPwHead>.findPwHeadLogo>a{
+ display: block;
+    height: 70px;
+    width: 200px;
+}
+
+
+.findPwHeadListWrap {
+    list-style-type: none;
+    padding: 0;
+}
+
+.findPwHead>.findPwHeadListWrap,
+.findPwHead>.findPwHeadListWrap .findPwHeadList {
+    height: 25px;
+}
+
+.findPwHead>.findPwHeadListWrap {
+    display: flex;
+    justify-content: stretch;
+    width: 320px;
+    list-style-type: none;
+}
+
+.findPwHead>.findPwHeadListWrap>.findPwHeadList {
+    width: 160px;
+    text-align: center;
+}
+.findPwHead>.findPwHeadListWrap>.findPwHeadList .findIdLink,
+.findPwHead>.findPwHeadListWrap>.findPwHeadList .findPwLink{
+    font-size: 14px;
+    text:decoration:none;
+    margin:0 auto ;
+    text-decoration:none;
+}
+
+.findPwHead>.findPwHeadListWrap .findPwHeadList:last-of-type .findPwLink {
+    border-bottom:#505DD0 solid 1px ;
+    padding-bottom: 8px;
+    color:  #505DD0;
+    cursor: pointer;
+    line-height: 14px;
+    font-weight: 700;
+}
+
+.findPwFormContainer,
+.findPwMain .findPwForm {
+    display: flex;
+    flex-direction: column;
+}
+
+.findPwMain .findPwForm {
+    margin-top: 30px;
+    width: 320px;
+}
+
+.findPwMain .findPwForm .findPwEmailSel,
+.findPwMain .findPwForm .findPwInput {
+    border: 1px solid #1A1B23;
+    text-indent: 1.4em;
+    height: 36px;
+    outline: none;
+    font-size: 1.4rem;
+}
+
+
+.findPwMain .findPwForm .findPwPhone, 
+.findPwMain .findPwForm .findPwEmail {
+    align-self: flex-start;
+    width: 318px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    line-height: 36px;
+}
+
+/*.findPwMain .findPwForm .findPwPhone>.findPwInput {*/
+/*    width: 140px;*/
+/*}*/
+.findPwMain .findPwForm .findPwEmail>#findPwEmail{
+    width: 140px;
+}
+
+.findPwMain .findPwForm .findPwEmail>.findPwEmailSel{
+    width: 140px;
+}
+
+.findPwMain .findPwForm .findPwLabel{
+    margin-bottom: 7px;
+    font-weight: 700;
+    font-size: 1.4rem;
+}
+
+.errorMassage{
+    margin:2px 0 16px;
+    color: #FF655B;
+    font-size: 1.2rem;
+    line-height: 1.2rem;
+    
+}
+
+.hidden{
+    visibility: hidden;
+} 
+
+.redInputBox{
+    border: 1px solid #FF655B;
+} 
+
+.findPwBtn,
+.updatePwBtn{
+    display: block;
+    width: 320px;
+    height: 36px;
+    background-color: #9497AB;
+    border: 0;
+    color: white;
+    font-size: 1.4rem;
+}
+
+.buttonLogin{
+    background-color: #1A1B23;
+    color: white;
+}
+
+.findPwFormContainer .findPwLinkToLogin {
+    display: block;
+    margin-top: 16px;
+    text-align: center;
+    color: #9497AB;
+    text-decoration: underline;
+}
+
+.chagePwWrap{
+    height: 100px;
+}
+
+.changePwLabel{
+    display: block;
+    margin-bottom: 7px;
+    font-weight: 700;
+    font-size: 1.4rem;
+}
+
+.changePwInput,
+.changePwConfirm{
+    border: 1px solid #1A1B23;
+    text-indent: 1.4em;
+    height: 36px;
+    outline: none;
+    font-size: 1.4rem;
+    width: 320px;
+}
+
+.updatePwBtn{
+    margin-top: 20px;
+    width: 320px;
+    border: 1px solid black;
+    height: 36px;
+}
+
+/* =============================================================================================== */
+/* =============================================================================================== */
+/* =============================================================================================== */
+/* =============================================================================================== */
+/* =============================================================================================== */
+/* =============================================================================================== */

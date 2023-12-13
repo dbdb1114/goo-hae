@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <link rel="stylesheet" href="/css/singlePage/nonMemberInquire.css">
+<!--  <script defer src="/js/singlePage/nonMemberInquire.js"></script>-->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function(){
+        $(".accordion").click(function(){
+            $(this).next().slideToggle("fast");
+        });
+    });
+</script>
+
+
+</head>
+<body>
+<main class="nonMemberMain">
+  <div class="nonMemberContainer">
+    <div class="nonMemberInnerContainer">
+      <div class="nonMemberHead">
+        <div class="nonMemberHeadLogo">
+          <a href="http://192.168.0.86:3000"> logo</a>
+        </div>
+        <ul class="nonMemberListWrap">
+          <li class="nonMemberList">
+            <a href="/Login" class="LoginLink">로그인</a>
+          </li>
+          <li class="nonMemberList">
+            <a href="/nonMemberInquire" class="nonMemberLink">비회원 배송조회</a>
+          </li>
+        </ul>
+      </div>
+      <div class="nonMemBody">
+        <form class="nonMemberForm" th:action="@{nonMemberInquire}" method="post" th:object="${nonMemberInquire}">
+          <label htmlFor="nonMem_id" class="nonMemberLabel">이름</label>
+          <input type="text" id="nonMemberName" name="nonMemberName" required
+                 placeholder="국문으로 입력해 주세요"
+                 onkeyup="this.value=this.value.replace(/[^-ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/g,'');" />
+          <p class="errorMassage hidden">이름을 입력해주세요</p>
+          <label htmlFor="nonMem_phone" class="nonMemberLabel">휴대전화</label>
+          <div class="nonMemberPhoneBox">
+            <input type="text" name="mobile1" class="nonMemberPhone" required readOnly value="010" />
+            -
+            <input type="text" name="mobile2" class="nonMemberPhone" minLength=4 maxLength=4
+                   required onkeyup="this.value=this.value.replace(/[^-0-9]/g,'');" />
+            -
+            <input type="text" name="mobile3" class="nonMemberPhone" minLength=4 maxLength=4
+                   required onkeyup="this.value=this.value.replace(/[^0-9]/g,'');" />
+          </div>
+          <p class="errorMassage hidden">휴대전화를입력해주세요</p>
+          <label htmlFor="nonMem_OrderNumber" class="nonMemberLabel">주문번호</label>
+          <input type="text" id="nonMemberEmail" name="nonMemberEmail" required
+                 placeholder="메일, 문자로 발송된 번호를 입력해 주세요" />
+          <p class="errorMassage hidden">주문번호를 입력해주세요</p>
+          <button class="nonMemberBtn" onclick="location.href='../myPage/myOrder/myOrder.html';"
+                  disabled>
+            주문조회하기
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+  </div>
+
+</main>
+</body>
+</html>

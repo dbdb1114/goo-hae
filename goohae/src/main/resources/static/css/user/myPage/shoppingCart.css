@@ -1,0 +1,240 @@
+@import url(//fonts.googleapis.com/earlyaccess/nanummyeongjo.css);
+@import url(//fonts.googleapis.com/earlyaccess/nanumgothic.css);
+
+* {
+    font-size:10px
+}
+
+body {
+    width: 100%;
+    margin: auto;
+}
+
+
+
+
+/* ============================================================================================ */
+/* ============================================================================================ */
+/* =================================main============================ */
+
+.shoppingCartMain {
+    width: 70%;
+    margin: auto;
+    font-size: 1.4rem;
+    margin-top: 170px;
+}
+/*
+.shoppingCartWrap {
+    margin: 0 auto;
+} */
+
+/* ====================테이블 왼쪽 위 작은 카테고리=================== */
+/* ====================테이블 왼쪽 위 작은 카테고리=================== */
+/* ====================테이블 왼쪽 위 작은 카테고리=================== */
+
+.ShoppingCartCategory {
+    margin: 14px 0 12px;
+    margin-top: 170px;
+}
+
+.ShoppingCartCategory .myPageLink {
+    font-size: 1.2rem;
+}
+
+.ShoppingCartCategory #shoppingCartLink {
+    color: #505DD0;
+    font-weight: bold;
+}
+
+
+.shoppingCartTitle {
+    line-height: 2.5rem;
+    font-weight: 800;
+    font-size: 2rem;
+    font-family:'Nanum Myeongjo';
+    text-align: center;
+    color: #1A1B23;
+    padding: 100px 0px 38px;
+}
+
+
+/* ====================Table=================== */
+/* ====================Table=================== */
+/* ====================Table=================== */
+.shoppingCartTable {
+    width: 100%;
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+.shoppingCartTable .shoppingCartTitleThaed,
+.shoppingCartTable .shoppingCartTableTbody {
+    border-bottom: 2px solid #1A1B23;
+}
+
+.shoppingCartTable .shoppingCartTableLine {
+    height: 40px;
+    border-bottom: 1px;
+}
+
+.shoppingCartTable .shoppingCartTitleTh {
+    text-align: center;
+    font-size: 1.4rem;
+}
+/*
+.shoppingCartTable .shoppingCartTableLine .shoppingCartTableRow {
+    text-align: center;
+    height: 100px;
+} */
+.shoppingCartTable .shoppingCartTableTbody .shoppingCartTableRow:nth-of-type(1) .shoppingCartTableChoice{
+    border: #1A1B23 1px solid;
+}
+.shoppingCartTable .shoppingCartTableTbody .shoppingCartTableRow:nth-of-type(2) .shoppingCartTableProductImage {
+    display: inline-block;
+    width: 90%;
+    height: 90%;
+}
+
+.shoppingCartTable .shoppingCartTableTbody .shoppingCartTableLine{
+    height: 140px;
+}
+
+.shoppingCartTable .shoppingCartTableRow:nth-of-type(3) {
+    text-align: left;
+    font-weight: 700;
+    padding-left: 10px;
+}
+.shoppingCartTable .shoppingCartTableRow .shoppingCartTableFontSize{
+    font-size: 1.4rem;
+    color: #1A1B23;
+}
+
+.shoppingCartTable .shoppingCartTableRow:nth-of-type(3) .shoppingCartTableProductName:last-child{
+    padding-top: 11px ;
+    opacity: 0.5;
+}
+.shoppingCartTable .shoppingCartTableRow:nth-of-type(4){
+    text-align: center;
+}
+/*
+.shoppingCartTable .shoppingCartTableRow:nth-of-type(4) #shoppingCartTableCountNumber{
+    font-size: 1.4rem;
+} */
+
+.shoppingCartTable .shoppingCartTableRow:nth-of-type(4)>.shoppingCartTableCount {
+    width: 15px;
+    height: 20px;
+}
+
+.shoppingCartTable .shoppingCartTableRow:nth-of-type(5){
+    padding:0 10px;
+    text-align: right;
+}
+/* 마우스 오버  */
+.hover{
+    color: #505DD0;
+}
+
+/* .shoppingCartTable .shoppingCartTableRow:last-of-type button {
+    background-color: #F5F5F5;
+    width: 100px;
+    border: solid 1px;
+} */
+
+.shoppingCartTable .shoppingCartTableRow:nth-of-type(6) .shoppingCartTableBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90px;
+    margin: 0 auto;
+    height: 25px;
+    box-sizing: border-box;
+    background-color: #F5F5F5;
+    color: #1A1B23;
+    border: 0;
+    cursor: pointer;
+    font-size: 1.4rem;
+
+}
+
+.shoppingCartProductEa {
+    padding-left: 10px;
+    width:50px
+}
+
+.shoppingCartTotalPrcieInner{
+    visibility: hidden;
+}
+
+/* .shoppingCartTableTbody tr .shoppingCartTableRow:last-child> button {
+    background-color: #F5F5F5;
+    color: #1A1B23;
+} */
+
+/*--------------------반복반복 그냥 나중에 지워주세요--------------------------------*/
+
+
+/*--------------------여기까지 그냥 반복반복 그냥 나중에 지워주세요--------------------------------*/
+
+
+/* .productBoxName {
+    padding: 50px;
+}
+
+.productBoxName>a {
+    display: inline-block;
+    margin: 14px 0;
+
+}
+.productNumber{
+    width: 300px;
+}
+.productNumber input {
+    box-sizing: border-box;
+    width: 20px;
+} */
+
+
+/* 총 주문금액 라인 */
+.shoppingCartTotalPrcieInner{
+    height: 70px;
+}
+
+.shoppingCartTotalPrcieInner > .shoppingCartTotalPrice {
+    padding: 3px;
+    text-align: right;
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+
+
+
+/* 주문 버튼 */
+.shoppingCartOrderButtonBox {
+    display: flex;
+    justify-content: center;
+}
+
+.shoppingCartOrderButtonBox .shoppingCartOrderButton {
+    display: inline-block;
+    text-align: center;
+    width: 264px;
+    height: 36px;
+    line-height: 36px;
+    margin: 40px 20px;
+    font-size: 1.4rem;
+    border: none;
+}
+
+.shoppingCartOrderButtonBox .shoppingCartOrderButton:first-of-type {
+    color: #1A1B23;
+}
+
+.shoppingCartOrderButtonBox .shoppingCartOrderButton:last-of-type {
+    background-color: #1A1B23;
+    color: #F7F7FB;
+}
+
+.btnDisabled {
+    pointer-events: none;
+}

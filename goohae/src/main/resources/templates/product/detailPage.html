@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/common/config.css">
+    <link rel="stylesheet" href="/css/common/header.css">
+    <link rel="stylesheet" href="/css/common/footer.css">
+    <link rel="stylesheet" href="/css/product/detailPage.css">
+    <title>Goohae</title>
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script defer src="/js/product/detail.js"></script>
+</head>
+
+<body>
+
+    <!-- 헤더 -->
+    <header th:replace="common/header :: header"></header>
+
+    <!-- 디테일 페이지 메인 -->
+    <div class="detail_container">
+        <!-- 이미지 부분 -->
+        <div class="detail_image_box">
+            <div class="wide_img">
+                <img id="main_img" th:src="${main.imagePath}">
+            </div>
+
+            <div class="images">
+                <img th:each="images, stat : ${images}" th:src="${images.imagePath}"
+                     th:if="|${stat.count}| <= 4" th:class="|${stat.count}| == 1 ? 'selected product_imgs' : 'product_imgs'">
+            </div>
+        </div>
+
+        <!-- 상품 정보 부분 -->
+        <form class="detail_info_box" action="/logined-user/order/start" method="get">
+            <input type="hidden" name="productCode" class="productCode" th:value="${product.productCode}">
+
+            <h3 class="product_name" th:text="${product.productName}"></h3>
+
+            <div class="product_ea">
+                <span class="ea_btn">-</span>
+
+                <span class="ea_info">수량 : </span>
+                <input type="text" id="productEa" name="productEa" value="1" readonly>
+
+                <span class="ea_btn">+</span>
+            </div>
+
+            <div class="product_price">
+                <input type="text" id="price" name="price"
+                       th:value="${product.discount > 0 ? #numbers.formatDecimal(product.price - product.discount / 100.00 * product.price, 0, 0) : product.price}"
+                       style="font-size: 3rem;" readonly>
+                <span>원</span>
+            </div>
+
+            <div class="btn_area">
+                <span class="cart_btn">장 바 구 니</span>
+
+                <input type="submit" value="구 매 하 기" class="order_btn">
+
+                <span class="wish_btn"></span>
+            </div>
+
+            <div class="deli_info">
+                <p>
+                    <span>카드혜택</span>
+                    <span>무이자할부</span>
+                </p>
+
+                <p>
+                    <span>배송정보</span>
+                    <span>
+                        주문 결제 후 가구, 조명은 영업일 기준<br>
+                        수도권 5~14일, 도서산간 지역 10~20일 소요
+                    </span>
+                </p>
+            </div>
+        </form>
+    </div>
+
+    <!-- 상품 배너 사진 -->
+    <div class="detail_banner">
+        <img th:src="${banner.imagePath}">
+    </div>
+
+    <!-- 상품 사이즈 정보 -->
+    <div class="product_size_info">
+        <img th:src="${info.imagePath}">
+    </div>
+
+    <!-- 푸터 -->
+    <footer th:replace="common/footer :: footer"></footer>
+</body>
+
+</html>

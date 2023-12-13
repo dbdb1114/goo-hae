@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/common/header.css">
+    <link rel="stylesheet" href="/css/common/footer.css">
+    <link rel="stylesheet" href="/css/common/config.css">
+    <link rel="stylesheet" href="/css/customer/customerMain.css">
+    <link rel="stylesheet" href="/css/customer/customerTable.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <header th:replace="common/header :: header"></header>
+
+    <div class="customerMain">
+        <h1>FAQ</h1>
+
+        <ul class="categoryBox">
+            <li>
+                <a href="/customer/main">공지사항</a>
+            </li>
+            <li>
+                <a href="/qna-board/list">FAQ</a>
+            </li>
+            <li>
+                <a href="/customer/inquiry">상담문의</a>
+            </li>
+        </ul>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">글번호</th>
+                    <th scope="col">제목</th>
+                    <th scope="col">작성자</th>
+                    <th scope="col">작성일</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr th:each="qnaList : ${qnaList}" th:id="'qnaRow' + ${qnaList.boardSeq}">
+                    <td th:text="${qnaList.boardSeq}"></td>
+                    <td th:text="${qnaList.title}"></td>
+                    <td th:text="${qnaList.userId}"></td>
+                    <td th:text="${qnaList.regDate}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="modal">
+
+        <div class="modalWrap">
+            <span>게시물작성시 입력했던 비밀번호</span>
+            <input id="password" type="password" name="password">
+            <button class="passwordBtn">확인</button>
+        </div>
+        <img class="modalCancel" src="/images/icon/cancel.png" alt="취소" />
+    </div>
+    <footer th:replace="common/footer :: footer"></footer>
+</body>
+
+<script src="/js/jquery-3.2.1.min.js"></script>
+<script src="/js/customer/qnaList.js"></script>
+
+
+
+</html>

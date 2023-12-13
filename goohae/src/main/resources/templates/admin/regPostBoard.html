@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>practise</title>
+    <link rel="stylesheet" href="/css/admin/common.css">
+    <link rel="stylesheet" href="/css/admin/regPostBoard.css">
+</head>
+
+<body>
+    <header th:replace="admin/fragment :: adminHeader"></header>
+
+    <div class="reg_container">
+        <h2>게시글 등록</h2>
+
+        <form action="/admin/reg-post" method="post">
+            <input type="text" name="title" placeholder="제목" required>
+
+            <textarea name="content" placeholder="내용" required></textarea>
+
+            <input type="submit" value="등 록">
+
+            <p class="message" th:text="${message}"></p>
+        </form>
+    </div>
+</body>
+
+</html>

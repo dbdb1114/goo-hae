@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>practise</title>
+    <link rel="stylesheet" href="/css/admin/common.css">
+    <link rel="stylesheet" href="/css/admin/postBoard.css">
+</head>
+
+<body>
+    <header th:replace="admin/fragment :: adminHeader"></header>
+
+    <div class="list_container">
+        <h2>게시글 리스트</h2>
+
+        <div class="list_titles">
+            <span class="pro_name">작성자</span>
+            <span class="pro_title">제목</span>
+            <span class="pro_reg">게시일</span>
+            <span class="pro_del">삭제하기</span>
+        </div>
+
+        <div class="list_values">
+            <div class="values" th:each="board : ${board}">
+                <span class="values_id" th:text="${board.managerId}"></span>
+
+                <a th:href="@{/admin/detail-post(postSeq=${board.postSeq})}" class="values_title" th:text="${board.title}"></a>
+
+                <span class="values_reg" th:text="${board.regDate}"></span>
+
+                <div class="values_del">
+                    <a th:href="@{/admin/del-post(postSeq=${board.postSeq})}">
+                        삭제하기
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="paging">
+            <!-- 처음으로 -->
+            <a th:href="@{/admin/post-list(currentPage=1, check=${check})}"
+               th:style="${pageMaker.prev == false ? 'visibility: hidden' : 'visibility: visible'}">
+                &lt;&lt;
+            </a>
+            <!-- 이전 페이징으로 -->
+            <a th:href="@{/admin/post-list(currentPage=${pageMaker.startPageNum - 1}, check=${check})}"
+               th:style="${pageMaker.prev == false ? 'visibility: hidden' : 'visibility: visible'}">
+                &lt;
+            </a>
+
+            <!-- 페이징 번호 -->
+            <a th:each="num, stat : ${#numbers.sequence(1, 5)}" th:text="${num}"
+               th:if="|${stat.count}| <= ${pageMaker.endPageNum}"
+               th:href="@{/admin/post-list(currentPage=${num}, check=${check})}"
+               th:style="${pageMaker.criteria.currentPage == num ? 'pointer-events: none; text-decoration: underline;' : ''}"></a>
+
+            <!-- 다음 페이징으로 -->
+            <a th:href="@{/admin/post-list(currentPage=${pageMaker.endPageNum + 1}, check=${check})}"
+               th:style="${pageMaker.next == false ? 'visibility: hidden' : 'visibility: visible'}">
+                &gt;
+            </a>
+            <!-- 마지막 페이지로 -->
+            <a th:href="@{/admin/post-list(currentPage=${pageMaker.lastPageNum}, check=${check})}"
+               th:style="${pageMaker.next == false ? 'visibility: hidden' : 'visibility: visible'}">
+                &gt;&gt;
+            </a>
+        </div>
+
+        <form class="search_box" action="/admin/post-list" method="get">
+            <div>
+                <div>
+                    <input type="radio" name="check" value="new" checked>
+                    최신순
+                </div>
+
+                <div>
+                    <input type="radio" name="check" value="old">
+                    오래된순
+                </div>
+            </div>
+
+            <input type="submit" value="검색">
+        </form>
+
+        <p class="message" th:text="${message}"></p>
+    </div>
+</body>
+
+</html>

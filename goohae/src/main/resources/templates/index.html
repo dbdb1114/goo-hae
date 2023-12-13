@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/common/config.css">
+    <link rel="stylesheet" href="/css/common/header.css">
+    <link rel="stylesheet" href="/css/common/footer.css">
+    <link rel="stylesheet" href="/css/index.css">
+    <title>Goohae</title>
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script defer src="/js/index.js"></script>
+</head>
+
+<body>
+    <!-- 헤더 -->
+    <header th:replace="common/header :: header"></header>
+
+    <!-- 배너 -->
+    <div class="bannerContainer">
+        <ul class="bannerInner">
+            <li class="bannerImgBox">
+                <img src="/images/staticImages/banner1.jpg" alt="banner">
+            </li>
+
+            <li>
+                <img src="/images/staticImages/banner2.jpg" alt="banner">
+            </li>
+        </ul>
+    </div>
+
+    <!-- 신상품 섹션 -->
+    <section class="pro_container slide_box">
+        <h2>New Products</h2>
+
+        <div class="main_new">
+            <div class="product_ul" id="new1">
+                <article class="product" th:each="newProduct : ${newProduct}">
+                    <img th:src="${newProduct.imagePath}">
+
+                    <div>
+                        <p class="product_name" th:text="${newProduct.productName}"></p>
+
+                        <div>
+                            <span th:text="|${#numbers.formatDecimal(newProduct.price - newProduct.discount / 100.00 * newProduct.price, 0, 0)}원|"
+                                  th:if="${newProduct.discount > 0}" class="price_box1"></span>
+
+                            <span th:text="|${#numbers.formatInteger(newProduct.price, 3, 'COMMA')}원|"
+                                  th:style="${newProduct.discount > 0 ? 'color:#505dd0; text-decoration:line-through' : ''}"></span>
+
+                            <span th:text="|${newProduct.discount}%|"></span>
+                        </div>
+                    </div>
+
+                    <a th:href="@{/detail(productCode=${newProduct.productCode})}"></a>
+                </article>
+            </div>
+
+            <div class="product_ul" id="new2">
+                <article class="product" th:each="newProductTwo : ${newProductTwo}">
+                    <img th:src="${newProductTwo.imagePath}">
+
+                    <div>
+                        <p class="product_name" th:text="${newProductTwo.productName}"></p>
+
+                        <div>
+                            <span th:text="|${#numbers.formatDecimal(newProductTwo.price - newProductTwo.discount / 100.00 * newProductTwo.price, 0, 0)}원|"
+                                  th:if="${newProductTwo.discount > 0}" class="price_box1"></span>
+
+                            <span th:text="|${#numbers.formatInteger(newProductTwo.price, 3, 'COMMA')}원|"
+                                  th:style="${newProductTwo.discount > 0 ? 'color:#505dd0; text-decoration:line-through' : ''}"></span>
+
+                            <span th:text="|${newProductTwo.discount}%|"></span>
+                        </div>
+                    </div>
+
+                    <a th:href="@{/detail(productCode=${newProductTwo.productCode})}"></a>
+                </article>
+            </div>
+        </div>
+
+        <div id="left_btn"></div>
+        <div id="right_btn"></div>
+    </section>
+
+    <!-- 베스트 섹션 -->
+    <section class="pro_container">
+        <h2>Best Products</h2>
+
+        <div class="pro_box">
+            <article class="product" th:each="bestProduct : ${bestProduct}">
+                <img th:src="${bestProduct.imagePath}">
+
+                <div>
+                    <p class="product_name" th:text="${bestProduct.productName}"></p>
+
+                    <div>
+                        <span th:text="|${#numbers.formatDecimal(bestProduct.price - bestProduct.discount / 100.00 * bestProduct.price, 0, 0)}원|"
+                              th:if="${bestProduct.discount > 0}" class="price_box1"></span>
+
+                        <span th:text="|${#numbers.formatInteger(bestProduct.price, 3, 'COMMA')}원|"
+                              th:style="${bestProduct.discount > 0 ? 'color:#505dd0; text-decoration:line-through' : ''}"></span>
+
+                        <span th:text="|${bestProduct.discount}%|"></span>
+                    </div>
+                </div>
+
+                <a th:href="@{/detail(productCode=${bestProduct.productCode})}"></a>
+            </article>
+        </div>
+    </section>
+
+
+
+
+    <section class="mainCategory">
+        <div class="LivingCategory">
+            <a href="/sub?categoryCode=1&rowsPerPage=12"><span>Living</span></a>
+        </div>
+
+        <div class="BedCategory">
+            <a href="/sub?categoryCode=5&rowsPerPage=12"><span>Bed Room</span></a>
+        </div>
+
+        <div class="DiningCategory">
+            <a href="/sub?categoryCode=8&rowsPerPage=12"><span>Dining</span></a>
+        </div>
+
+        <div class="DressCategory">
+            <a href="/sub?categoryCode=10&rowsPerPage=12"><span>Dress Room</span></a>
+        </div>
+    </section>
+
+
+
+<!--    <section class="mainReview">-->
+<!--        <h3>Review</h3>-->
+
+<!--        <div class="ReviewContainer">-->
+
+<!--        </div>-->
+<!--    </section>-->
+
+
+    <footer th:replace="common/footer :: footer"></footer>
+</body>
+
+
+
+</html>

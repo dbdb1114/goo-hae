@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>memberInfoMain</title>
+    <link rel="stylesheet" href="/css/user/myPage/memberInfo.css">
+    <link rel="stylesheet" href="/css/common/config.css">
+    <link rel="stylesheet" href="/css/common/header.css">
+    <link rel="stylesheet" href="/css/common/footer.css">
+    <!--  <script defer src="/js/user/myPage/memberInfo.js"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
+ <script>
+ $(document).ready(function() {
+     $("#memberInfoSubmitBtn").on("click", function(event) {
+      event.preventDefault();
+      var formData = new FormData();
+      var password = $("#password").val();
+      var confirmPassword = $("#confirmPassword").val();
+      if (password === "") {
+        alert("비밀번호를 입력해주세요");
+        return;
+      } else if (confirmPassword==="") {
+        alert("비밀번호 확인을 입력해주세요.");
+        return;
+      } else if (password.length < 8 || password.length > 16) {
+        alert("비밀번호는 8~16자 이내로 입력해주세요.");
+        return;
+      } else if (password !== confirmPassword) {
+        alert("비밀번호와 비밀번호 확인 값이 일치하지 않습니다.");
+        return;
+      }else {
+        formData.append("password", password);
+      }
+
+      var name = $("input[name=name]").val();
+      if(name === ""){
+        alert("이름을 입력해주세요");
+        return;
+      }else{
+        formData.append("name", name);
+      }
+
+      var address = $("input[name=address]").val();
+      if(address === ""){
+        alert("주소를 입력해주세요");
+        return;
+      }else{
+        formData.append("address", address);
+      }
+
+      var postNumber = $("input[name=postNumber]").val();
+      if(postNumber === ""){
+        alert("우편번호를 입력해주세요");
+        return;
+      }else{
+        formData.append("postNumber", postNumber);
+      }
+
+      var phoneNumber = $("input[name=phoneNumber]").val();
+      if(phoneNumber === ""){
+        alert("휴대전화번호를 입력해주세요");
+        return;
+      }else{
+        formData.append("phoneNumber", phoneNumber);
+      }
+
+      if(!$('input[name="EmailGet"]:checked').val()){
+        alert("이메일 수신 동의 여부를 체크해주세요");
+        return;
+      }else{
+        formData.append("EmailGet", $('input[name="EmailGet"]:checked').val());
+      }
+       $.ajax({
+        type: "POST",
+        enctype: 'multipart/form-data',
+        url: "/logined-user/myinfo/update",
+        data: formData,
+        processData: false,
+        contentType: false,
+        cache: false,
+        success: function(response) {
+          console.log(response);
+          alert("회원정보 수정완료!");
+        },
+        error: function(xhr, status, error) {
+          console.log(error);
+        }
+      });
+    });
+});
+    </script>
+</head>
+
+<body>
+<header th:replace="common/header :: header"></header>
+<main class="memberInfoMain">
+    <section id="memberInfoWrap">
+        <div class="myInfoCategory">
+            <a href="/" class="myPageLink">홈 &gt;</a>
+            <a href="/logined-user/myPage" class="myPageLink">마이쇼핑 &gt;</a>
+            <a href="/logined-user/memberInfo" class="myPageLink" id="myPageSubLink">내 정보</a>
+        </div>
+        <p class="memberInfoTitle">내 정보</p>
+        <div class="ment">
+            <p class='memberInfoHeadText'><strong class="memberInfoHeadTextName" th:text="${user.name}"></strong> 님
+                환영합니다.</p>
+        </div>
+
+        <article class="formWrap">
+            <form class="memberInfoForm" th:action="@{logined-user/update}" name="memberJoin">
+                <div class="memberInfoIdInputWrap">
+                    <p>아이디</p>
+                    <input type="text" class="memberInfoIdInput" name="id" th:field="${user.id}" disabled/>
+                </div>
+                <!--        <div class="memberInfoEmailInputWrap">-->
+                <!--          <p>이메일</p>-->
+                <!--          <input class="memberINfoEmailIdInput" type="text" name="e_mailId"  th:field="${user.email}"  />-->
+                <!--          <p class="infoGuide">오류 메세지 입니다.</p>-->
+                <!--        </div>-->
+                <div class="memberInfoPwInputWrap">
+                    <p class="errorMassage">비밀번호</p>
+                    <input class="memberInfoPwInput" type="password" name="psw" minLength=8 maxLength=16 id="password"
+                           placeholder=" 8 ~ 16자 영문, 숫자, 특수문자를 최소 한가지씩 조합" th:field="${user.password}"/>
+                    <p class="errorMassage">" 비밀번호를 입력해주세요 </p>
+                </div>
+                <div class="memberInfoPwConfirmInputWrap">
+                    <p>비밀번호 확인</p>
+                    <input class="memberInfoPwConfirmInput" type="password" name="psw"
+                           minLength=7 maxLength=15 id="confirmPassword"/>
+                    <p class="errorMassage">" 비밀번호를 입력해주세요 </p>
+                </div>
+                <div class="memberInfoNameInputWrap">
+                    <p>이름</p>
+                    <input class="memberInfoNameInput" type="text" name="name" th:field="${user.name}"
+                           onkeyup="this.value=this.value.replace(/[^ㄱ-ㅎ|가-힣]/g,'');"/>
+                </div>
+                <div class="memberInfoAddressNumberInputWrap">
+                    <p>우편번호</p>
+                    <input class="memberInfoAddressNumberInput" type="text" name="postNumber" th:field="${user.postNumber}"
+                           placeholder="'-'없이 입력해주세요" maxLength=5
+                           onkeyup="this.value=this.value.replace(/[^0-9]/g,'');"/>
+                </div>
+                <div class="memberInfoAddressInputWrap">
+                    <p>주소</p>
+                    <input class="memberInfoAddressInput" type="text" name="address" th:field="${user.address}"/>
+                </div>
+                <div class="memberInfoTellInputWrap">
+                    <p>휴대전화</p>
+                    <input class="memberInfoTellInput" type="text" name="phoneNumber" th:field="${user.phoneNumber}"
+                           onkeyup="this.value=this.value.replace(/[^0-9]/g,'');" minlength="10" maxlength="11"/>
+                </div>
+                <div class="emailGetRadio">
+                    <div>
+                        <input type="radio" name="EmailGet" id="emailGet" defaultValue="Get"/>
+                        <label htmlFor="emailGet"><span class="radioImg"></span></label>
+                        <label htmlFor="emailGet">이메일 수신함</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="EmailGet" id="emailNoGet" defaultValue="NoGet" defaultChecked/>
+                        <label htmlFor="emailNoGet"><span class="radioImg"></span></label>
+                        <label htmlFor="emailNoGet">이메일 수신안함</label>
+                    </div>
+                </div>
+                <div class="buttonWrap">
+<!--                    <a href="#" class="memberInfoBackBtn">-->
+<!--                        취소-->
+<!--                    </a>-->
+                    <button class="memberInfoBtn " id="memberInfoSubmitBtn" type="submit">
+                        회원정보 수정
+                    </button>
+                </div>
+            </form>
+        </article>
+    </section>
+</main>
+<footer th:replace="common/footer :: footer"></footer>
+</body>
+</html>

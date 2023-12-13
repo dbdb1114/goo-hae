@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/user/myPage/wishList.css">
+    <link rel="stylesheet" href="/css/common/header.css">
+    <link rel="stylesheet" href="/css/common/footer.css">
+    <link rel="stylesheet" href="/css/common/config.css">
+    <title>wishList</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        // header checkbox event-->
+	    	$("#wishChkAll").click(function() {
+	    		if (this.checked) {
+	    			$("input[name='productCodes']").prop("checked", true);
+	    		} else {
+	    			$("input[name='productCodes']").prop("checked", false);
+	    		}
+	    	});
+         // body checkbox event-->
+	    	$("input[name='wishChk']").click(function() {
+	    		let wishChkLength= $("input[name='productCodes']").length;
+	    		let wishChkedLength = $("input[name='productCodes']:checked").length;
+
+	    		if (wishChkLength == wishChkedLength) {
+	    			$("#wishChkAll").prop("checked", true);
+	    		} else {
+	    			$("#wishChkAll").prop("checked", false);
+	    		}
+	    	});
+
+	    	function fnDelete() {
+				let wishChkedLength = $("input[name='productCodes']:checked").length;
+                console.log(wishChkedLength)
+				if (wishChkedLength > 0) {
+					if (confirm("Do you want to delete it?")) {
+						let wishListForm = $("#wishListForm");
+						wishListForm.attr("action","/logined-user/mywish/checked-delete");
+						wishListForm.attr("method","post");
+						wishListForm.submit();
+					}
+				} else {
+					alert("선택된 상품이 없습니다");
+				}
+			}
+    </script>
+</head>
+
+<body>
+<header th:replace="common/header :: header"></header>
+<main id="wishListMain">
+    <section  id="myWishListWrap">
+        <div class="wishListCategory">
+            <a href="/" class="myPageLink">홈&nbsp;&nbsp;&gt;</a>
+            <a href="/logined-user/mypage" class="myPageLink">&nbsp;&nbsp;마이페이지&nbsp;&nbsp;&gt;</a>
+            <a href="/logined-user/mypage/mywish" class="myPageLink" id="myPageSubLink">위시리스트</a>
+        </div>
+        <p class="myWishListTitle">위시리스트</p>
+        <form th:action="@{/logined-user/mycart/checked-insert}" method="post" id="wishListForm">
+            <article class="wishListTableWrap">
+                <table class="wishListTable">
+                    <colgroup>
+                        <col width="4%"/>
+                        <col width="14%"/>
+                        <col width="52%"/>
+                        <col width="10%"/>
+                        <col width="10%"/>
+                    </colgroup>
+                    <thead id="wishListThead">
+                    <tr class="wishListLine">
+                        <th scope="col" class="wishListTh">
+
+                        </th>
+                        <th scope="col" class="wishListTh">이미지</th>
+                        <th scope="col" class="wishListTh">상품정보</th>
+                        <th scope="col" class="wishListTh">상품금액</th>
+<!--                        <th scope="col" class="wishListTh">선택</th>-->
+                    </tr>
+                    </thead>
+                    <tbody id="wishListTbody">
+                    <tr class="wishListLine" th:each="wishList : ${wishList}">
+                        <td class="wishListTd">
+                            <input type="checkbox" class="wishListCheckBox" name="productCodes" cheked="checked"
+                                   th:attr="productCode=${wishList.productCode}"
+                                   th:value="${wishList.productCode}"
+                            /><!--제품코드로 체크-->
+                        </td>
+                        <td class="wishListTd">
+                            <a href="#"><img th:src="@{${wishList.imagePath}}"/><!--제품이미지--></a>
+                        </td>
+                        <td class="wishListTd">
+                            <p class="wishListProductName" th:text="${wishList.productName}"><!--제품이름--></p>
+                            <p class="wishListProductName" th:text="${wishList.productOption}"><!--옵션--></p>
+                        </td>
+                        <td class="wishListTd" th:text="${wishList.price}"><!--제품가격--></td>
+<!--                        <td class="wishListTd">-->
+<!--                            <a th:href="@{/logined-user/mywish/delete(productCode=${wishList.productCode})}">삭제하기</a>-->
+<!--                        </td>-->
+                    </tr>
+                    </tbody>
+                </table>
+            </article>
+            <div class="wishlistButtonWrap">
+                <div class="wishlistControlButtonWrap">
+                    <span class="wishlistButtonLeftText">선택한 상품</span>
+                    <button type="submit" value="checked-delete" class="wishlistButton" id="wishListBlackButton" onclick="fnDelete()">삭제하기</button>
+                    <button type="submit" class="wishlistButton">장바구니 담기</button>
+
+                </div>
+            </div>
+        </form>
+    </section>
+</main>
+<footer th:replace="common/footer :: footer"></footer>
+</body>
+</html>

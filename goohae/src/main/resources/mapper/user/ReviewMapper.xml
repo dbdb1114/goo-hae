@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kdt.goohae.mapper.user.ReviewMapper">
+
+    <select id="getUserReview" resultType="ReviewVO">
+        select r.user_id, p.product_name, r.product_code, r.title, r.content, r.review_seq
+        from review r, product p
+        where user_id = #{loginId}  and r.product_code = p.product_code
+    </select>
+
+    <select id="getProductReview" resultType="ReviewVO">
+        select * from review where product_code = #{productCode}
+    </select>
+
+    <insert id="insert">
+        insert into review ( user_id, product_code, title, content )
+        values ( #{userId}, #{productCode}, #{title}, #{content} );
+    </insert>
+
+    <delete id="delete">
+        delete from review where review_seq = #{reviewSeq} and user_id = #{userId};
+    </delete>
+
+</mapper>

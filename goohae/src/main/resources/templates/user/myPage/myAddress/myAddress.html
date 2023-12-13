@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/user/myPage/myAddress/myAddress.css">
+    <link rel="stylesheet" href="/css/common/header.css">
+    <link rel="stylesheet" href="/css/common/footer.css">
+    <link rel="stylesheet" href="/css/common/config.css">
+    <title>myAddress</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script  src="myscript.js"></script>
+</head>
+<body>
+
+<!--로그인 안했을시 alert 창을 띄움 -->
+<div th:if="${session.loginId == null}">
+    <script th:inline="javascript">
+            alert([[${session.message}]]);
+
+    </script>
+</div>
+<div th:if="${session.loginId != null}">
+    <main class="myAddressMain">
+        <section class="myAddressWrap">
+            <div class="OrderHistoryCategory">
+                <!--                <a th:href="@{/}" class="myPageLink">홈&nbsp;&nbsp;&gt;</a>-->
+                <a th:href="@{mypage}" class="myPageLink">&nbsp;&nbsp;마이페이지&nbsp;&nbsp;&gt;</a>
+                <a th:href="@{myaddress}" class="myPageLink" id="myPageSubLink">&nbsp;&nbsp;내 주소록&nbsp;&nbsp;</a>
+            </div>
+            <p class="myAddressTitle">내 주소록</p>
+            <article class="addressTableWrap">
+                <table class="addressTable">
+                    <colgroup>
+                        <col width="100px"/>
+                        <col width="100px"/>
+                        <col width="300px"/>
+                        <col width="100px"/>
+                        <col width="100px"/>
+                        <col width="100px"/>
+                        <col width="70px"/>
+                    </colgroup>
+                    <thead id="myAddressTableHead">
+                    <tr class="myAddressTableHeadLine">
+                        <th scope="col" class="addressTableTh">주소록 고정</th>
+                        <th scope="col" class="addressTableTh">배송지명</th>
+                        <th scope="col" class="addressTableTh">주소</th>
+                        <th scope="col" class="addressTableTh">수령인</th>
+                        <th scope="col" class="addressTableTh">일반전화</th>
+                        <th scope="col" class="addressTableTh">휴대전화</th>
+                        <th scope="col" class="addressTableTh">수정</th>
+                    </tr>
+                    </thead>
+                    <tbody id="myAddressTableBody">
+                    <tr class="myAddressTableBodyLine" th:each="myAddress : ${myAddress}">>
+                        <td class="myAddressTableRow">
+                            <input type="checkbox" class="checkbox"/>
+                        </td>
+                        <td class="myAddressTableRow" th:text="${myAddress.default}"> <!--기본 여부--></td>
+                        <td class="myAddressTableRow" th:text="${myAddress.addressName}"><!--집--></td>
+                        <td class="myAddressTableRow" th:text="${myAddress.address}"> <!--주소--> </td>
+                        <td class="myAddressTableRow" th:text="${myAddress.orderName}"><!--받는사람 이름--></td>
+                        <td class="myAddressTableRow" th:text="${myAddress.tellNumber}"><!--일반전화--></td>
+                        <td class="myAddressTableRow" th:text="${myAddress.phoneNumber}"><!--휴대전화--></td>
+                        <td class="myAddressTableRow">
+                            <button type="button" class="myAddressCorrection cursor"
+                                    th:attr="data-default=${myAddress.default}
+                    data-address-name=${myAddress.addressName}
+                    data-address=${myAddress.address}
+                    data-order-name=${myAddress.orderName}
+                    data-tell-number=${myAddress.tellNumber}
+                    data-phone-number=${myAddress.phoneNumber}">수정
+                            </button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </article>
+            <div class="addressControlButtonWrap">
+                <button type="reset" class="myAddressButton" id="myAddressDeleteButton" disabled>선택 주소록 삭제</button>
+            </div>
+            <div class="AddressCaution">
+                    <span class="myAddressNoticeTitle"><strong class="myAddressNoticeTitleStrong">배송주소록
+                            유의사항</strong></span>
+                <ul class="myAddressNotics">
+                    <li class="myAddressNoticeList"><strong class="myAddressNoticeListStrong">1.&nbsp;</strong>배송
+                        주소록은 최대 10개까지 등록할 수 있으며, 별도로 등록하지 않을 경우 최근 배송 주소록 기준으로 자동 업데이트 됩니다.
+                    </li>
+                    <li class="myAddressNoticeList"><strong class="myAddressNoticeListStrong">2.&nbsp;</strong>자동
+                        업데이트를 원하지 않을 경우 주소록 고정 선택을 선택하시면 선택된 주소록은 업데이트 대상에서 제외됩니다.
+                    </li>
+                    <li class="myAddressNoticeList"><strong class="myAddressNoticeListStrong">3.&nbsp;</strong>기본
+                        배송지는 1개만 저장됩니다. 다른 배송지를 기본 배송지로 설정하시면 기본 배송지가 변경됩니다.
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </main>
+    <footer th:replace="common/footer :: footer"></footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kdt.goohae.mapper.user.QnaBoardMapper">
+
+    <select id="selectList" resultType="QnaBoardVO">
+        select board_seq, user_id, title, content, reg_date
+        from qna_board
+        limit #{startNum}, #{rowsPerPage}
+    </select>
+
+    <select id="userList" resultType="QnaBoardVO">
+        select board_seq, user_id, title, content, reg_date
+        from qna_board
+        where user_id = #{loginId}
+        order by board_seq desc;
+    </select>
+
+    <select id="selectOne" resultType="QnaBoardVO">
+        select board_seq, user_id, title, content, reg_date, board_password
+        from qna_board
+        where board_seq = #{boardSeq}
+    </select>
+
+    <insert id="insert" >
+        insert into qna_board
+        <if test="boardPassword == null ">
+            ( user_id, title, content)
+            values ( #{userId} , #{title}, #{content} )
+        </if>
+        <if test="boardPassword != null ">
+            ( user_id, title, content, board_password)
+            values ( #{userId} , #{title}, #{content}, #{boardPassword} )
+        </if>
+    </insert>
+
+    <delete id="delete">
+        delete from qna_board where board_seq = #{boardSeq}
+    </delete>
+
+    <update id="update">
+        update qna_board
+        set title = #{title}, content = #{content}
+        where board_seq = #{boardSeq}
+    </update>
+
+    <select id="getTotalData" resultType="int">
+        select count(*) from qna_board
+    </select>
+
+</mapper>

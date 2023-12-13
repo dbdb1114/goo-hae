@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kdt.goohae.mapper.user.CartMapper">
+
+    <insert id="insert">
+        insert into cart ( product_code, user_id, product_ea )
+        values ( #{productCode}, #{userId}, #{productEa} )
+    </insert>
+
+    <select id="selectOne" resultType="CartVO">
+        select * from cart where user_id = #{userId} and product_code = #{productCode}
+    </select>
+
+    <select id="selectList" resultType="GetCartDTO">
+        select p.product_code, c.product_ea, p.image_path, pr.product_name, pr.price from product pr , product_image p ,cart c
+        where c.user_id = #{loginId} and c.product_code = pr.product_code and pr.product_code = p.product_code;
+    </select>
+
+    <delete id="delete">
+        delete from cart where user_id = #{userId} AND product_code = #{productCode}
+    </delete>
+
+    <delete id="checkedDelete">
+        delete from cart where user_id = #{userId} AND product_code in
+        <foreach collection="productCodes" item="pc" separator="," open="(" close=")">
+            #{pc}
+        </foreach>
+    </delete>
+
+    <update id="eaChange">
+        update cart set product_ea = #{productEa} where user_id = #{userId} and product_code = #{productCode}
+    </update>
+
+    <insert id="checkedInsert">
+        insert into  cart ( product_code, user_id, product_ea ) values
+        <foreach collection="productCodes" item="pc" separator="," >
+            ( #{pc}, #{userId} , 1)
+        </foreach>
+    </insert>
+
+</mapper>

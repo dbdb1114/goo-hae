@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/user/myPage/myOrder.css">
+    <link rel="stylesheet" href="/css/common/header.css">
+    <link rel="stylesheet" href="/css/common/footer.css">
+    <link rel="stylesheet" href="/css/common/config.css">
+    <!--    <script src="/js/myPage/myOrder.js"></script>-->
+    <title>myOrder</title>
+</head>
+<body>
+
+<header th:replace="common/header :: header"></header>
+<main class="myOrderMain">
+    <div class="OrderHistoryCategory">
+        <a href="/" class="myPageLink">홈&nbsp;&nbsp;&gt;</a>
+        <a href="/logined-user/mypage" class="myPageLink">&nbsp;&nbsp;마이페이지&nbsp;&nbsp;&gt;</a>
+        <a href="/logined-user/myinfo" class="myPageLink" id="myPageSubLink">&nbsp;&nbsp;주문조회&nbsp;&nbsp;</a>
+    </div>
+
+    <section class="myOrderWrap">
+        <p class="myOrderTitle">주문내역</p>
+        <div th:if="${ #lists.isEmpty(orderList)}">
+            <p style="font-size:1.4rem; padding:20% 0; text-align:center; font-weight:800;">
+                주문내역이 없습니다
+            </p>
+        </div>
+        <div th:if="${not #lists.isEmpty(orderList)} ">
+<!--            <article class="myOrderHistory">-->
+<!--                &lt;!&ndash;                <div class="myOrderSelectOrderCondition">&ndash;&gt;-->
+<!--                &lt;!&ndash;                    <p class="myOrderInquireOrderCondition">주문내역조회 0</p>&ndash;&gt;-->
+<!--                &lt;!&ndash;                    <p class="myOrderNegativeOrderCondition">취소&nbsp;·&nbsp;반품&nbsp;·&nbsp;교환 내역 0</p>&ndash;&gt;-->
+<!--                &lt;!&ndash;                </div>&ndash;&gt;-->
+
+<!--                <div class="myOrderConditionWrap">-->
+<!--                    <select class="myOrderCondition" name="OrderCondition">-->
+<!--                        <option value="totalOrderCondition">전체 주문처리상태</option>-->
+<!--                        <option value="beforePay">입금전</option>-->
+<!--                        <option value="readyDelivery">배송준비중</option>-->
+<!--                        <option value="deliveryProcess">배송중</option>-->
+<!--                        <option value="deliveryComplete">배송완료</option>-->
+<!--                        <option value="orderCancel">취소</option>-->
+<!--                        <option value="orderChange">교환</option>-->
+<!--                        <option value="orderReturn">반품</option>-->
+<!--                    </select>-->
+<!--                    <div class="myOrderConditionDate">-->
+<!--                        <a class="myOrderSelectConditionDate">오늘</a>-->
+<!--                        <a class="myOrderSelectConditionDate">1주일</a>-->
+<!--                        <a class="myOrderSelectConditionDate">1개월</a>-->
+<!--                        <a class="myOrderSelectConditionDate">3개월</a>-->
+<!--                        <a class="myOrderSelectConditionDate">6개월</a>-->
+<!--                    </div>-->
+<!--                    <div class="myOrderDateSelectContainer">-->
+<!--                        <input type="date" class="myOrderSelectDate"/>-->
+<!--                        <span>&nbsp;~&nbsp;</span>-->
+<!--                        <input type="date" class="myOrderSelectDate"/>-->
+<!--                        <button type="submit" id="myOrderSelectDateBtn">조회</button>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <ul id="myOrderHistoryNotices">-->
+<!--                    <li class="myOrderHistoryNotice">기본적으로 최근 3개월간의 자료가 조회되며, 기간 검색시 지난 주문내역을 조회하실 수 있습니다.</li>-->
+<!--                    <li class="myOrderHistoryNotice">주문번호를 클릭하시면 해당 주문에 대한 상세내역을 확인하실 수 있습니다.</li>-->
+<!--                </ul>-->
+<!--            </article>-->
+            <article class="myOrderTableWrap">
+
+
+                <table class="myOrderTable">
+                    <colgroup>
+                        <col width="10%"/>
+                        <col width="10%"/>
+                        <col width="30%"/>
+                        <col width="7%"/>
+                        <col width="13%"/>
+                        <col width="13%"/>
+<!--                        <col width="13%"/>-->
+                    </colgroup>
+                    <thead id="myOrderTableThead">
+                    <tr class="myOrderTableLine">
+                        <th scope="col" class="myOrderTableTh">주문일자</th>
+                        <th scope="col" class="myOrderTableTh">이미지</th>
+                        <th scope="col" class="myOrderTableTh">상품정보</th>
+                        <th scope="col" class="myOrderTableTh">수량</th>
+                        <th scope="col" class="myOrderTableTh">상품구매금액</th>
+                        <th scope="col" class="myOrderTableTh">주문처리상태</th>
+                    </tr>
+                    </thead>
+                    <tbody id="myOrderTableTbody">
+                    <tr class="myOrderTableLine" th:each="myOrder : ${orderList}">
+                        <td class="myOrderTableRow orderDate" th:text="${myOrder.orderDate}"><!--날짜 출력--></td>
+                        <td class="myOrderTableRow myOrderProductImage">
+                            <!--                            <a th:href="@{myOrder.productUrl}">-->
+                            <img th:src="@{${myOrder.imagePath}}"/><!--제품이미지-->
+                            <!--                            </a>-->
+                        </td>
+                        <td class="myOrderTableRow">
+                            <!--                            <a th:href="@{myOrder.productUrl}">-->
+                            <p class="myOrderProductName" th:text="${myOrder.productName}"><!--제품명--></p>
+                            <!--                                <p class="myOrderProductOption" th:text="${myOrder.productOption}">&lt;!&ndash;제품옵션&ndash;&gt;</p>-->
+                            <!--                            </a>-->
+                        </td>
+                        <td class="myOrderTableRow myOrderProductEA" th:text="${myOrder.productEa}"><!--제품수량--></td>
+                        <td class="myOrderTableRow myOrderProductPrice" th:text="${myOrder.price}"><!--제품가격--></td>
+                        <td class="myOrderTableRow orderProduct" th:text="${myOrder.deliStatus}"><!--배송상태--></td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </article>
+        </div>
+    </section>
+</main>
+<footer th:replace="common/footer :: footer"></footer>
+</body>
+</html>

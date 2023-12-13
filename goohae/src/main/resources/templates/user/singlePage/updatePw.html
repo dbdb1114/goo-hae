@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <link rel="stylesheet" href="/css/user/singlePage/findPw.css">
+  <script defer src="/js/user/singlePage/updatePw.js"></script>
+
+  <title>findPw</title>
+</head>
+<body>
+<main class="findPwMain">
+  <div class="container">
+    <div class="innerContainer">
+      <div class="findPwHead">
+        <div class="findPwHeadLogo">
+          <a href="/" style="background-image: url('/images/icon/logo.png')">
+            logo
+          </a>
+        </div>
+        <ul class="findPwHeadListWrap">
+          <li class="findPwHeadList">
+            <a to="/user/findid" class="findIdLink">아이디 찾기</a>
+          </li>
+          <li class="findPwHeadList">
+            <a to="/user/findpw" class="findPwLink">비밀번호 찾기</a>
+          </li>
+        </ul>
+      </div>
+      <div class="findPwFormContainer">
+        <form class="findPwForm" action method="post"  th:action="@{/user/updatePw}" >
+          <div style="display: none">
+            <label style="display: block" class="findPwLabel">id</label>
+            <input style="width:320px" class="findPwInput" name="id" th:value="${id}" type="text"/>
+          </div>
+          <div class="chagePwWrap" >
+            <label class="changePwLabel" >신규 비밀번호</label>
+            <input class="changePwInput" name="password" type="password"/>
+          </div>
+          <div>
+            <label class="changePwLabel">비밀번호 확인</label>
+            <input class="changePwConfirm" type="password"/>
+          </div>
+          <button type="submit" class="updatePwBtn">비밀번호 수정</button>
+        </form>
+        <a href="/Login" class="findPwLinkToLogin">로그인으로 돌아가기</a>
+      </div>
+    </div>
+  </div>
+</main>
+</body>
+</html>

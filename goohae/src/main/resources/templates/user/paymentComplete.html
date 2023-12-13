@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/common/config.css">
+    <link rel="stylesheet" href="/css/common/header.css">
+    <link rel="stylesheet" href="/css/common/footer.css">
+    <link rel="stylesheet" href="/css/user/paymentComplete.css">
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <title>Goohae</title>
+</head>
+
+<body>
+    <!-- 헤더 -->
+    <header th:replace="common/header :: header"></header>
+
+    <main>
+        <section class="information_container">
+            <p>주문이 정상적으로 완료되었습니다.</p>
+
+            <div class="order_info">
+                <p>주문자 정보</p>
+
+                <div>
+                    <span>주문번호</span>
+                    <span th:text="${orderInfo.orderSeq}"></span>
+                </div>
+
+                <div>
+                    <span>주문자</span>
+                    <span th:text="${user.name}"></span>
+                </div>
+
+                <div>
+                    <span>휴대폰 번호</span>
+                    <span th:text="${user.phoneNumber}"></span>
+                </div>
+
+                <div>
+                    <span>아이디</span>
+                    <span th:text="${user.id}"></span>
+                </div>
+            </div>
+
+
+            <div class="receiver_container">
+                <p>배송 정보</p>
+
+                <div>
+                    <span>예상 배송일</span>
+                    <span>4 ~ 5일</span>
+                </div>
+
+                <div>
+                    <span>수령인</span>
+                    <span th:text="${orderInfo.receiverName}"></span>
+                </div>
+
+                <div>
+                    <span>휴대폰 번호</span>
+                    <span th:text="${orderInfo.phoneNumber}"></span>
+                </div>
+
+                <div>
+                    <span>우편번호</span>
+                    <span th:text="${orderInfo.postNumber}"></span>
+                </div>
+
+                <div>
+                    <span>주소</span>
+                    <span th:text="${orderInfo.address}"></span>
+                </div>
+            </div>
+        </section>
+
+        <section class="productPay_container">
+            <div class="product_box">
+                <p>주문 상품 정보</p>
+
+                <div class="product_info_title">
+                    <span class="img_text">상품 이미지</span>
+                    <span class="pro_text">상품명</span>
+                    <span class="ea_text">수량</span>
+                    <span class="price_text">가격</span>
+                    <span class="dis_text">할인율</span>
+                </div>
+
+                <div class="product" th:each="productInfo : ${productInfo}">
+                    <img class="img_text" th:src="${productInfo.imagePath}">
+                    <span class="pro_text" th:text="${productInfo.productName}"></span>
+                    <span class="ea_text" th:text="${productInfo.productEa}"></span>
+                    <span class="price_text price_box1" th:text="|${productInfo.discount > 0 ? #numbers.formatDecimal((productInfo.price - productInfo.discount / 100.00 * productInfo.price) * productInfo.productEa, 0, 0) : productInfo.price * productInfo.productEa}원|"></span>
+                    <span class="dis_text" th:text="|${productInfo.discount}%|"></span>
+                </div>
+            </div>
+
+            <div class="pay_info_box">
+                <p>결제 정보</p>
+
+                <div>
+                    <span>총 상품 금액</span>
+                    <span th:text="|${#numbers.formatInteger(total, 3, 'COMMA')}원|"></span>  <!-- 원래 컨트롤러에서 계산해서 줘야함 -->
+                </div>
+
+                <div>
+                    <span>할인 금액</span>
+                    <span th:text="|${#numbers.formatInteger(disPrice, 3, 'COMMA')}원|"></span>
+                </div>
+
+                <div>
+                    <span>최총 결제 금액</span>
+                    <span th:text="|${#numbers.formatInteger(pay.totalPrice, 3, 'COMMA')}원|"></span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        $(document).ready(() => {
+            const priceBox = document.getElementsByClassName('price_box1');
+
+            for (let i = 0; i < priceBox.length; i++) {
+                priceBox[i].innerText = priceBox[i].innerText.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+            }
+        });
+    </script>
+
+    <footer th:replace="common/footer :: footer"></footer>
+</body>
+
+</html>

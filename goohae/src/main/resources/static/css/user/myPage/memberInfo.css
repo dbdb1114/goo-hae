@@ -1,0 +1,237 @@
+
+
+body {
+    width: 100%;
+    margin: auto;
+    background-color: white;
+}
+
+:root {
+    font-size: 10px;
+}
+
+input {
+    outline: none;
+}
+
+/*=======================================================*/
+
+.myInfoCategory {
+    margin-top: 170px;
+    margin-bottom: 1rem;
+}
+
+.myInfoCategory .myPageLink {
+    font-size: 1.2rem;
+    text-decoration: none;
+    color: #9497AB;
+}
+
+.myInfoCategory #myPageSubLink {
+    color: #505DD0;
+    font-weight: bold;
+}
+ /* =================================.memberInfonMain============================ */
+
+.memberInfoMain {
+ margin-top: 170px;
+    font-size: 10px;
+    width: 85%;
+    margin: 0 auto;
+}
+
+ /* ===========내 정보 타이틀=========== */
+.memberInfoTitle {
+    margin-top: 14rem;
+    margin-bottom: 4rem;
+    font-size: 2rem;
+    text-align: center;
+    color: #1A1B23;
+    font-family: 'Nanum Myeongjo';
+    font-weight: 800;
+}
+
+#memberInfoWrap>.ment>.memberInfoHeadText {
+    /*font-style: NanumMyeongjo;*/
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+#memberInfoWrap>.ment .memberInfoMemberGrade,
+#memberInfoWrap>.ment .memberInfoPoint,
+#memberInfoWrap>.ment>p:last-of-type {
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+#memberInfoWrap>.ment .memberInfoPoint {
+    color: #505DD0;
+}
+
+#memberInfoWrap>.ment>.memberInfoHeadText>.memberInfoHeadTextName {
+    color: #505DD0;
+    font-size: 2rem;
+}
+
+.memberInfoMain>section>.formWrap {
+    display: flex;
+    justify-content: center;
+}
+
+.memberInfoMain>section>.formWrap>.memberInfoForm {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    flex-flow: column wrap;
+}
+
+.memberInfoMain>section>.formWrap>.memberInfoForm>div:not(.buttonWrap) {
+    margin-bottom: 20px;
+}
+
+.memberInfoMain>section>.formWrap>.memberInfoForm>div>.errorMassage {
+    color: red;
+    padding-left: 5px;
+    padding-top: 5px;
+    visibility: hidden;
+}
+
+.memberInfoMain>section>.formWrap>.memberInfoForm>div>p:first-of-type {
+    color:#1A1B23;
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.memberInfoMain>section>.formWrap>.memberInfoForm .memberInfoTitle {
+    display: block;
+    margin-top: 40px;
+    color: #1A1B23;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.memberInfoMain>section>.formWrap>.memberInfoForm div input:not([type="radio"]) {
+    display: inline-block;
+    height: 40px;
+    /*border: 1px solid var(--DarkGray);*/
+}
+
+.memberInfoMain>section>.formWrap>.memberInfoForm>.memberInfoIdInputWrap .memberInfoIdInput {
+    width: 32rem;
+    /*background-color: var(--LightGray);*/
+}
+
+.memberInfoMain>section>.formWrap>.memberInfoForm>.memberInfoEmailInputWrap>span {
+    font-size: 1.4rem;
+}
+
+.memberInfoMain>section>.formWrap>.memberInfoForm>.memberInfoEmailInputWrap>.emailInput {
+    display: flex;
+    align-items: center;
+}
+
+.memberInfoMain>section>.formWrap>.memberInfoForm>.memberInfoEmailInputWrap>.memberINfoEmailIdInput,
+.memberInfoMain>section>.formWrap>.memberInfoForm>.memberInfoEmailInputWrap select {
+    width: 10rem;
+    height: 40px;
+}
+
+.memberInfoMain>section>.formWrap>.memberInfoForm>.memberInfoEmailInputWrap select {
+    margin-left: .8rem;
+}
+
+.memberInfoMain>section>.formWrap>.memberInfoForm>.memberInfoPwInputWrap .memberInfoPwInput,
+.memberInfoMain>section>.formWrap>.memberInfoForm>.memberInfoEmailInputWrap>.memberINfoEmailIdInput,
+.memberInfoMain>section>.formWrap>.memberInfoForm>.memberInfoPwConfirmInputWrap>.memberInfoPwConfirmInput,
+.memberInfoMain>section>.formWrap>.memberInfoForm>.memberInfoNameInputWrap>.memberInfoNameInput,
+.memberInfoMain>section>.formWrap>.memberInfoForm>.memberInfoAddressNumberInputWrap>.memberInfoAddressNumberInput,
+.memberInfoMain>section>.formWrap>.memberInfoForm>.memberInfoAddressInputWrap> .memberInfoAddressInput,
+.memberInfoMain>section>.formWrap>.memberInfoForm>.memberInfoTellInputWrap>.memberInfoTellInput {
+    width: 32rem;
+    background-color: white;
+}
+
+.memberInfonMain>section>.formWrap>.memberInfoForm>.memberInfoIdInputWrap .memberInfoIdInput {
+    background-color: #F5F5F5;
+}
+
+.memberInfoMain>section>.formWrap>.memberInfoForm>.memberInfoIdInputWrap .memberInfoIdInput,
+.memberInfoMain>section>.formWrap>.memberInfoForm>.memberInfoEmailInputWrap>.memberINfoEmailIdInput,
+.memberInfoMain>section>.formWrap>.memberInfoForm>.memberInfoPwInputWrap .memberInfoPwInput,
+.memberInfoMain>section>.formWrap>.memberInfoForm>.memberInfoPwConfirmInputWrap>.memberInfoPwConfirmInput,
+.memberInfoMain>section>.formWrap>.memberInfoForm>.memberInfoNameInputWrap>.memberInfoNameInput,
+.memberInfoMain>section>.formWrap>.memberInfoForm>.memberInfoTellInputWrap>.memberInfoTellInput {
+    padding-left: 5px;
+    border: 1px solid #1A1B23;
+}
+
+.memberInfoMain>section>.formWrap>.memberInfoForm .emailGetRadio {
+    display: flex;
+    gap: 10px;
+    height: 30px;
+    line-height: 30px;
+}
+
+.memberInfoMain>section>.formWrap>.memberInfoForm .emailGetRadio>label:first-of-type {
+    margin-right: 10px;
+}
+
+.buttonWrap {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 100px;
+}
+
+.buttonWrap>#memberInfoSubmitBtn {
+    border: 1px solid #1A1B23;
+    background-color: #1A1B23;
+    color: white;
+    /* font-weight: 700; */
+}
+
+.buttonWrap>.memberInfoBtn {
+    display: inline-block;
+    text-align: center;
+    width: 320px;
+    height: 30px;
+    line-height: 30px;
+    border: 1px solid #1A1B23;
+    font-size: 1.4rem;
+    color: #1A1B23;
+    font-weight: 700;
+    font-weight: normal;
+}
+
+.buttonWrap>.memberInfoBtn>.memberInfoSubmitWhtBtn {
+    text-align: center;
+}
+
+.buttonWrap>#memberInfoSubmitBtn:hover {
+    background-color: #505DD0;
+    border-color: #505DD0;
+}
+
+.buttonWrap>.memberInfoBtn:hover {
+    border: 1px solid #505DD0;
+    color: #505DD0;
+}
+
+ /* .buttonWrap>button>span {
+    color: white;
+    font-weight: normal;
+    align-items: center;
+} */
+.buttonWrap>a:hover {
+    background-color: white;
+    /*border: var(--PurpleBlue) 1px solid;*/
+    /*color: var(--PurpleBlue);*/
+}
+
+.btnDisable {
+    pointer-events: none;
+}

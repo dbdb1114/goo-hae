@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <link rel="stylesheet" href="/css/user/singlePage/findPw.css">
+  <script defer src="/js/user/singlePage/findPw.js"></script>
+
+  <title>findPw</title>
+</head>
+<body>
+<main class="findPwMain">
+  <div class="container">
+    <div class="innerContainer">
+      <div class="findPwHead">
+        <div class="findPwHeadLogo">
+          <a href="/" style="background-image: url('/images/icon/logo.png')">
+            logo
+          </a>
+        </div>
+        <ul class="findPwHeadListWrap">
+          <li class="findPwHeadList">
+            <a href="/user/findid" class="findIdLink">아이디 찾기</a>
+          </li>
+          <li class="findPwHeadList">
+            <a href="/user/findpw" class="findPwLink">비밀번호 찾기</a>
+          </li>
+        </ul>
+      </div>
+      <div class="findPwFormContainer">
+        <form class="findPwForm" action method="post"  th:action="@{/user/findPw}" >
+          <label htmlFor="findPw_id" class="findPwLabel">아이디</label>
+          <input type="id" id="fpId" class="findPwInput" name="id" required placeholder="아이디" />
+          <span class="errorMassage hidden">아이디를 입력해주세요</span>
+          <label htmlFor="findPw_name" class="findPwLabel">이름</label>
+          <input type="text" id="fpName" class="findPwInput" name="name" required
+                 placeholder="이름" />
+          <span class="errorMassage hidden">이름을 입력해주세요</span>
+          <label htmlFor="findPw_phone" class="findPwLabel">휴대전화</label>
+          <div class="findPwPhone">
+            <input type="text" style="width:320px" placeholder="휴대폰번호를 입력해주세요" name="phoneNumber" class="findPwInput fpMobile" />
+          </div>
+          <span class="errorMassage hidden">휴대전화번호를 입력해주세요</span>
+<!--          <div class="findPwEmail">-->
+<!--            <input type="email" class="findPwInput" id="findPwEmail" name="fpFw"-->
+<!--                   autofocus required />-->
+<!--            @-->
+<!--            <select class="findPwEmailSel">-->
+<!--              <option value="gmail.com">gmail.com</option>-->
+<!--              <option value="naver.com">naver.com</option>-->
+<!--              <option value="daum.net">daum.net</option>-->
+<!--              <option value="hanmail.net">hanmail.net</option>-->
+<!--              <option value="nate.com">nate.com</option>-->
+<!--              <option value="hotmail.com">hotmail.com</option>-->
+<!--              <option value="outlook.com">outlook.com</option>-->
+<!--              <option value="icloud.com">icloud.com</option>-->
+<!--            </select>-->
+<!--          </div>-->
+<!--          <p class="findPwWarning hidden errorMassage">이메일을 입력해주세요</p>-->
+        </form>
+          <input type="submit"  class="findPwBtn" value="비밀번호 찾기"/>
+        <a href="/Login" class="findPwLinkToLogin">로그인으로 돌아가기</a>
+      </div>
+    </div>
+  </div>
+</main>
+</body>
+</html>

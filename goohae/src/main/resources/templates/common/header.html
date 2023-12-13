@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:fragment="headerFragment">
+    <link rel="stylesheet" href="/css/common/header.css">
+</head>
+
+<body>
+    <header th:fragment="header" id='header'>
+        <div class="upper-header">
+            <div class="logo-container">
+                <a href="/">
+                    <img src="/images/icon/logo.png" alt="로고이미지">
+                </a>
+            </div>
+
+            <nav class="user-navbar">
+                <ul class="user-list">
+                    <li class="login-inner user-menu">
+                        <a href="/logined-user/logout" th:if="${session.loginId != null}">
+                            <img src="/images/icon/login_icon.png" alt="로그아웃">
+                            <span>로그아웃</span>
+                        </a>
+                    </li>
+
+                    <li class="join-inner user-menu">
+                        <a href="/user/login" th:if="${session.loginId == null}">
+                            <img src="/images/icon/login_icon.png" alt="로그인">
+                            <span>로그인</span>
+                        </a>
+
+                        <a href="/logined-user/mypage" th:if="${session.loginId != null}">
+                            <img src="/images/icon/myPageIcon.png" alt="마이페이지">
+                            <span>마이페이지</span>
+                        </a>
+                    </li>
+
+                    <li class="cart-inner user-menu">
+                        <a href="/user/join" th:if="${session.loginId == null}">
+                            <img src="/images/icon/join.png" alt="회원가입">
+                            <span>회원가입</span>
+                        </a>
+
+                        <a href="/logined-user/mycart" th:if="${session.loginId != null}">
+                            <img src="/images/icon/cart.png" alt="카트">
+                            <span>장바구니</span>
+                        </a>
+                    </li>
+                </ul>
+
+                <form action="/search" method="get" class="search-form">
+                    <input type="text" name="keyword" placeholder="Search">
+                    <button class="search-btn"></button>
+                </form>
+            </nav>
+        </div>
+
+        <div class="under-header">
+            <nav class="category-navbar">
+                <ul class="category-list">
+
+                    <li class="living-room">
+                        <span>거실</span>
+
+                        <ul class="living-category">
+                            <li>
+                                <a href="/sub?categoryCode=1&rowsPerPage=12">소파</a>
+                            </li>
+
+                            <li>
+                                <a href="/sub?categoryCode=2&rowsPerPage=12">테이블</a>
+                            </li>
+
+                            <li>
+                                <a href="/sub?categoryCode=3&rowsPerPage=12">의자</a>
+                            </li>
+
+                            <li>
+                                <a href="/sub?categoryCode=4&rowsPerPage=12">TV콘솔</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="bed-room">
+                        <span>침실</span>
+
+                        <ul class="bed-category">
+                            <li>
+                                <a href="/sub?categoryCode=5&rowsPerPage=12">침대</a>
+                            </li>
+
+                            <li>
+                                <a href="/sub?categoryCode=6&rowsPerPage=12">매트리스</a>
+                            </li>
+
+                            <li>
+                                <a href="/sub?categoryCode=7&rowsPerPage=12">협탁</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="kitchen">
+                        <span>주방</span>
+
+                        <ul class="kitchen-category">
+                            <li>
+                                <a href="/sub?categoryCode=8&rowsPerPage=12">식탁</a>
+                            </li>
+
+                            <li>
+                                <a href="/sub?categoryCode=9&rowsPerPage=12">의자</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="dress-room">
+                        <span>드래스룸</span>
+
+                        <ul class="dress-category">
+                            <li>
+                                <a href="/sub?categoryCode=10&rowsPerPage=12">행거</a>
+                            </li>
+
+                            <li>
+                                <a href="/sub?categoryCode=11&rowsPerPage=12">수납장</a>
+                            </li>
+
+                            <li>
+                                <a href="/sub?categoryCode=12&rowsPerPage=12">화장대</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="customer">
+                        <span>고객문의</span>
+
+                        <ul class="customer-category">
+                            <li>
+                                <a href="/customer/main">공지사항</a>
+                            </li>
+
+                            <li>
+                                <a href="/qna-board/list">FAQ</a>
+                            </li>
+
+                            <li>
+                                <a href="/customer/inquiry">상담문의</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+</body>
+
+</html>

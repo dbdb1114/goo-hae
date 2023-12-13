@@ -1,0 +1,234 @@
+* {
+    margin: 0;
+    padding: 0;
+    /* color: gray; */
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    margin: auto;
+}
+
+input:not([type="tel"]){
+    padding-left: 10px;
+}
+
+/* ======================================================================================= */
+/* =================================main============================ */
+
+main {
+    width: 70px;
+    font-size: 1.4rem;
+    display: flex;
+    color: #1A1B23;
+}
+
+.addAddressWrap {
+    box-sizing: border-box;
+    align-self: center;
+    justify-items: center;
+
+    position: absolute;
+    width: 765px;
+    height: 720px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    background: #FFFFFF;
+    border: 1px solid #F7F7FB;
+    box-shadow: 0px 2px 50px rgba(26, 27, 35, 0.25);
+    border-radius: 5px;
+
+    padding-left: 159px;
+    padding-right: 159px;
+}
+
+/* ========================================================= */
+
+main>section>.addressCaution {
+    margin: 78px auto 32px;
+}
+
+main>section>.addressCaution>p {
+    text-align: center;
+    color: #505DD0;
+    line-height: 36px;
+}
+
+main>section>.addressCaution>ul {
+    height: 100px;
+}
+.adDisplayNone{
+    display: none;
+}
+
+main>section>.addressCaution>ul>li {
+    /* font-size: 18px; */
+}
+
+main>section>.addressCaution>ul>li>strong {
+    /* font-size: 19px; */
+}
+
+/* ========================================================= */
+
+
+.addAddressForm>div>p>img {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    opacity: .7;
+}
+
+main>section>.addAddressForm input {
+    border: 1px solid #1A1B23;
+}
+
+input {
+    outline: none;
+}
+
+main>section>.addAddressForm>div {
+    display: flex;
+    flex-flow: row wrap;
+    padding-top: 12px;
+    gap: 2px;
+    align-items: center;
+}
+
+main>section>.addAddressForm>div>p {
+    /* border-right: 1px solid silver; */
+    width: 100px;
+    /* line-height: 50px; */
+    padding-left: 10px;
+    color: #1A1B23;
+    font-weight: 700;
+}
+
+main>section>.addAddressForm>div>input {
+    height: 36px;
+    width: 320px;
+}
+
+main>section>.addAddressForm>div>span:not(.tellSpace){
+    padding-left: 100px;
+    font-size: 1.2rem;
+    color: #FF655B
+}
+
+.hidden {
+    visibility:hidden;
+}
+
+main>section>.addAddressForm>.tell>input{
+    border: 1px solid #1A1B23;
+    width: 320px;
+    height: 36px;
+    line-height: 30px;
+    text-align: center;
+}
+
+main>section>.addAddressForm>.tell>.tellSpace {
+    margin: 0 9px;
+}
+
+main>section>.addAddressForm>.addressInputWrap>p {
+    /* width: 168px; */
+    line-height: 36px;
+}
+
+main>section>.addAddressForm>.addressInputWrap>.addressInput {
+    display: flex;
+    flex-flow: column wrap;
+    gap: 10px;
+}
+
+main>section>.addAddressForm>.addressInputWrap>.addressInput>div:first-of-type {
+    display: flex;
+    flex-flow: row wrap;
+    gap: 10px;
+}
+
+main>section>.addAddressForm>.addressInputWrap>.addressInput>div:first-of-type input {
+    width: 148px;
+    height: 36px;
+}
+
+main>section>.addAddressForm>.addressInputWrap>.addressInput>div:first-of-type a {
+    display: inline-block;
+    border: 1px solid #1A1B23;
+    height: 36px;
+    line-height: 36px;
+    width: 163px;
+    text-align: center;
+    font-size: 1.4rem;
+    color: #F7F7FB;
+    background-color: #1A1B23;
+}
+
+main>section>.addAddressForm>.addressInputWrap>.addressInput>div:not(first-of-type) {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    gap: 10px;
+}
+
+main>section>.addAddressForm>.addressInputWrap>.addressInput>div:not(:first-of-type)>input {
+    width: 320px;
+    height: 36px;
+}
+
+main>section>.addAddressForm>div:last-of-type {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: end;
+    gap: 10px;
+    padding-right: 30px;
+}
+
+main>section>.addAddressForm>div:last-of-type>input {
+    width: 25px;
+    height: 25px;
+}
+
+main>section>.addAddressForm>div:last-of-type>span {
+    padding-left: 5px;
+}
+
+.addressFormButtonWrap {
+    display: flex;
+    gap: 10px;
+    justify-content: space-evenly;
+    /* align-items: center; */
+
+    padding-top: 32px;
+}
+
+.addressFormButtonWrap>.addAddressBtn,
+.addressFormButtonWrap>#addCancel {
+    width: 207px;
+    height: 36px;
+    line-height: 36px;
+    text-align: center;
+    border: 1px solid #1A1B23;
+    color: #1A1B23;
+    font-size: 1.4rem;
+    letter-spacing: 3px;
+}
+.addressFormButtonWrap>#addCancel{
+    background-color:#F5F5F5 ;
+}
+
+.addressFormButtonWrap>.addAddressBtn {
+    background-color: #9497AB;
+    border-color: #9497AB;
+    color: white;
+}
+
+.addressFormButtonWrap>.addAddressBtn:hover {
+    cursor: pointer;
+}   

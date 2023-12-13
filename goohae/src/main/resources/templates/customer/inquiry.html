@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/common/header.css">
+    <link rel="stylesheet" href="/css/common/footer.css">
+    <link rel="stylesheet" href="/css/common/config.css">
+    <link rel="stylesheet" href="/css/customer/customerMain.css">
+    <link rel="stylesheet" href="/css/customer/inquiry.css">
+    <title>문의하기</title>
+
+
+</head>
+
+
+<body>
+    <header th:replace="common/header :: header"></header>
+    <div class="customerMain">
+        <h1>상담문의</h1>
+
+        <ul class="categoryBox">
+            <li>
+                <a href="/customer/main">공지사항</a>
+            </li>
+            <li>
+                <a href="/qna-board/list">FAQ</a>
+            </li>
+            <li>
+                <a href="/customer/inquiry">상담문의</a>
+            </li>
+        </ul>
+
+        <div class="notLogin" th:if="${session.loginId == null}">
+            <span>로그인후 이용바랍니다</span>
+            <a href="/user/login">로그인하러가기</a>
+        </div>
+
+        <div th:if="${session.loginId != null}" id="inquiryForm">
+            <div class="optionBox">
+                <form id="etcForm">
+                    <ul>
+                        <li class="title">
+                            <label for="inquiry-title">제목</label>
+                            <input type="text" id="inquiry-title" name="title" />
+                        </li>
+                        <li>
+                            <label for="inquiry-content">상세 내용</label>
+                            <textarea name="content" id="inquiry-content"></textarea>
+                        </li>
+
+                        <li>
+                            <label for="password">비밀번호</label>
+                            <input id="password" type="password" placeholder="4자리이상 입력해주세요" minlength="4"
+                                name="boardPassword" />
+                        </li>
+                    </ul>
+
+                    <div class="message"></div>
+                </form>
+                <button class="go">신청하기</button>
+            </div>
+            <div th:text="${session.message}"></div>
+        </div>
+    </div>
+
+    <footer th:replace="common/footer :: footer"></footer>
+</body>
+
+<script src="/js/jquery-3.2.1.min.js"></script>
+<script src="/js/customer/inquiry.js"></script>
+
+</html>

@@ -1,0 +1,75 @@
+.productBox {
+    width: 23%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.productBox>.productImg {
+    width: 100%;
+    height: 75%;
+}
+
+.productInfo {
+    width: 100%;
+    height: 25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    font-size: 1.5rem;
+    padding: 0% 5%;
+}
+
+.productInfo>p {
+    width: 100%;
+    display: flex;
+}
+
+.productPrice {
+    gap: 5%;
+}
+
+.productPrice>span:not(:first-of-type) {
+    color: #505DD0;
+    font-size: 1.3rem;
+}
+
+.productPrice>span:nth-of-type(2) {
+    text-decoration: line-through;
+    font-size: 1.4rem;
+}
+
+.forFavorite {
+    background: url(/images/icon/Favorit-lineicon.png) center/cover;
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    top: 0;
+    right: 0;
+    z-index: 10;
+    cursor: pointer;
+}
+
+.forFavorite:hover {
+    opacity: .5;
+}
+
+.AforProduct {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    text-indent: -9999em;
+}
+
+.productBox:hover {
+    transition: all .3s;
+    width: 25%;
+    height: 110%;
+    opacity: .7;
+    box-shadow: 1px 1px 1.5px 1.5px rgba(0, 0, 0, .3);
+}

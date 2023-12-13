@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/common/config.css">
+    <link rel="stylesheet" href="/css/common/header.css">
+    <link rel="stylesheet" href="/css/common/footer.css">
+    <link rel="stylesheet" href="/css/product/subPage.css">
+    <title>Goohae</title>
+    <script src="/js/jquery-3.2.1.min.js"></script>
+</head>
+
+<body>
+    <!-- 헤더 -->
+    <header th:replace="common/header :: header"></header>
+
+    <!-- 서브 페이지 헤더 -->
+    <div class="sub_header">
+        <p class="sub_header_info" th:text="|홈>${headText}|"></p>
+
+        <div>
+            <img th:src="${headImg}">
+            <span th:text="${headText}"></span>
+        </div>
+
+        <ul class="sub_header_nav">
+            <li th:each="cate : ${cate}">
+                <a th:href="@{/sub(categoryCode=${cate.categoryCode}, rowsPerPage=12)}"
+                   th:text="${cate.categoryName}"
+                   th:style="${code == cate.categoryCode ? 'text-decoration: underline' : ''}"></a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- 상품 섹션 -->
+    <section class="pro_container">
+        <h2>Products</h2>
+
+        <div class="pro_box">
+            <article class="product" th:each="product : ${product}">
+                <img th:src="${product.imagePath}">
+
+                <div>
+                    <p class="product_name" th:text="${product.productName}"></p>
+
+                    <div>
+                        <span th:text="|${#numbers.formatInteger(product.price - product.discount / 100.00 * product.price, 3, 'COMMA')}원|"
+                              th:if="${product.discount > 0}" class="price_box1"></span>
+
+                        <span th:text="|${#numbers.formatInteger(product.price, 3, 'COMMA')}원|"
+                              th:style="${product.discount > 0 ? 'color:#505dd0; text-decoration:line-through' : ''}"></span>
+
+                        <span th:text="|${product.discount}%|"></span>
+                    </div>
+                </div>
+
+                <a th:href="@{/detail(productCode=${product.productCode})}"></a>
+            </article>
+        </div>
+    </section>
+
+    <!-- 페이징 -->
+    <div class="paging">
+        <!-- 처음으로 -->
+        <a th:href="@{/sub(categoryCode=${code}, currentPage=1, check=${check}, rowsPerPage=12)}"
+           th:style="${pageMaker.prev == false ? 'visibility: hidden' : 'visibility: visible'}">
+            &lt;&lt;
+        </a>
+        <!-- 이전 페이징으로 -->
+        <a th:href="@{/sub(categoryCode=${code}, currentPage=${pageMaker.startPageNum - 1}, check=${check}, rowsPerPage=12)}"
+           th:style="${pageMaker.prev == false ? 'visibility: hidden' : 'visibility: visible'}">
+            &lt;
+        </a>
+
+        <!-- 페이징 번호 -->
+        <a th:each="num, stat : ${#numbers.sequence(1, 5)}" th:text="${num}"
+           th:if="|${stat.count}| <= ${pageMaker.endPageNum}"
+           th:href="@{/sub(categoryCode=${code}, currentPage=${num}, check=${check}, rowsPerPage=12)}"
+           th:style="${pageMaker.criteria.currentPage == num ? 'pointer-events: none; text-decoration: underline;' : ''}"></a>
+
+        <!-- 다음 페이징으로 -->
+        <a th:href="@{/sub(categoryCode=${code}, currentPage=${pageMaker.endPageNum + 1}, check=${check}, rowsPerPage=12)}"
+           th:style="${pageMaker.next == false ? 'visibility: hidden' : 'visibility: visible'}">
+            &gt;
+        </a>
+        <!-- 마지막 페이지로 -->
+        <a th:href="@{/sub(categoryCode=${code}, currentPage=${pageMaker.lastPageNum}, check=${check}, rowsPerPage=12)}"
+           th:style="${pageMaker.next == false ? 'visibility: hidden' : 'visibility: visible'}">
+            &gt;&gt;
+        </a>
+    </div>
+
+    <script>
+        $(document).ready(() => {
+            const priceBox = document.getElementsByClassName('price_box1');
+
+            for (let i = 0; i < priceBox.length; i++) {
+                priceBox[i].innerText = priceBox[i].innerText.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+            }
+        });
+    </script>
+
+
+    <footer th:replace="common/footer :: footer"></footer>
+</body>
+
+
+
+</html>

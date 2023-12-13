@@ -1,0 +1,220 @@
+.list_container {
+    width: 1000px;
+    margin: 100px auto;
+    padding: 20px;
+    position: relative;
+}
+
+.list_container>h2 {
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    font-size: 2.4rem;
+}
+
+.list_titles {
+    width: 100%;
+    height: 30px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.5rem;
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+}
+
+.pro_id {
+    width: 150px;
+    height: 100%;
+    line-height: 30px;
+    text-align: center;
+}
+
+.pro_name {
+    width: 100px;
+    height: 100%;
+    line-height: 30px;
+    text-align: center;
+}
+
+.pro_phone {
+    width: 150px;
+    height: 100%;
+    line-height: 30px;
+    text-align: center;
+}
+
+.pro_join {
+    width: 250px;
+    height: 100%;
+    line-height: 30px;
+    text-align: center;
+}
+
+.pro_status {
+    width: 50px;
+    height: 100%;
+    line-height: 30px;
+    text-align: center;
+}
+
+.pro_del {
+    width: 100px;
+    height: 100%;
+    line-height: 30px;
+    text-align: center;
+}
+
+
+.list_values {
+    width: 100%;
+}
+
+.values {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.4rem;
+    border-bottom: 1px solid black;
+}
+
+.values_id {
+    width: 150px;
+    height: 100%;
+    line-height: 40px;
+    text-align: center;
+}
+
+.values_name {
+    width: 100px;
+    height: 100%;
+    line-height: 40px;
+    text-align: center;
+}
+
+.values_phone {
+    width: 150px;
+    height: 100%;
+    line-height: 40px;
+    text-align: center;
+}
+
+.values_join {
+    width: 250px;
+    height: 100%;
+    line-height: 40px;
+    text-align: center;
+}
+
+.values_status {
+    width: 50px;
+    height: 100%;
+    line-height: 40px;
+    text-align: center;
+}
+
+.values_del {
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.values_del>a {
+    width: 80px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    font-size: 1.3rem;
+    background-color: black;
+    color: white;
+}
+
+.values_title:hover {
+    opacity: 0.5;
+    text-decoration: underline;
+}
+
+.values_del>a:hover {
+    opacity: 0.5;
+}
+
+
+
+.paging {
+    width: 500px;
+    margin: 30px auto 0;
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+}
+
+.paging>a {
+    width: 20px;
+    height: 20px;
+    background-color: rgba(0, 0, 0, 0.3);
+    color: white;
+    line-height: 20px;
+    text-align: center;
+}
+
+.paging>a:hover {
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+
+
+
+.search_box {
+    width: 300px;
+    height: 25px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.search_box>div {
+    width: 250px;
+    height: 25px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.search_box>div>select {
+    width: 25%;
+    height: 100%;
+    font-size: 1.2rem;
+}
+
+.search_box>div>input {
+    width: 75%;
+    height: 100%;
+    line-height: 25px;
+    font-size: 1.2rem;
+    padding-left: 5px;
+}
+
+
+.search_box>input {
+    position: absolute;
+    width: 40px;
+    height: 25px;
+    right: 0;
+    top: 0;
+}
+
+
+.message {
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    position: absolute;
+    top: -60px;
+    text-align: center;
+    left: 0;
+    font-size: 1.4rem;
+}

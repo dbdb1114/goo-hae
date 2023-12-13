@@ -1,0 +1,186 @@
+.OptionContainer {
+    width: 43%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+/* 상품 이름 ================ */
+.OptionContainer>h2 {
+    height: 10%;
+    font-size: 2.5rem;
+    display: flex;
+    align-items: center;
+}
+
+
+/* 상품 옵션 ================= */
+.selectOptionContainer {
+    height: 10%;
+    display: flex;
+    gap: 3%;
+}
+
+.selectOptionContainer>li {
+    width: 30%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    font-size: 1.6rem;
+    gap: 5%;
+}
+
+.selectOptionContainer>li>div {
+    width: 30%;
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.selectOptionContainer>li>div>div {
+    width: 60%;
+    height: 60%;
+}
+
+/* 상품 갯수 ===================== */
+.howManyContainer {
+    height: 10%;
+    display: flex;
+    gap: 1%;
+    align-items: center;
+}
+
+.howManyContainer>span {
+    order: 1;
+    width: 23%;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    border: 1px solid black;
+}
+
+.howManyContainer>button {
+    width: 6%;
+    height: 50%;
+    background: none;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.howManyContainer>button>img {
+    display: block;
+    width: 70%;
+    height: 70%;
+}
+
+.howManyContainer>.downNum {
+    order: 0;
+}
+
+.howManyContainer>.upNum {
+    order: 2;
+}
+
+.howManyContainer>button:hover {
+    opacity: .5;
+}
+
+/* 상품 가격 ========================= */
+.ProductPrice {
+    height: 10%;
+    font-size: 3rem;
+    display: flex;
+    align-items: center;
+}
+
+/* 버튼 ============================== */
+.OptionContainer>.actionContainer {
+    height: 14%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.OptionContainer>.actionContainer>button {
+    height: 60%;
+    background: none;
+    border: 1px solid black;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.OptionContainer>.actionContainer>button:not(:last-of-type) {
+    width: 42%;
+}
+
+.OptionContainer>.actionContainer>button:nth-of-type(2) {
+    background-color: black;
+    color: white;
+}
+
+.OptionContainer>.actionContainer>button:nth-of-type(2)>a {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.OptionContainer>.actionContainer>button:last-of-type {
+    width: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.OptionContainer>.actionContainer>button:last-of-type>img {
+    display: block;
+    width: 70%;
+    height: 70%;
+}
+
+.OptionContainer>.actionContainer>button:first-of-type:hover {
+    border: 1px solid #505DD0;
+    color: #505DD0;
+    opacity: .5;
+}
+
+.OptionContainer>.actionContainer>button:nth-of-type(2):hover {
+    background-color: #505DD0;
+    border: 1px solid #505DD0;
+    opacity: .5;
+}
+
+.OptionContainer>.actionContainer>button:last-of-type:hover {
+    opacity: .5;
+}
+
+/* 배송 안내 =============================== */
+.deliveryInfo {
+    height: 25%;
+    background-color: lightgray;
+    font-size: 1.3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 3%;
+    opacity: .6;
+}
+
+.deliveryInfo>p {
+    display: flex;
+    gap: 5%;
+}
+
+.deliveryInfo>p>span:first-of-type {
+    width: 20%;
+    display: flex;
+    justify-content: right;
+}

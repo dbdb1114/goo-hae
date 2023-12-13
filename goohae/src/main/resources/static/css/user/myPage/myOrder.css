@@ -1,0 +1,297 @@
+@import url(//fonts.googleapis.com/earlyaccess/nanummyeongjo.css);
+@import url(//fonts.googleapis.com/earlyaccess/nanumgothic.css);
+
+
+* {
+    margin: 0;
+    padding: 0;
+    color: gray;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+:root {
+    font-size: 10px;
+}
+
+body {
+    width: 100%;
+    margin: auto;
+}
+
+/* =========================================================== */
+/* =========================================================== */
+/* =========================myOrderMain============================== */
+
+.OrderHistoryCategory {
+    margin: 14px 0 12px;
+    margin-top: 170px;
+}
+
+.OrderHistoryCategory .myPageLink {
+    font-size: 1.2rem;
+}
+
+.OrderHistoryCategory #myPageSubLink {
+    color: #505DD0;
+    font-weight: bold;
+}
+
+.myOrderMain {
+    width: 70%;
+    margin: 0 auto;
+    margin-bottom: 100px;
+}
+
+.myOrderWrap,
+.myOrderHistory,
+.myOrderTableWrap {
+    margin: 0 auto;
+}
+
+.myOrderTitle {
+    font-family:'Nanum Myeongjo';
+    margin-top: 10rem;
+    margin-bottom: 4rem;
+    font-size: 2rem;
+    text-align: center;
+    font-weight: 800;
+    color: black;
+}
+
+.myOrderHistory {
+    margin: 20px 0;
+}
+
+
+.OrderHistoryCategory {
+    margin-top: 170px;
+    margin-bottom: 1rem;
+}
+
+.OrderHistoryCategory .myPageLink {
+    font-size: 1.2rem;
+}
+
+.OrderHistoryCategory #myPageSubLink {
+    color: #505DD0;
+    font-weight: bold;
+}
+.myOrderSelectOrderCondition {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.myOrderSelectOrderCondition .myOrderInquireOrderCondition,
+.myOrderSelectOrderCondition .myOrderNegativeOrderCondition {
+    width: 200px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+.myOrderSelectOrderCondition .myOrderInquireOrderCondition{
+    border-bottom: 2px solid #505DD0;
+    color: #505DD0;
+}
+
+/* .myOrderSelectOrderCondition p:first-of-type span {
+} */
+
+.myOrderSelectOrderCondition .myOrderNegativeOrderCondition {
+    color: black;
+}
+
+.myOrderConditionWrap {
+    width: 100%;
+    height: 130px;
+    border: solid 2px var(--LightGray);
+    display: flex;
+    gap: 10px;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.myOrderConditionWrap>.myOrderCondition {
+    display: inline-block;
+    padding: 11px;
+    width: 20%;
+    height: 40px;
+    font-size: 1.4rem
+}
+
+.myOrderConditionDate {
+    display: flex;
+    flex-flow: row nowrap;
+    padding: 0 10px;
+    padding-right: 5px;
+}
+
+.myOrderConditionDate .myOrderSelectConditionDate {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 56px;
+    height: 36px;
+    text-align: center;
+    border: 1px solid black;
+    font-size: 1.5rem;
+    padding: 4px;
+    margin-right: 5px;
+}
+
+.myOrderDateSelectContainer {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.myOrderDateSelectContainer>.myOrderSelectDate {
+    display: inline-block;
+    width: 200px;
+    height: 40px;
+    padding: 5px;
+}
+
+.myOrderDateSelectContainer #myOrderSelectDateBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 60px;
+    border: 1px solid;
+    font-size: 1.2rem;
+    padding: 4px;
+    background-color: black;
+    color: white;
+}
+
+.myOrderHistory #myOrderHistoryNotices{
+    margin-top: 10px;
+    margin-bottom: 40px;
+}
+
+.myOrderHistory #myOrderHistoryNotices .myOrderHistoryNotice {
+    margin: 5px 0;
+    font-size: 1.5rem;
+    color: #9497AB;
+}
+
+.myOrderTableTitle {
+    height: 25px;
+    line-height: 25px;
+    color: #1A1B23;
+    font-family:'Nanum Myeongjo';
+}
+
+.myOrderTable {
+    width: 100%;
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+
+.myOrderTable>#myOrderTableThead {
+    border-bottom: 2px solid #1A1B23;;
+}
+
+.myOrderTable>#myOrderTableTbody {
+    border-bottom: 2px solid #1A1B23;;
+}
+
+.myOrderTable>#myOrderTableTbody>.myOrderTableLine:not(:last-of-type) {
+    border-bottom: 1px solid #1A1B23;
+}
+
+.myOrderTable .myOrderTableLine {
+    height: 40px;
+
+}
+
+.myOrderTable .myOrderTableTh {
+    text-align: center;
+    font-size: 1.5rem;
+}
+.myOrderTable .myOrderTableRow,
+.myOrderTable .myOrderTableRow>.myOrderProductName,
+.myOrderTable .myOrderTableRow>.myOrderProductOption
+{
+    font-size: 1.4rem;
+}
+
+.myOrderTableWrap>.myOrderTable>#myOrderTableTbody>.myOrderTableLine {
+    /* font-size: 1.4rem; */
+    font-weight: 400;
+    overflow: hidden;
+}
+
+.myOrderTableWrap>.myOrderTable>#myOrderTableTbody>.myOrderTableLine.myOrderTableRow:first-of-type{
+    padding: 0 10px;
+}
+
+.myOrderTableWrap>.myOrderTable>#myOrderTableTbody>.myOrderTableLine.myOrderTableRow:nth-of-type(n+3):nth-of-type(-n+7){
+    padding: 0 10px;
+    text-align: right;
+    box-sizing: border-box;
+}
+
+.myOrderTableWrap>.myOrderTable>#myOrderTableTbody>.myOrderTableLine>th:first-of-type {
+    padding: 0 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.4rem;
+}
+
+.myOrderTableWrap>.myOrderTable>#myOrderTableTbody>.myOrderTableLine img {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+}
+
+.myOrderTableWrap>.myOrderTable>#myOrderTableTbody>.myOrderTableLine .myOrderProductName{
+    font-weight : 700;
+    margin-bottom: 11px;
+}
+
+.myOrderTableWrap>.myOrderTable>#myOrderTableTbody>.myOrderTableLine.myOrderTableRow:nth-of-type(3) {
+    padding-left: 30px;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: flex-start;
+    box-sizing: border-box;
+}
+
+.myOrderTableWrap>.myOrderTable>#myOrderTableTbody>.myOrderTableLine.myOrderTableRow:nth-of-type(3)>.myOrderProductOption{
+    color: #9497AB;
+    font-size: 1.4rem;
+}
+
+.myOrderTable .myOrderTableRow {
+    text-align: center;
+    height: 100px;
+}
+
+/* .myOrderTable+p {
+    padding: 30px;
+    text-align: center;
+} */
+
+.myOrderTableWrap>p:last-of-type {
+    margin-top: 1rem;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.myOrderSelectOrderCondition{
+    height: 50px;
+    visibility: hidden;
+}

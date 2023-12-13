@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>practise</title>
+    <link rel="stylesheet" href="/css/admin/common.css">
+    <link rel="stylesheet" href="/css/admin/userList.css">
+</head>
+
+<body>
+<header th:replace="admin/fragment :: adminHeader"></header>
+
+<div class="list_container">
+    <h2>유저 리스트</h2>
+
+    <div class="list_titles">
+        <span class="pro_id">ID</span>
+        <span class="pro_name">이름</span>
+        <span class="pro_phone">전화번호</span>
+        <span class="pro_join">가입일</span>
+        <span class="pro_status">상태</span>
+        <span class="pro_del">삭제하기</span>
+    </div>
+
+    <div class="list_values">
+        <div class="values" th:each="user : ${users}">
+            <span class="values_id" th:text="${user.id}"></span>
+
+            <span class="values_name" th:text="${user.name}"></span>
+
+            <span class="values_phone" th:text="${user.phoneNumber}"></span>
+
+            <span class="values_join" th:text="${user.joinDate}"></span>
+
+            <span class="values_status" th:text="${user.status}"></span>
+
+            <div class="values_del">
+                <a th:href="@{/admin/del-user(id=${user.id})}">
+                    삭제하기
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="paging">
+        <!-- 처음으로 -->
+        <a th:href="@{/admin/user-list(currentPage=1, check=${check}, keyword=${keyword})}"
+           th:style="${pageMaker.prev == false ? 'visibility: hidden' : 'visibility: visible'}">
+            &lt;&lt;
+        </a>
+        <!-- 이전 페이징으로 -->
+        <a th:href="@{/admin/user-list(currentPage=${pageMaker.startPageNum - 1}, check=${check}, keyword=${keyword})}"
+           th:style="${pageMaker.prev == false ? 'visibility: hidden' : 'visibility: visible'}">
+            &lt;
+        </a>
+
+        <!-- 페이징 번호 -->
+        <a th:each="num, stat : ${#numbers.sequence(1, 5)}" th:text="${num}"
+           th:if="|${stat.count}| <= ${pageMaker.endPageNum}"
+           th:href="@{/admin/user-list(currentPage=${num}, check=${check}, keyword=${keyword})}"
+           th:style="${pageMaker.criteria.currentPage == num ? 'pointer-events: none; text-decoration: underline;' : ''}"></a>
+
+        <!-- 다음 페이징으로 -->
+        <a th:href="@{/admin/user-list(currentPage=${pageMaker.endPageNum + 1}, check=${check}, keyword=${keyword})}"
+           th:style="${pageMaker.next == false ? 'visibility: hidden' : 'visibility: visible'}">
+            &gt;
+        </a>
+        <!-- 마지막 페이지로 -->
+        <a th:href="@{/admin/user-list(currentPage=${pageMaker.lastPageNum}, check=${check}, keyword=${keyword})}"
+           th:style="${pageMaker.next == false ? 'visibility: hidden' : 'visibility: visible'}">
+            &gt;&gt;
+        </a>
+    </div>
+
+    <form class="search_box" action="/admin/user-list" method="get">
+        <div>
+            <select name="check">
+                <option value="id">아이디</option>
+                <option value="name">이름</option>
+            </select>
+
+            <input type="text" name="keyword" placeholder="검색어">
+        </div>
+
+        <input type="submit" value="검색">
+    </form>
+
+    <p class="message" th:text="${message}"></p>
+</div>
+</body>
+
+</html>

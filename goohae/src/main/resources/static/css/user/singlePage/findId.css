@@ -1,0 +1,204 @@
+*{
+    color: #1A1B23;
+    font-size: 10px;
+}
+
+body {
+    background-color: #F5F5F5;
+;
+}
+
+.container>.findIdHeadListWrap:nth-of-type(1),
+input {
+    border: 1px solid #1A1B23
+}
+
+/*---------------컨테이너 중앙, 균등 ---------------*/
+.findIdMain::after,
+.findIdMain::before {
+    content: " ";
+    display: block;
+    flex-grow: 1;
+    height: 1em;
+    width: 100%;
+}
+
+.findIdMain {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* ------------개별 요소들--------------------- */
+.findIdContainer {
+    width: 400px;
+    height: 592px;
+    box-sizing: border-box;
+    background: #FFFFFF;
+    border: 1px solid #F7F7FB;
+    box-shadow: 0px 2px 50px rgba(80, 93, 208, 0.4);
+    border-radius: 5px;
+}
+
+.findIdInnerContainer{
+    padding:54px 40px 0;
+    width: 320px;
+}
+
+.findIdHead>.findIdHeadLogo {
+    display: block;
+    height: 70px;
+    width: 200px;
+    margin: 0px 60px 50px;
+    text-indent: -9999em;
+    background: url(../../../stores/images/icon/logo.png) no-repeat center top/contain;
+}
+.findIdHead>.findIdHeadLogo>a{
+    display: block;
+    height: 70px;
+    width: 200px;
+}
+
+.findIdHeadListWrap {
+    list-style-type: none;
+    padding: 0;
+}
+
+.findIdHead>.findIdHeadListWrap,
+.findIdHead>.findIdHeadListWrap .findIdHeadList {
+    height: 25px;
+}
+.findIdHead>.findIdHeadListWrap {
+    display: flex;
+    justify-content: stretch;
+    width: 320px;
+    list-style-type: none;
+}
+
+.findIdHead>.findIdHeadListWrap>.findIdHeadList {
+    width: 160px;
+    text-align: center;
+}
+
+.findIdHead>.findIdHeadListWrap .findIdHeadList .findIdLink,
+.findIdHead>.findIdHeadListWrap .findIdHeadList .findPwLink {
+    font-size: 1.4rem;
+    text-decoration:none;
+}
+
+.findIdHead>.findIdHeadListWrap .findIdHeadList .findIdLink{
+    border-bottom:#505DD0 solid 1px ;
+    padding-bottom: 8px;
+    color:  #505DD0;
+    cursor: pointer;
+    font-weight: 700;
+}
+/* ============================================= */
+
+
+.findIdMain .findIdForm {
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+}
+.findIdMain .findIdForm select,
+.findIdMain .findIdForm .findIdInput {
+    border: 1px solid #1A1B23;
+    text-indent: 12px;
+    height: 36px;
+    font-size: 1.4rem;
+    width: 320px;
+}
+
+.findIdMain .findIdForm .findIdLabel{
+    margin-bottom: 7px;
+    line-height: 14px;
+    font-weight: 700;
+    font-size: 1.4rem;
+}
+
+.findIdMain .findIdForm select,
+.findIdMain .findIdForm> .findIdInput,
+.findIdMain .findIdForm div> .findIdInput,
+button{
+    outline: 0;
+}
+
+.findIdMain .findIdForm> .findIdInput {
+    width: 100%;
+}
+
+.errorMassage{
+    color: #FF655B;
+    font-size: 1.2rem;
+    line-height: 1.2rem;
+    margin:2px 0 16px;
+}
+
+.hidden{
+    visibility: hidden;
+}
+
+.findIdMain .findIdForm div {
+    align-self: flex-start;
+}
+
+
+/* .findIdMain .findIdForm div> .findIdInput:first-of-type {
+    margin: 0;
+    margin-right: 10px;
+}
+
+.findIdMain .findIdForm div> .findIdInput:last-of-type {
+    margin-right: 0;
+} */
+.findIdMain .findIdPhoneWrap,
+.findIdMain .findIEemailWrap{
+    /*width: 320px;*/
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    line-height: 36px;
+}
+
+.findIdMain .findIEemailWrap #fiEmail{
+    width: 130px;
+    outline: none;
+}
+
+.findIdMain .findIEemailWrap .fpInput{
+    width: 160px;
+    border: 1px s #1A1B23 ;
+}
+
+.redInputBox{
+    border: 1px solid #FF655B;
+}
+
+.findIdMain .findIdBtn {
+    width: 100%;
+    height: 36px;
+    border: 0;
+    background-color: #9497AB;
+    color: white;
+}
+
+.findIdInnerContainer .findIdLinkToLogin{
+    display: block;
+    margin-top: 16px;
+    text-align: center;
+    color: #9497AB;
+    text-decoration: underline;
+}
+
+.buttonLogin{
+    background-color: #1A1B23;
+}
+/* =============================================================================================== */
+/* =============================================================================================== */
+/* =============================================================================================== */
+/* =============================================================================================== */
+/* =============================================================================================== */
+/* =============================================================================================== */

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/common/header.css">
+    <link rel="stylesheet" href="/css/common/footer.css">
+    <link rel="stylesheet" href="/css/common/config.css">
+    <link rel="stylesheet" href="/css/customer/detail.css">
+    <title>QNA</title>
+</head>
+
+<body>
+    <header th:replace="common/header :: header"></header>
+
+    <div class="detailContainer">
+        <h2></h2>
+        <table class="board_detail">
+            <colgroup>
+                <col width="15%" />
+                <col width="35%" />
+                <col width="15%" />
+                <col width="35%" />
+            </colgroup>
+            <tbody>
+                <tr>
+                    <th scope="row">글 번호</th>
+                    <td class="seq" th:text="${qnaDetail.boardSeq}"></td>
+                </tr>
+                <tr>
+                    <th scope="row">작성자</th>
+                    <td th:text="${qnaDetail.userId}"></td>
+                    <th scope="row">작성일</th>
+                    <td th:text="${qnaDetail.regDate}"></td>
+                </tr>
+                <tr>
+                    <th scope="row">제목</th>
+                    <td colspan="3">
+                        <input type="text" id="title" name="title" th:value="${qnaDetail.title}" disabled />
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" class="view_text">
+                        <textarea title="내용" id="contents" name="contents" th:text="${qnaDetail.content}"
+                            disabled></textarea>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div th:if="${session.loginId} == null">
+            <span>로그인을 해주세요</span>
+        </div>
+
+        <div th:if="${session.loginId} != null" class="delete">
+            <label for="password">비밀번호
+                <input id="password" type="password" name="password">
+            </label>
+            <button id="deleteBtn">삭제하기</button>
+        </div>
+    </div>
+
+
+    <footer th:replace="common/footer :: footer"></footer>
+</body>
+
+<script src="/js/jquery-3.2.1.min.js"></script>
+<script src="/js/customer/detail.js"></script>
+
+</html>

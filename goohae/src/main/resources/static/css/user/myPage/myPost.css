@@ -1,0 +1,129 @@
+*{
+    font-size: 10px;
+}
+
+body {
+    width: 100%;
+    margin: auto;
+}
+
+/* ============================================================================================ */
+/* ============================================================================================ */
+/* =================================.myPostMain============================ */
+
+
+.myPostTableCategory {
+    margin: 14px 0 12px;
+    margin-top: 170px;
+}
+
+.myPostTableCategory .myPageLink {
+    font-size: 1.2rem;
+    text-decoration: none;
+    color: #9497AB;
+}
+
+.myPostTableCategory #myPageSubLink {
+    color: #505DD0;
+    font-weight: bold;
+}
+
+
+
+.myPostMain {
+    width: 70%;
+    /* padding: 0 5%; */
+    font-size: 1.4rem;
+    min-width: 700px;
+}
+
+.myPostMain, 
+#myPostWrap,
+.myPostTableWrap {
+    margin: 0 auto;
+}
+
+.myPostUpper #myPostCategory {
+    font-size: 12px;
+}
+
+.myPostTitle {
+    width: 100%;
+    line-height: 2.5rem;
+    font-weight: 800;
+    font-size: 2rem;
+    font-family:'Nanum Myeongjo';
+    text-align: center;
+    color: #1A1B23;
+    padding: 100px 0px 38px;
+}
+
+.myPostTableWrap .myPostTableOption,
+.myPostTableWrap #myPostCategory  {
+    color:#1A1B23;
+}
+
+.myPostTableWrap {
+    width: 100%;
+    /* margin: 50px auto;    */
+    margin-bottom: 200px;
+}
+
+
+
+/* ====================Table=================== */
+/* ====================Table=================== */
+/* ====================Table=================== */
+
+
+.myPostTable {
+    width: 100%;
+    margin: 10px auto;
+    border-collapse: collapse;
+}
+
+.myPostTable .myPostTableTr {
+    height: 40px;
+    border-bottom: 1px solid #1A1B23;
+}
+
+.myPostTable .myPostTableTh {
+    border-bottom: 2px solid #1A1B23;
+    text-align: center;
+    font-size: 1.4rem;
+}
+
+.myPostTable .myPostTableRow {
+    border-bottom: 2px solid #1A1B23;
+    text-align: center;
+}
+
+
+.myPostTable .myPostTableTbody .myPostTableRow{
+    height: 70px;
+}
+.myPostTable .myPostTableTbody .myPostTableRow .myPostTableContentInner{
+    font-size: 1.4rem;
+}
+
+.myPostTable .myPostTableRow .myPostSubject:hover{
+    color: #505DD0;
+}
+
+.myPostBtnWrap{
+display:block;
+text-align:right;
+}
+.panel {
+    display: none;
+}
+
+/* .PostConmypostTableTrolButton {
+    margin: 0 auto;
+    width: 90%;
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+    padding: 10px 5px;
+} */

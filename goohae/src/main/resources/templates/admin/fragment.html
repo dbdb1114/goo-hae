@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+    <head th:fragment="head">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>practise</title>
+    </head>
+
+    <body>
+        <header th:fragment="adminHeader">
+            <div class="header_container">
+                <h2>관리자 메뉴</h2>
+
+                <div class="header_nav">
+                    <ul>
+                        <li>
+                            <a href="/admin/user-list">회원 관리</a>
+                        </li>
+
+                        <li>
+                            <a href="/admin/reg-pro">상품 등록</a>
+                        </li>
+
+                        <li>
+                            <a href="/admin/get-pro?categoryCode=1&check=new">상품 관리</a>
+                        </li>
+
+                        <li>
+                            <a href="/admin/reg-post">게시글 등록</a>
+                        </li>
+
+                        <li>
+                            <a href="/admin/post-list">게시글 관리</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <a class="logout_btn" href="/admin-logout">로그아웃</a>
+        </header>
+    </body>
+
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/user/myPage/myPost.css">
+    <link rel="stylesheet" href="/css/common/header.css">
+    <link rel="stylesheet" href="/css/common/footer.css">
+    <link rel="stylesheet" href="/css/common/config.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function () {
+            $('.collapse').on('show.bs.collapse', function () {
+                 $('.collapse.show').collapse('hide');
+            });
+        });
+
+    </script>
+    <!-- 부트스트랩 CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- 부트스트랩 JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+    <title>myPost</title>
+    <!--  <script defer src="/js/singlePage/login.js"></script>-->
+
+</head>
+<body>
+<header th:replace="common/header :: header"></header>
+<main class="myPostMain">
+    <section id="myPostWrap">
+        <div class="myPostTableCategory">
+            <a href="/" class="myPageLink">홈&nbsp;&nbsp;&gt;</a>
+            <a href="/logined-user/mypage" class="myPageLink">&nbsp;&nbsp;마이페이지&nbsp;&nbsp;&gt;</a>
+            <a href="/logined-user/mypage/mypost" class="myPageLink"
+               id="myPageSubLink">&nbsp;&nbsp;나의 리뷰&nbsp;&nbsp;</a>
+        </div>
+        <p class="myPostTitle">나의 리뷰</p>
+        <div th:if="${ #lists.isEmpty(reviewList)}">
+            <p style="font-size:1.4rem; padding:20% 0; text-align:center; font-weight:800;">
+                작성한 글이 없습니다
+            </p>
+        </div>
+        <div th:if="${not #lists.isEmpty(reviewList)} ">
+            <article class="myPostTableWrap">
+                <table class="myPostTable">
+                    <colgroup>
+                        <col width="10%"/>
+                        <col width="20%"/>
+                        <col width="70%"/>
+
+                    </colgroup>
+                    <thead class="myPostTablThead">
+                    <tr class="myPostTableTr">
+                        <th scope="col" class="myPostTableTh">no</th>
+                        <th scope="col" class="myPostTableTh">제품명</th>
+                        <th scope="col" class="myPostTableTh">제목</th>
+                    </tr>
+                    </thead>
+                    <tbody class="myPostTableTbody">
+                    <th:block th:each="post : ${reviewList}">
+                        <tr class="myPostTableTr">
+                            <td class="myPostTableRow">
+                                <span class="myPostTableContentInner" th:text="${post.reviewSeq}"></span>
+                            </td>
+                            <td class="myPostTableRow">
+                                <span class="myPostTableContentInner" th:text="${post.productName}"></span>
+                            </td>
+                            <td class="myPostTableRow">
+                                <button type="button" class="btn btn-link myPostTableContentInner"
+                                        data-toggle="collapse"
+                                        th:data-target="'#postContent'+${post.reviewSeq}"
+                                        th:text="${post.title}"></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="4">
+                                <div th:if="${post != null}" th:id="'postContent'+${post.reviewSeq}" class="collapse">
+                                    <div class="card-body">
+                                        <p th:text="${post.content}"></p>
+                                        <a th:href="@{/logined-user/review/delete(reviewSeq=${post.reviewSeq})}"
+                                           class="myPostBtnWrap">
+                                            <button class="btn btn-danger">Delete</button>
+                                        </a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </th:block>
+                    </tbody>
+                </table>
+            </article>
+        </div>
+    </section>
+</main>
+<footer th:replace="common/footer :: footer"></footer>
+</div>
+</body>
+</html>

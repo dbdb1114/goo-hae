@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kdt.goohae.mapper.HomeMapper">
+    <!-- 카테고리 가져오기 -->
+    <select id="selectList" resultType="CategoryVO">
+        select *
+        from category
+        where classify = get_classify(#{categoryCode})
+    </select>
+
+    <!-- 디테일 페이지 상품 정보 -->
+    <select id="selectOne" resultType="ProductVO">
+        select *
+        from product
+        where product_code = #{productCode}
+    </select>
+
+    <!-- 디테일 페이지의 상품 이미지 -->
+    <select id="getImages" resultType="ProductImgVO">
+        select *
+        from product_image
+        where product_code = #{productCode}
+        order by image_seq asc
+    </select>
+
+    <!-- 디테일 페이지 메인 이미지 -->
+    <select id="getMainImage" resultType="ProductImgVO">
+        select *
+        from product_image
+        where product_code = #{productCode}
+        and image_path like '%-1.%'
+    </select>
+
+    <!-- 디테일 페이지 배너 이미지 가져오기 -->
+    <select id="getBannerImage" resultType="ProductImgVO">
+        select *
+        from product_image
+        where product_code = #{productCode}
+        and image_path like '%-5.%'
+    </select>
+
+    <!-- 디테일 페이지 상품 정보 이미지 가져오기 -->
+    <select id="getInfoImage" resultType="productImgVO">
+        select *
+        from product_image
+        where product_code = #{productCode}
+        and image_path like '%-6.%'
+    </select>
+
+    <!-- 조회수 증가 -->
+    <update id="updateCount">
+        <selectKey keyProperty="viewCount" resultType="int" order="BEFORE">
+            select view_count from product where product_code = #{productCode}
+        </selectKey>
+
+        update product set
+        view_count = #{viewCount} + 1
+        where product_code = #{productCode}
+    </update>
+</mapper>

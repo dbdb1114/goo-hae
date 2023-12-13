@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/common/config.css">
+    <link rel="stylesheet" href="/css/common/header.css">
+    <link rel="stylesheet" href="/css/common/footer.css">
+    <link rel="stylesheet" href="/css/user/memberPayment.css">
+    <title>Goohae</title>
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script defer src="/js/user/memberPayment.js"></script>
+</head>
+
+<body>
+    <!-- 헤더 -->
+    <header th:replace="common/header :: header"></header>
+
+    <main>
+        <section>
+            <p class="payment_title">주문/결제</p>
+
+            <article class="order_info_container">
+                <div method="post">
+                    <div class="order_info_box">
+                        <p class="deli_title">배송지 정보</p>
+
+                        <div class="name_box">
+                            <label for="memPayOrderName">받는 사람</label>
+
+                            <input type="hidden" id="user_id" th:value="${userInfo.id}">
+
+                            <input class="order_name" id="memPayOrderName" type="text"
+                                placeholder="이름을 입력하세요." th:value="${userInfo.name}" required>
+                        </div>
+
+                        <div class="phone_box">
+                            <label for="phoneNum">휴대폰번호</label>
+
+                            <input class="order_phone" id="phoneNum" type="text" placeholder="'-'없이 입력" th:value="${userInfo.phoneNumber}"
+                                onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" minlength="11" maxlength="12" required>
+                        </div>
+
+                        <div class="address_num_box">
+                            <label for="postNum">우편번호</label>
+
+                            <div>
+                                <input class="post_num" type="text" id="postNum" th:value="${userInfo.postNumber}" required>
+                                <a href="#">우편번호 찾기</a>
+                            </div>
+                        </div>
+
+                        <div class="address_input_box">
+                            <label for="add_input">주소</label>
+
+                            <input class="post_address" type="text" th:value="${userInfo.address}"
+                                   id="add_input" placeholder="주소를 입력해주세요." required>
+                        </div>
+
+
+                        <div class="memo_box">
+                            <label for="memOrderPostMemo">배송 메모</label>
+
+                            <div>
+                                <select class="post_memo" id="memOrderPostMemo">
+                                    <option value="" id="input_option" selected>직접 입력하기(20자 이내)</option>
+                                    <option value="부재시 경비실에 맡겨주세요.">부재시 경비실에 맡겨주세요.</option>
+                                    <option value="빠른 배송 부탁드려요.">빠른 배송 부탁드려요.</option>
+                                    <option value="부재시 연락 바랍니다.">부재시 연락 바랍니다.</option>
+                                    <option value="배송전 연락 바랍니다.">배송전 연락 바랍니다.</option>
+                                </select>
+
+                                <input class="post_memo memo_input" id="input_memo" placeholder="직접입력" type="text">
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="product_container">
+                        <p class="pro_title">상품 정보</p>
+
+                        <div class="pro_info">
+                            <span class="img_text">상품 이미지</span>
+                            <span class="pro_text">상품명</span>
+                            <span class="ea_text">수량</span>
+                            <span class="price_text">가격</span>
+                            <span class="dis_text">할인율</span>
+                        </div>
+
+                        <div class="product" th:each="products : ${products}">
+                            <input type="text" class="product_code" th:value="${products.productCode}" style="display: none;">
+                            <img th:src="${products.imagePath}" alt="구매 상품 이미지">
+                            <span class="prName" th:text="${products.productName}"></span>
+                            <span class="prEa" th:text="${products.productEa}"></span>
+                            <span class="prPrice" th:text="${products.discount > 0 ? #numbers.formatDecimal((products.price - products.discount / 100.00 * products.price) * products.productEa, 0, 0) : products.price * products.productEa}"></span>
+                            <span class="prDis" th:text="|${products.discount}%|"></span>
+                        </div>
+                    </div>
+
+
+                    <!-- 결제 fixed box -->
+                    <div class="payment_container">
+                        <p>최종 결제금액</p>
+
+                        <div class="payment_info">
+                            <div class="pay_price">
+                                <span>총 상품 금액</span>
+
+                                <span>
+                                    <strong th:text="${totalPrice}"></strong>원
+                                </span>
+                            </div>
+
+                            <div class="pay_discount">
+                                <span>할인 금액</span>
+
+                                <span>
+                                    <strong th:text="${totalDiscount}"></strong>원
+                                </span>
+                            </div>
+
+                            <div class="finish_pay">
+                                <span>최총 결제액</span>
+                                <span>
+                                    <strong th:text="${totalPrice - totalDiscount}"></strong>원
+
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="agree_box">
+                            <input type="checkbox" id="agree">
+
+                            <label for="agree">전체 동의하기</label>
+                        </div>
+
+                        <div class="agree_box sub_agree">
+                            <input type="checkbox" id="agree1" required>
+
+                            <label for="agree1">
+                                (필수)구매조건 확인 및 결제진행 동의
+                            </label>
+                        </div>
+
+                        <div class="agree_box sub_agree">
+                            <input type="checkbox" id="agree2" required>
+
+                            <label for="agree2">
+                                (필수)개인정보 수집 및 이용동의
+                            </label>
+                        </div>
+
+                        <div class="agree_box sub_agree">
+                            <input type="checkbox" id="agree3" required>
+
+                            <label for="agree3">
+                                (필수)개인정보 제3자 제공동의
+                            </label>
+                        </div>
+
+                        <button class="order_btn">주 문 하 기</button>
+                    </div>
+                </div>
+            </article>
+        </section>
+    </main>
+
+    <!-- 송금을 위한 팝업 -->
+    <div id="to_pay_container">
+        <form action="/logined-user/order/payment" method="post">
+            <span>결제창</span>
+            <input type="hidden" value="" id="order_seq" name="orderSeq">
+
+            <div>
+                <label for="depositor">입금자명</label>
+                <input type="text" id="depositor" name="depositor">
+            </div>
+
+            <div>
+                <span>은행</span>
+
+                <select name="depositBank">
+                    <option value="기업은행" selected>기업은행</option>
+                </select>
+            </div>
+
+            <div class="input_container">
+                <label for="payMoney">지불액</label>
+                <input type="text" value="" id="order_total" name="totalPrice" style="font-size: 1.6rem;" readonly>
+                <input type="text" name="payMoney" id="payMoney" style="font-size: 1.6rem;" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');">
+            </div>
+
+            <input type="submit" id="finish_btn" value="송금하기">
+        </form>
+    </div>
+
+    <footer th:replace="common/footer :: footer"></footer>
+</body>
+
+</html>

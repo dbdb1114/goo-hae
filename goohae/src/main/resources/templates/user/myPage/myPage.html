@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/user/myPage/myPage.css">
+    <link rel="stylesheet" href="/css/common/header.css">
+    <link rel="stylesheet" href="/css/common/footer.css">
+    <link rel="stylesheet" href="/css/common/config.css">
+    <title>GooHae-myPage</title>
+</head>
+
+<body>
+<!--로그인 안했을시 alert 창을 띄움 . */-->
+<div th:if="${session.loginId == null}">
+    <script th:inline="javascript">
+     <!--   alert([[${session.message}]]);-->
+        alert("로그인 해주세요");
+
+    </script>
+</div>
+<!--<div th:unless="${session.loginId == null}">-->
+<header th:replace="common/header :: header"></header>
+<main class="myPageMain">
+    <p class="myPageTitle">MY&nbsp;PAGE</p>
+    <section class="myPageWrap">
+        <div class="myPageWMent">
+            <p class="myPageMentContent"><span class="myPageMentContentName" th:text="${session.name}"></span>님
+                환영합니다.
+            </p>
+            <!--      <span class="myPageInfoMenMinPrice">2%</span> 추가 적립을 받을 수 있습니다.</p>-->
+        </div>
+
+        <article class="myPageMyOrder">
+            <div class="myPageOrederTitle">
+                <p class="myPageOrderTitleContent">나의 주문처리 현황</p>
+                <p class="myPageOrderTitleContent">최근 3개월 기준</p>
+            </div>
+            <!--                <div class="myPageOrderProcess">-->
+            <!--                    <div class="mypagBeforePay myPageOrderProcessInnerContainer">-->
+            <!--                        <p class="myPageOrderCaseTitle">입금 전</p>-->
+            <!--                        <span class="myPageOrderCase" th:text="${myPage.beforeDeposit}">0</span>-->
+            <!--                    </div>-->
+            <!--                    <div class="deliveryReady myPageOrderProcessInnerContainer">-->
+            <!--                        <p class="myPageOrderCaseTitle">배송 준비 중</p>-->
+            <!--                        <span class="myPageOrderCase" th:text="${myPage.preparingForDelivery}">0</span>-->
+            <!--                    </div>-->
+            <!--                    <div class="delieveryProcess myPageOrderProcessInnerContainer">-->
+            <!--                        <p class="myPageOrderCaseTitle">배송 중</p>-->
+            <!--                        <span class="myPageOrderCase" th:text="${myPage.shippingInProgress}">0</span>-->
+            <!--                    </div>-->
+            <!--                    <div class="delieveryComplete myPageOrderProcessInnerContainer">-->
+            <!--                        <p class="myPageOrderCaseTitle">배송 완료</p>-->
+            <!--                        <span class="myPageOrderCase" th:text="${myPage.deliveryComplete}">0</span>-->
+            <!--                    </div>-->
+            <!--                </div>-->
+        </article>
+    </section>
+
+    <article class="MyMenuWrap">
+        <div class="myPageMenuContainer">
+            <div class="myPageMenu">
+                <a href="/logined-user/order/list" class="myPageMenuClickBtn">
+                    <p class="myPageMenuTitle">주문 내역</p>
+                    <p class="myPageMenuContent">
+                        고객님께서 주문하신 상품의 주문내역을 확인하실 수 있습니다.
+                    </p>
+                    <p class="myPageOrderMenuMore">더보기 &gt;</p>
+                </a>
+            </div>
+            <div class="myPageMenu">
+                <a href="/logined-user/myinfo" class="myPageMenuClickBtn">
+                    <p class="myPageMenuTitle">내 정보</p>
+                    <p class="myPageMenuContent">
+                        회원이신 고객님의 개인정보를 관리하는 공간입니다.
+                    </p>
+                    <p class="myPageOrderMenuMore"> 더보기 &gt;</p>
+                </a>
+            </div>
+            <div class="myPageMenu">
+                <a href="/logined-user/mycart" class="myPageMenuClickBtn">
+                    <p class="myPageMenuTitle">장바구니</p>
+                    <p class="myPageMenuContent">
+                        회원님의 장바구니를 관리하는 곳입니다.
+                        <br/>
+                        한번에 구매를 하실 수 있고, 삭제하실 수 있습니다.
+                    </p>
+                    <p class="myPageOrderMenuMore">더보기 &gt;</p>
+                </a>
+            </div>
+            <div class="myPageMenu">
+                <a href="/logined-user/mywish" class="myPageMenuClickBtn">
+                    <p class="myPageMenuTitle">위시리스트</p>
+                    <p class="myPageMenuContent">
+                        관심상품으로 등록하신 상품의 목록을 보여드립니다.
+                    </p>
+                    <p class="myPageOrderMenuMore">더보기 &gt;</p>
+                </a>
+            </div>
+            <div class="myPageMenu">
+                <a href="/logined-user/mypost" class="myPageMenuClickBtn">
+                    <p class="myPageMenuTitle">나의 리뷰</p>
+                    <p class="myPageMenuContent">
+                        고객님께서 작성하신 게시물을 관리하는 공간입니다.
+                    </p>
+                    <p class="myPageOrderMenuMore">더보기 &gt;</p>
+                </a>
+            </div>
+            <!--      <div class="myPageMenu">-->
+            <!--        <a to="/myAddress" class="myPageMenuTitle">-->
+            <!--          내 주소록-->
+            <!--        </a>-->
+            <!--        <a to="/myAddress">-->
+            <!--          <p class="myPageMenuContent">-->
+            <!--            배송지를 등록하고 관리하실 수 있습니다.-->
+            <!--          </p>-->
+            <!--        </a>-->
+            <!--        <a to="/myAddress" class="myPageOrderMenuMore">더보기 &gt;</a>-->
+            <!--        <a href="/user/myaddress" class="myPageMenuClickBtn"></a>-->
+            <!--      </div>-->
+        </div>
+    </article>
+
+</main>
+<footer th:replace="common/footer :: footer"></footer>
+<!--    <div>-->
+</body>
+</html>

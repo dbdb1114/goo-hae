@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kdt.goohae.mapper.user.OrderMapper">
+
+    <select id="selectList" resultType="OrderInfoVO">
+        select i.order_seq, i.order_date, d.product_ea, d.product_code, d.price, d.deli_status , p.image_path, pr.product_name
+        from product pr , product_image p, order_info i , order_detail d
+        where i.user_id = #{loginId} and i.order_seq = d.order_seq and p.product_code = pr.product_code and d.product_code = pr.product_code;
+    </select>
+
+    <select id="selectOne">
+        select
+    </select>
+
+    <delete id="delete">
+        delete
+    </delete>
+
+    <insert id="insert">
+        insert
+    </insert>
+
+
+
+    <!-- 주문 정보 테이블 입력 -->
+    <insert id="insertOrder">
+        insert into order_info(user_id, receiver_name, phone_number, post_number, address, memo)
+        values(#{userId}, #{receiverName}, #{phoneNumber}, #{postNumber}, #{address}, #{memo})
+    </insert>
+    
+    <!-- 주문 정보 가져오기 (입력 직후 가져오기) -->
+    <select id="getOrderInfo" resultType="OrderInfoVO">
+        select *
+        from order_info
+        where user_id = #{userId}
+        and post_number = #{postNumber}
+        order by order_date desc
+        limit 0, 1
+    </select>
+
+    <!-- 주문 상세 입력 -->
+    <insert id="insertDetail">
+        insert into order_detail(order_seq, product_code, price, product_ea, discount)
+        values(#{orderSeq}, #{productCode}, #{price}, #{productEa}, #{discount})
+    </insert>
+
+    <!-- 주문 상세 가져오기 -->
+    <select id="getOrderDetail" resultType="OrderDetailVO">
+        select *
+        from order_detail
+        where order_seq = #{orderSeq}
+    </select>
+
+    <!-- 결제 -->
+    <insert id="insertPay">
+        insert into payment(order_seq, total_price, depositor, deposit_bank, pay_money)
+        values(#{orderSeq}, #{totalPrice}, #{depositor}, #{depositBank}, #{payMoney})
+    </insert>
+
+    <!-- 결제 가져오기 -->
+    <select id="getPay" resultType="PaymentVO">
+        select *
+        from payment
+        where order_seq = #{orderSeq}
+    </select>
+
+    <!-- 주문 정보 가져오기 -->
+    <select id="getOrder" resultType="OrderInfoVO">
+        select *
+        from order_info
+        where order_seq = #{orderSeq}
+    </select>
+
+</mapper>

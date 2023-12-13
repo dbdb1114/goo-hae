@@ -1,0 +1,48 @@
+.detailContainer {
+    width: 100%;
+    margin-top: 200px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.board_detail {
+    width: 70%;
+    border: 0.3px solid #c8c8c8;
+}
+
+th {
+    background-color: #c8c8c8;
+}
+
+th,
+td {
+    font-size: 1.4rem;
+}
+
+textarea {
+    width: 100%;
+    min-height: 300px;
+    border: none;
+    border-top: 0.5px solid #c8c8c8;
+}
+
+.delete {
+    margin-top: 30px;
+    margin-left: calc(50% + 30px);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+#deleteBtn {
+    background-color: black;
+    width: 100px;
+    height: 30px;
+    line-height: 30px;
+    margin: 10px auto;
+    color: white;
+    display: block;
+    font-size: 18px;
+}

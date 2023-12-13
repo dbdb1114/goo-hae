@@ -1,0 +1,328 @@
+@import url(/css/banner.css);
+
+
+
+/* 상품 박스 */
+.pro_container {
+    width: 1300px;
+    margin: 100px auto 0;
+}
+
+.slide_box {
+    position: relative;
+}
+
+
+
+/* new product */
+.pro_container>.main_new {
+    width: 100%;
+    margin-top: 50px;
+    overflow: hidden;
+    position: relative;
+    height: 405px;
+}
+
+#left_btn {
+    width: 40px;
+    height: 60px;
+    position: absolute;
+    left: 0%;
+    transform: translateX(-50px);
+    top: calc((100% - 60px) / 2 + 50px);
+    z-index: 1;
+    background: url(../images/icon/slideLeft.png) center/cover;
+    visibility: hidden;
+}
+
+#right_btn {
+    width: 40px;
+    height: 60px;
+    position: absolute;
+    right: 0;
+    transform: translateX(50px);
+    top: calc((100% - 60px) / 2 + 50px);
+    z-index: 1;
+    background: url(../images/icon/slideRight.png) center/cover;
+}
+
+#left_btn:hover,
+#right_btn:hover {
+    border: 1px solid black;
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+
+#new1 {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#new2 {
+    position: absolute;
+    top: 0;
+    left: 100%;
+}
+
+#new1,
+#new2 {
+    transition: 1s all;
+}
+
+
+
+.pro_container>.main_new>.product_ul {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 1.5px;
+}
+
+.pro_container>.main_new>.product_ul>.product {
+    width: 300px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.pro_container>.main_new>.product_ul>.product>img {
+    display: block;
+    width: 300px;
+    height: 300px;
+}
+
+.pro_container>.main_new>.product_ul>.product>div {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.pro_container>.main_new>.product_ul>.product>div>p {
+    width: 100%;
+    height: 40px;
+    line-height: 25px;
+    font-size: 1.6rem;
+    padding-left: 5px;
+}
+
+.pro_container>.main_new>.product_ul>.product>div>div {
+    width: 100%;
+    height: 40px;
+    display: flex;
+    gap: 10px;
+}
+
+.pro_container>.main_new>.product_ul>.product>div>div>span {
+    line-height: 40px;
+    font-size: 1.5rem;
+}
+
+.pro_container>.main_new>.product_ul>.product>div>div>span:not(:last-of-type) {
+    width: 30%;
+    padding-left: 5px;
+}
+
+.pro_container>.main_new>.product_ul>.product>div>div>span:last-of-type {
+    width: 15%;
+    color: #505dd0;
+    padding-left: 5px;
+}
+
+.pro_container>.main_new>.product_ul>.product>a {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.pro_container>.main_new>.product_ul>.product>a:hover {
+    opacity: 0.5;
+    background-color: white;
+    box-shadow: 0px 0px 5px black;
+}
+
+
+
+
+
+
+
+
+
+/* 일반 상품 표시 */
+.pro_container>h2 {
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    font-size: 2.8rem;
+}
+
+.pro_container>.pro_box {
+    width: 100%;
+    margin-top: 50px;
+    display: flex;
+    gap: 25px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.pro_container>.pro_box>.product {
+    width: 300px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.pro_container>.pro_box>.product>img {
+    display: block;
+    width: 300px;
+    height: 300px;
+}
+
+.pro_container>.pro_box>.product>div {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.pro_container>.pro_box>.product>div>p {
+    width: 100%;
+    height: 40px;
+    line-height: 25px;
+    font-size: 1.6rem;
+    padding-left: 5px;
+}
+
+.pro_container>.pro_box>.product>div>div {
+    width: 100%;
+    height: 40px;
+    display: flex;
+    gap: 10px;
+}
+
+.pro_container>.pro_box>.product>div>div>span {
+    line-height: 40px;
+    font-size: 1.5rem;
+}
+
+.pro_container>.pro_box>.product>div>div>span:not(:last-of-type) {
+    width: 30%;
+    padding-left: 5px;
+}
+
+.pro_container>.pro_box>.product>div>div>span:last-of-type {
+    width: 15%;
+    color: #505dd0;
+    padding-left: 5px;
+}
+
+.pro_container>.pro_box>.product>a {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.pro_container>.pro_box>.product:hover {
+    opacity: 0.5;
+    box-shadow: 0px 0px 5px black;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* mainCategory ========================= */
+.mainCategory {
+    width: 90%;
+    height: 30vw;
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    margin-top: 6%;
+}
+
+.mainCategory>div {
+    width: 24%;
+    height: 100%;
+    position: relative;
+}
+
+.LivingCategory {
+    background: url(/images/staticImages/CateLiving.jpg) center/cover;
+}
+
+.BedCategory {
+    background: url(/images/staticImages/CateBed.jpg) center/cover;
+}
+
+.DiningCategory {
+    background: url(/images/staticImages/CateDining.jpg) center/cover;
+}
+
+.DressCategory {
+    background: url(/images/staticImages/CateDress.jpg) center/cover;
+}
+
+.mainCategory>div>a {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    background-color: rgba(26, 27, 35, .3);
+}
+
+.mainCategory>div>a>span {
+    color: white;
+    font-size: 2.3rem;
+    position: absolute;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    bottom: 0;
+    transform: translateY(-80%);
+}
+
+.mainCategory>div>a:hover {
+    background-color: rgba(80, 90, 208, .3);
+}

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>practise</title>
+    <link rel="stylesheet" href="/css/admin/common.css">
+    <link rel="stylesheet" href="/css/admin/adminLogin.css">
+</head>
+
+<body>
+    <div class="adLogin_container">
+        <h2>관리자 로그인</h2>
+
+        <form action="/admin-login" method="post">
+            <input type="text" name="id" placeholder="아이디" required>
+
+            <input type="password" name="password" placeholder="비밀번호" required>
+
+            <input type="submit" value="로 그 인">
+
+            <p class="message" th:text="${message}"></p>
+        </form>
+    </div>
+</body>
+
+</html>

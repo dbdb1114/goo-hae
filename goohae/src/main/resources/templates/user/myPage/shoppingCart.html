@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/user/myPage/shoppingCart.css">
+    <link rel="stylesheet" href="/css/common/header.css">
+    <link rel="stylesheet" href="/css/common/footer.css">
+    <link rel="stylesheet" href="/css/common/config.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>mycart</title>
+    <script src="/js/myPage/myAddress/shoppingCart.js" defer></script>
+</head>
+<body>
+<header th:replace="common/header :: header"></header>
+<main class="shoppingCartMain">
+    <section class="cartWrap">
+        <div class="ShoppingCartCategory">
+            <!--                <a th:href="@{/}" class="myPageLink">홈&nbsp;&nbsp;&gt;</a>-->
+            <a th:href="@{mypage}" class="myPageLink">&nbsp;&nbsp;마이쇼핑&nbsp;&nbsp;&gt;</a>
+            <a th:href="@{mycart}" class="myPageLink" id="shoppingCartLink">&nbsp;&nbsp;쇼핑카트&nbsp;&nbsp;</a>
+        </div>
+        <p class="shoppingCartTitle">cart</p>
+        <article class="shoppingCartTableContainer">
+            <form id="#cartForm" method="get" action="/logined-user/order/start">
+                <table class="shoppingCartTable">
+                    <colgroup>
+                        <col width="4%"/>
+                        <col width="14%"/>
+                        <col width="52%"/>
+                        <col width="10%"/>
+                        <col width="10%"/>
+                        <col width="10%"/>
+                    </colgroup>
+                    <thead class="shoppingCartTitleThaed">
+                    <tr class="shoppingCartTableLine">
+                        <th scope="col" class="shoppingCartTitleTh">
+                            <label id="allCheck">
+                                선택
+                            </label>
+                        </th>
+                        <th scope="col" class="shoppingCartTitleTh">이미지</th>
+                        <th scope="col" class="shoppingCartTitleTh">상품정보</th>
+                        <th scope="col" class="shoppingCartTitleTh">수량</th>
+                        <th scope="col" class="shoppingCartTitleTh">상품금액</th>
+                        <th scope="col" class="shoppingCartTitleTh">삭제</th>
+                    </tr>
+                    </thead>
+                    <tbody class="shoppingCartTableTbody">
+                    <tr class="shoppingCartTableLine" th:each="item : ${userCart}">
+                        <td class="shoppingCartTableRow">
+
+                            <input type="checkbox"
+                                   name="productCodes"
+                                   th:attr="ea=${item.productEa}"
+                                   th:value="${item.productCode}"
+                                   class="shoppingCartTableCheck"/>
+                        </td>
+                        <td class="shoppingCartTableRow">
+                            <img th:src="${item.imagePath}">
+                        </td>
+                        <td class="shoppingCartTableRow">
+                            <!--                                <a th:href="@{item.productUrl}" class="cartName">-->
+                            <p class="shoppingCartTableProductName shoppingCartTableFontSize"
+                               th:text="${item.productName}"><!--제품이름--></p>
+                            <!--                                </a>-->
+                        </td>
+                        <td class="shoppingCartTableRow">
+                            <input class="shoppingCartTableFontSize shoppingCartProductEa"
+                                   th:attr="productCode=${item.productCode}"
+                                   th:value="${item.productEa}"
+                                   type="number"
+                                   min="1"/>
+                        </td>
+                        <td class="shoppingCartTableRow">
+                            <div class="shoppingCartTableFontSize" >
+                                <p><span class="thProductPrice" th:attr="price=${item.price}" th:text="${item.price}"></span><span>/개</span></p>
+                                <!--상품가격-->
+                            </div>
+                        </td>
+                        <td class="shoppingCartTableRow">
+                            <!--                                <form th:action="@{'/product/' + ${product_code}}" method="post">-->
+                            <!--                                    <input type="hidden" name="_method" value="DELETE"/>-->
+                            <p class="shoppingCartTableBtn" th:attr="productCode=${item.productCode}">삭제하기
+                            </p>
+                            <!--                                </form>-->
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="shoppingCartTotalPriceContainer">
+                    <div class="shoppingCartTotalPrcieInner">
+                        <!--                        <p class="shoppingCartTotalPrice totals"/>-->
+
+                        <!--                        <p class="shoppingCartTotalPrice plusImg"/>-->
+
+                        <!--                        <p class="shoppingCartTotalPrice equalImg"/>-->
+                        <p>총 주문 금액: <span id="totalPrice"></span></p>
+                    </div>
+                    <div class="shoppingCartOrderButtonBox">
+                        <p class=" shoppingCartOrderButton shoppingCartCheckedOrderButton"
+                           style="background-color: black; color: white">선택상품 주문
+                        </p>
+                        <p class=" shoppingCartOrderButton shoppingCartAllOrderButton"
+                           onclick="orderAllItems()">전체상품 주문
+                        </p>
+                    </div>
+                </div>
+                <div  style="display: none">
+                    <input type="text" value="" class="formDataProCode" name="productCode" />
+                    <input type="number" value="" class="formDataProPrice" name="price" />
+                    <input type="text" value="" class="formDataProEa" name="productEa" />
+                </div>
+            </form>
+        </article>
+    </section>
+</main>
+<footer th:replace="common/footer :: footer"></footer>
+</body>
+</html>
