@@ -11,7 +11,7 @@ $(document).ready(function () {
         if ($('input[name="boardPassword"]').val() == '') {
             formData.append('boardPassword', null);
         } else {
-            formData.append('boardPassword', 'input[name="boardPassword"]').val()
+            formData.append('boardPassword', $('input[name="boardPassword"]').val());
         }
         $.ajax({
             url: '/logined-user/qna-board/insert',
