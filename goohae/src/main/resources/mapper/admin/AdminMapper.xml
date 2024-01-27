@@ -7,4 +7,9 @@
         from manager
         where id = #{id}
     </select>
+
+    <insert id="insertManager">
+        insert into manager(id, password, name)
+        values ( #{id}, #{password}, #{name})
+    </insert>
 </mapper>

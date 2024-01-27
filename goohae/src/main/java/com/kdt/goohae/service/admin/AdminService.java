@@ -6,5 +6,5 @@ public interface AdminService {
 
     /* 로그인을 위한 메서드 */
     ManagerVO selectOne(ManagerVO vo);
-
+    int addManager(ManagerVO vo);
 }

@@ -165,4 +165,27 @@ public class AdminController {
         mv.setViewName(uri);
         return mv;
     }
+
+    /**
+     * 매니저 추가를 위한 컨트롤라
+     * */
+    @GetMapping("/admin/add-manager")
+    public String addManager(){
+        return "/admin/addManager";
+    }
+
+    @PostMapping("/admin/add-manager")
+    public ModelAndView addManager(ManagerVO vo, ModelAndView mv, RedirectAttributes rttr){
+        String uri = "";
+        vo.setPassword(passwordEncoder.encode(vo.getPassword()));
+        if(service.addManager(vo) > 0){
+            uri = "redirect:/admin/add-manager";
+            rttr.addAttribute("message", "관리자 등록에 성공했습니다.");
+        } else {
+            uri = "redirect:/admin/add-manager";
+            rttr.addAttribute("message", "관리자 등록에 실패했습니다.");
+        }
+        mv.setViewName(uri);
+        return mv;
+    }
 }

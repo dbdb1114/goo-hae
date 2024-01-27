@@ -26,4 +26,7 @@ public class AdminServiceImpl implements AdminService {
     public ManagerVO selectOne(ManagerVO vo) {
         return mapper.selectOne(vo);
     }
+
+    @Override
+    public int addManager(ManagerVO vo) { return mapper.insertManager(vo); }
 }
