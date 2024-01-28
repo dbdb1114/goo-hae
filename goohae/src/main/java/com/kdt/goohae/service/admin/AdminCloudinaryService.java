@@ -5,5 +5,5 @@ import java.util.Map;
 import org.springframework.web.multipart.MultipartFile;
 
 public interface AdminCloudinaryService {
-    Map<String, String> uploadDetailImages(ArrayList<MultipartFile> multipartFileArrayList);
+    Map<String, String> uploadDetailImages(ArrayList<MultipartFile> multipartFileArrayList, String categoryName);
 }

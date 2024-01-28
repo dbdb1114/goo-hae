@@ -1,6 +1,6 @@
 package com.kdt.goohae.service;
 
-import com.kdt.goohae.config.cloudinary.DetailPageCloudinary;
+import com.kdt.goohae.config.cloudinary.ProductCloudinary;
 import com.kdt.goohae.controller.admin.AdminCloudinaryController;
 import java.awt.Color;
 import java.awt.Graphics2D;
@@ -30,7 +30,7 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 class AdminCloudinaryServiceTest {
 
 
-    @Autowired private DetailPageCloudinary detailPageCloudinary;
+    @Autowired private ProductCloudinary detailPageCloudinary;
     @Autowired private AdminCloudinaryController adminCloudinaryController;
 
     public MultipartFile makeNewFile(int i) throws IOException {
@@ -93,13 +93,14 @@ class AdminCloudinaryServiceTest {
     void 이미지묶음_업로드() throws IOException {
 
         // when
+        String categoryName = "소파";
         ArrayList<MultipartFile> fileArrayList = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
             fileArrayList.add(makeNewFile(i));
         }
 
         //given
-        Map<String,String> imgUrlList = adminCloudinaryController.uploadDetailImages(fileArrayList);
+        Map<String,String> imgUrlList = adminCloudinaryController.uploadDetailImages(fileArrayList,categoryName);
         Set<String> stringSet = imgUrlList.keySet();
         Iterator<String> iterator = stringSet.iterator();
         while(iterator.hasNext()){
