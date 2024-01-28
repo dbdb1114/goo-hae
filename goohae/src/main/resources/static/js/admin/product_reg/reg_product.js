@@ -9,11 +9,44 @@ const tabProductDetail = document.getElementById("productDetailTab");
 
 const uploadImgButtonList = document.getElementsByClassName("imgUploadButton");
 
+/**
+ * 카테고리 설정 이벤트
+ * - 대분류에 맞는 카테고리 노출
+ * */
+const largeCategory = document.getElementById("largeCategory");
+const mediumCategory = document.getElementById("mediumCategory");
 
+largeCategory.addEventListener('change',()=>{
 
-// Tap button 누르기 이벤트
-// - 해당 버튼 볼드체로 변경
-// - 해당 메뉴 표시 및 다른 메뉴 display:none 처리
+    const largeCategoryName = largeCategory[largeCategory.selectedIndex].value;
+
+    switch (largeCategoryName) {
+        case 'livingRoom':
+            mediumCategory.innerHTML = `<option value="sofa" selected>소파</option>
+            <option value="table">테이블</option>
+            <option value="livingroomChair">의자-거실</option>
+            <option value="tvConsole">TV콘솔</option>`
+            break;
+        case 'bedRoom':
+            mediumCategory.innerHTML = ` <option value="bed" selected>침대</option>
+                            <option value="mattress">매트리스</option>
+                            <option value="nightstand">협탁</option>`
+            break;
+        case 'kitchen':
+            mediumCategory.innerHTML = `<option value="diningTable" selected>식탁</option>
+                            <option value="kitchenChair">의자</option>`
+            break;
+        case 'dressRoom':
+            mediumCategory.innerHTML = `<option value="hanger" selected>행거</option>
+                            <option value="storageCabinet">수납장</option>
+                            <option value="dressingTable">화장대</option>`
+            break;
+    }
+})
+
+/***
+ * 탭버튼
+ */
 tabButtonOfProductInfomation.addEventListener('click',(e)=>{
     e.target.setAttribute('style','font-weight : bold;');
     tabButtonOfproductDetail.setAttribute('style','font-weight : none;');
@@ -42,14 +75,7 @@ addOptionButton.addEventListener('click',()=>{
     let imgInput = document.createElement('input');
     let label = document.createElement('label');
 
-    console.log(newOptionImageWrapper)
-    console.log(optionImageWrapper)
-    console.log(optionNameInput)
-    console.log(imgInput)
-    console.log(label)
-
     newOptionImageWrapper.setAttribute('class', 'optionImageWrapper');
-
     optionNameInput.setAttribute('type', 'text');
 
     imgInput.setAttribute('id','optionImg' + id);
@@ -85,33 +111,6 @@ $(document).ready(function() {
         focus : true
     });
 });
-
-
-
-async function insertImage(file,editor){
-
-    let formData = new FormData();
-    formData.append('detailpageImage',file);
-
-    const option = {
-        method: 'post',
-        body: formData
-    };
-
-    fetch('/cloudinary/admin/upload-image', {
-        ...option
-    })
-        .then(res=>{
-            // const reader = res.body.getReader();
-            // reader.read().then(((done, value)=>{
-            //
-            // })
-            return res.text();
-        })
-        .then(res=>console.log(res))
-        .catch(err=>console.log(err.json));
-}
-
 
 // 이미지 체크 함수
 // 파일명을 통해 확장자명을 확인
@@ -150,7 +149,6 @@ for (let i = 0; i < uploadImgButtonList.length; i++) {
             target.value = '';
             window.alert("이미지 파일 형식을 지켜주세요.")
         }
-        console.log(uploadImgButtonList[i].value);
     })
 }
 

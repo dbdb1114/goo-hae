@@ -31,20 +31,21 @@
             <div class="inputContainerBox displayFlex" id="inputContainerBox">
                 <div class="inputContainer">
                     <div class="inputWrap">
-                        <label>카테고리 : </label>
-                        <select class="select_cate" name="categoryCode" required>
-                            <option value="1" selected>소파</option>
-                            <option value="2">테이블</option>
-                            <option value="3">의자-거실</option>
-                            <option value="4">TV콘솔</option>
-                            <option value="5">침대</option>
-                            <option value="6">매트리스</option>
-                            <option value="7">협탁</option>
-                            <option value="8">식탁</option>
-                            <option value="9">의자-주방</option>
-                            <option value="10">행거</option>
-                            <option value="11">수납장</option>
-                            <option value="12">화장대</option>
+                        <label>대분류 카테고리 : </label>
+                        <select class="select_cate" id="largeCategory" name="categoryCode" required>
+                            <option value="livingRoom" selected>거실</option>
+                            <option value="bedRoom">침실</option>
+                            <option value="kitchen">주방</option>
+                            <option value="dressRoom">드레스룸</option>
+                        </select>
+                    </div>
+                    <div class="inputWrap">
+                        <label>소분류 카테고리 : </label>
+                        <select class="select_cate" id="mediumCategory" name="categoryCode" required>
+                            <option value="sofa" selected>소파</option>
+                            <option value="table">테이블</option>
+                            <option value="livingroomChair">의자-거실</option>
+                            <option value="tvConsole">TV콘솔</option>
                         </select>
                     </div>
                     <div class="inputWrap">
