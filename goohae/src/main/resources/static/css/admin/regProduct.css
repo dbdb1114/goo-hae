@@ -1,11 +1,32 @@
+@media (max-width: 1200px) {
+    .reg_container {
+        margin: 100px 100px;
+        width: 1200px;
+        height: 700px;
+        box-shadow: 0px 0px 5px black;
+        position: relative;
+    }
+}
+
 .reg_container {
     margin: 100px auto 0;
-    width: 500px;
+    min-width: 1200px;
+    max-width: 2000px;
     height: 700px;
     box-shadow: 0px 0px 5px black;
     position: relative;
 }
 
+.reg_container .tabButtonWrap{
+    position: absolute;
+    top: 20px;
+}
+
+.reg_container .tabButtonWrap button{
+    padding: 5px;
+    color: black;
+    background-color: white;
+}
 
 .reg_container>h2 {
     width: 100%;
@@ -20,17 +41,116 @@
     width: 100%;
     height: 100%;
     display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
+    flex-direction: row;
+    /*justify-content: space-evenly;*/
     padding: 50px;
+    padding-top: 10px;
+    gap: 50px;
 }
 
 
 .select_cate {
-    width: 100%;
+    width: 150px;
     height: 30px;
 }
 
+.reg_container>form #productDetailTab{
+    width: 100%;
+}
+
+.reg_container>form .imageUploadContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+}
+
+.reg_container>form .imageUploadContainer>div{
+    width: 45%;
+}
+
+.reg_container>form .inputContainerBox{
+    gap: 10px;
+    flex-direction: column;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.reg_container>form .inputContainer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 25px;
+    width: 100%;
+}
+
+.reg_container>form .inputContainer .inputWrap {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+}
+
+.reg_container>form .inputContainer .optionImageContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+.reg_container>form .inputContainer .optionImageContainer #addOptionValue{
+    margin-left: 65px;
+    background-color: white;
+    color: cadetblue;
+    padding: 5px;
+    border: 1px solid lightgrey;
+    height: 26px;
+    font-size: 12px;
+}
+
+.reg_container>form .inputContainer .inputWrap .imgUploadButton{
+    background-color: white;
+    padding: 5px;
+    color: black;
+    font-size: 12px;
+}
+
+.reg_container>form .inputContainer .inputWrap label{
+    font-weight: bold;
+    font-size: 13px;
+}
+
+.reg_container>form .inputContainer .inputWrap input{
+    height: 30px;
+    width: 250px;
+}
+
+.reg_container>form .inputContainer .inputWrap .imageButtonLabel{
+    display: flex;
+    width: 50px;
+    height: 50px;
+    border: 1px solid lightgrey;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    color: grey
+}
+
+.reg_container>form .inputContainer .inputWrap .optionImageWrapper{
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+
+.reg_container>form .inputContainer .inputWrap .optionImageWrapper label{
+    width: 30px;
+    height: 30px;
+}
+
+.reg_container>form .inputContainer .inputWrap .previewImage{
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border: 1px solid lightgrey;
+}
 
 .reg_container>form>input:not(:last-of-type) {
     padding-left: 10px;
@@ -52,19 +172,23 @@
 
 
 .reg_btn {
-    width: 100%;
-    height: 50px;
+    width: 125px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
-    line-height: 50px;
     background-color: black;
     color: white;
+    position: absolute;
+    right: 30px;
+    top: 20px;
 }
 
 .reg_btn:hover {
     opacity: 0.5;
     cursor: pointer;
 }
-
 
 .message {
     width: 100%;
@@ -75,4 +199,26 @@
     top: -50px;
     left: 0;
     font-size: 1.3rem;
+}
+
+.displayNone{
+    display: none;
+}
+
+.displayFlex{
+    display: flex;
+}
+
+
+/** Summer note */
+/** 전체 영역 */
+#summernote + .note-editor{
+    width: 100%;
+    height: 95%;
+}
+
+/** 작업 영역 */
+.note-editor.note-airframe .note-editing-area,
+.note-editor.note-frame .note-editing-area{
+    height: calc(100% - 54px);
 }
