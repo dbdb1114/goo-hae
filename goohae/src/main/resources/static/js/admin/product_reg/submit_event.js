@@ -1,9 +1,16 @@
 
 const submitButton = document.getElementById("regSubmitButton");
+
+const largeCategoryBox = document.getElementById("largeCategory");
+const mediumCategoryBox = document.getElementById("mediumCategory");
+
 const inputProductName = document.getElementById("productName");
 
 
 const productName = inputProductName.value;
+const categoryName = largeCategoryBox[largeCategoryBox.selectedIndex].value + "/"
+    + mediumCategoryBox[mediumCategoryBox.selectedIndex].value;
+
 /**
  * 1. 디테일 페이지 이미지 가져오기
  *  나중에 에디터를 바꿨을 때도 바로 바꿀 수 있도록 확장성을 가져야함.
@@ -26,19 +33,19 @@ submitButton.addEventListener('click', ()=>{
     insertImages(detailPageImages)
         .then((res)=>{
             for (let i = 0; i < imgTagInEditor.length; i++ ){
-                console.log(imgTagInEditor[i]);
-
                 imgTagInEditor[i].src = res[`${imgTagInEditor[i].id}`];
             }
-        });
+        })
+        .catch((err) => console.log(err));
 })
 
-/**
- * 상세 페이지 정보 업로드 방식
- * 1,
+
+/** *
+ *
+ * @param base_data
+ * @param filename
+ * @returns {File}
  */
-
-
 function base64toFile(base_data, filename) {
 
     let arr = base_data.split(','),
@@ -54,14 +61,18 @@ function base64toFile(base_data, filename) {
     return new File([u8arr], filename, {type:mime});
 }
 
-/**
- * Editor창 내의 img 태그를 가져오는 함수
+/***
+ * @returns {NodeListOf<Element>}
  */
-
 function getImgTagInEditor () {
     return document.querySelectorAll('.note-editing-area img');
 }
 
+
+/**
+ * @param imgTagInEditor
+ * @returns {*[]}
+ */
 function uploadEditorImage(imgTagInEditor){
 
     let imageFiles = [];
@@ -75,11 +86,16 @@ function uploadEditorImage(imgTagInEditor){
     return imageFiles;
 }
 
+
+/***
+ * @param files
+ * @returns {Promise<any>}
+ */
 function insertImages(files){
     let formData = new FormData();
-
+    formData.append("categoryName", categoryName)
     for (let i = 0; i < files.length; i++) {
-        formData.append("datailPageImages", files[i]);
+        formData.append("detailPageImages", files[i]);
     }
 
     const option = {
