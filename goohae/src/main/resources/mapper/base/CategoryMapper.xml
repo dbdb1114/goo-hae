@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kdt.goohae.mapper.base.CategoryMapper">
+
+    <!-- 카테고리 가져오기 -->
+    <select id="selectList" resultType="CategoryDTO">
+        select al.id,
+               lg.name as "largeCategory",
+               lg.id as 'lgId',
+               md.name as "mediumCategory",
+               md.id as 'mdId'
+        from all_category al
+                 join large_category lg on al.lg_ct_id = lg.id
+                 join medium_category md on al.md_ct_id = md.id;
+    </select>
+
+</mapper>
