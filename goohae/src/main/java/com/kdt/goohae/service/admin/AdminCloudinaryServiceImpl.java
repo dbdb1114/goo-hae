@@ -15,16 +15,14 @@ public class AdminCloudinaryServiceImpl implements AdminCloudinaryService{
 
     private final ProductCloudinary productCloudinary;
     @Override
-    public Map<String, String> uploadDetailImages(ArrayList<MultipartFile> multipartFileArrayList, String categoryName) {
+    public Map<String, String> uploadDetailImages(ArrayList<MultipartFile> multipartFileArrayList, String category, String productName) {
         Map<String, String> imgUrlList = new HashMap<>();
-
-        multipartFileArrayList.stream().forEach(multipartFile -> {
+        multipartFileArrayList.stream().parallel().forEach(multipartFile -> {
             try{
 
-                String productName = multipartFile.getOriginalFilename().split("#")[0];
                 String key = multipartFile.getOriginalFilename().split("#")[1];
 
-                Map uploadResult = productCloudinary.uploadDetail(multipartFile.getBytes(), categoryName ,productName);
+                Map uploadResult = productCloudinary.uploadDetail(multipartFile.getBytes(), category ,productName);
                 String secureUrl = (String) uploadResult.get("secure_url");
 
                 imgUrlList.put(key,secureUrl);
@@ -33,7 +31,39 @@ public class AdminCloudinaryServiceImpl implements AdminCloudinaryService{
                 throw new RuntimeException(e);
             }
         });
+        return imgUrlList;
+    }
+
+    @Override
+    public ArrayList<String> uploadMainImages(ArrayList<MultipartFile> multipartFileArrayList, String category, String productName) {
+        ArrayList<String> imgUrlList = new ArrayList<>();
+
+        for(int i = 0; i < multipartFileArrayList.size(); i++){
+            MultipartFile multipartFile = multipartFileArrayList.get(i);
+            try{
+                Map uploadResult = productCloudinary.uploadMain(multipartFile.getBytes(), category, productName);
+                String secureUrl = (String) uploadResult.get("secure_url");
+
+                imgUrlList.add(secureUrl);
+            } catch (IOException e) {
+                imgUrlList.add("error");
+                throw new RuntimeException(e);
+            }
+        }
 
         return imgUrlList;
+    }
+
+    @Override
+    public String uploadOptionImage(MultipartFile multipartFile, String category, String productName) {
+        String url = "";
+        try{
+            Map uploadResult = productCloudinary.uploadOption(multipartFile.getBytes(), category, productName);
+            url = (String) uploadResult.get("secure_url");
+        } catch (IOException e) {
+            url = "error";
+            throw new RuntimeException(e);
+        }
+        return url;
     }
 }
