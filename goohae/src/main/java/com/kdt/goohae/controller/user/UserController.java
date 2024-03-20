@@ -101,13 +101,11 @@ public class UserController {
         UserVO dbVO = userService.selectOne(vo);
         if(dbVO != null){
             if(passwordEncoder.matches(vo.getPassword(), dbVO.getPassword())){
-                ValueOperations<String, String> valueOperations =
-                        redisTemplate.opsForValue();
-                valueOperations.set(vo.getId(), httpSession.getId());
+
 
                 httpSession.setAttribute("loginId",vo.getId());
                 httpSession.setAttribute("name",dbVO.getName());
-
+                httpSession.setAttribute("success", "true");
                 mv.setViewName("redirect:/");
             }else{
                 mv.addObject("message", "PW오류");
