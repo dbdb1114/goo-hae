@@ -6,6 +6,8 @@ import com.kdt.goohae.service.user.QnaBoardService;
 import com.kdt.goohae.service.user.ReviewService;
 import com.kdt.goohae.service.user.UserService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,13 +26,16 @@ public class UserController {
     private final ReviewService reviewService;
     private final CartService cartService;
     private final QnaBoardService qnaBoardService;
+    private final RedisTemplate redisTemplate;
 
-    public UserController(UserService userService, PasswordEncoder passwordEncoder, ReviewService reviewService, CartService cartService, QnaBoardService qnaBoardService) {
+    public UserController(UserService userService, PasswordEncoder passwordEncoder, ReviewService reviewService, CartService cartService, QnaBoardService qnaBoardService,
+                          RedisTemplate redisTemplate) {
         this.userService = userService;
         this.passwordEncoder = passwordEncoder;
         this.reviewService = reviewService;
         this.cartService = cartService;
         this.qnaBoardService = qnaBoardService;
+        this.redisTemplate = redisTemplate;
     }
 
     @GetMapping(value = "user/join")
@@ -96,8 +101,13 @@ public class UserController {
         UserVO dbVO = userService.selectOne(vo);
         if(dbVO != null){
             if(passwordEncoder.matches(vo.getPassword(), dbVO.getPassword())){
+                ValueOperations<String, String> valueOperations =
+                        redisTemplate.opsForValue();
+                valueOperations.set(vo.getId(), httpSession.getId());
+
                 httpSession.setAttribute("loginId",vo.getId());
                 httpSession.setAttribute("name",dbVO.getName());
+
                 mv.setViewName("redirect:/");
             }else{
                 mv.addObject("message", "PW오류");
