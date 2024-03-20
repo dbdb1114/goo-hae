@@ -6,6 +6,9 @@ import com.kdt.goohae.domain.admin.GetProductDTO;
 import com.kdt.goohae.domain.admin.ProductImgVO;
 import com.kdt.goohae.domain.admin.ProductVO;
 import com.kdt.goohae.domain.forPaging.SearchCri;
+import com.kdt.goohae.domain.product.OptionDTO;
+import com.kdt.goohae.domain.product.ProductInfoDTO;
+import java.util.ArrayList;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -22,7 +25,14 @@ public interface ProductMapper {
     /* 상품 삭제 */
     int deleteProduct(ProductVO vo);
 
+    /* 상품 정보 저장 */
+    int regProductInfo(ProductInfoDTO productInfoDTO);
 
+    /* 옵션 정보 저장*/
+    int regProductOption(ArrayList<OptionDTO> optionDTOList);
+
+    /* 상품 매인 이미지 저장 */
+    int regProductImage(ArrayList<String> productImages);
 
     /* 상품 데이터 가져오기 전 카테고리 코드 가져오기 */
     int getCategory(CategoryVO vo);

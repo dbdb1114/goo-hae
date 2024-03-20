@@ -5,6 +5,12 @@ import com.kdt.goohae.domain.admin.GetProductDTO;
 import com.kdt.goohae.domain.admin.ProductImgVO;
 import com.kdt.goohae.domain.admin.ProductVO;
 import com.kdt.goohae.domain.forPaging.SearchCri;
+import com.kdt.goohae.domain.product.OptionDTO;
+import com.kdt.goohae.domain.product.ProductImagesDTO;
+import com.kdt.goohae.domain.product.ProductInfoDTO;
+import java.util.ArrayList;
+import javax.servlet.http.HttpServletResponse;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,12 +22,16 @@ public interface ProductService {
     /* 상품 등록 */
     int regProduct(ProductVO vo);
 
+    /* 상품 등록 new */
+    int productUpload(ProductInfoDTO productInfoDTO, ArrayList<String> productImages, ArrayList<OptionDTO> optionDTOList);
+    int productUpload(ProductInfoDTO productInfoDTO, ArrayList<String> productImages);
+    /* 상품 옵션 등록 new */
+
     /* 상품 이미지 등록 */
     int regProductImg(ProductImgVO vo, MultipartFile file, HttpServletRequest request, int fileNum) throws IOException;
 
     /* 상품 삭제 */
     int deleteProduct(ProductVO vo);
-
 
 
 

@@ -1,7 +1,6 @@
 package com.kdt.goohae.config.cloudinary;
 
 import com.cloudinary.Cloudinary;
-import com.cloudinary.utils.ObjectUtils;
 
 public class CloudinaryManager{
     private static final String CLOUD_NAME = "asdfqwe";
@@ -13,5 +12,4 @@ public class CloudinaryManager{
         cloudinary.config.cloudName = CLOUD_NAME;
         cloudinary.config.apiSecret = API_SECRET;
     }
-
 }

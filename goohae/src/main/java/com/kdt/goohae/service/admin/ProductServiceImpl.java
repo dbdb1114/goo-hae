@@ -6,7 +6,10 @@ import com.kdt.goohae.domain.admin.GetProductDTO;
 import com.kdt.goohae.domain.admin.ProductImgVO;
 import com.kdt.goohae.domain.admin.ProductVO;
 import com.kdt.goohae.domain.forPaging.SearchCri;
+import com.kdt.goohae.domain.product.OptionDTO;
+import com.kdt.goohae.domain.product.ProductInfoDTO;
 import com.kdt.goohae.mapper.admin.ProductMapper;
+import java.util.ArrayList;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -39,6 +42,33 @@ public class ProductServiceImpl implements ProductService {
         return mapper.regProduct(vo);
     } // regProduct
 
+    /**
+     *
+     * @param productInfoDTO
+     * @param optionDTOList
+     * @param productImages
+     * @return
+     */
+    public int productUpload(ProductInfoDTO productInfoDTO,
+                            ArrayList<String> productImages,
+                            ArrayList<OptionDTO> optionDTOList){
+        int res = 0;
+
+        res += mapper.regProductInfo(productInfoDTO);
+        res += mapper.regProductImage(productImages);
+        res += mapper.regProductOption(optionDTOList);
+
+        return res;
+    }
+    public int productUpload(ProductInfoDTO productInfoDTO,
+                            ArrayList<String> productImages){
+        int res = 0;
+
+        res += mapper.regProductInfo(productInfoDTO);
+        res += mapper.regProductImage(productImages);
+
+        return res;
+    }
 
     /**
      * 상품 이미지 저장 및 상품 이미지 테이블 업로드 메서드

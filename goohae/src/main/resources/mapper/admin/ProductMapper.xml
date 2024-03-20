@@ -20,6 +20,38 @@
         values(#{productCode}, #{productOption}, #{imagePath})
     </insert>
 
+    <!--  고도화 진행  -->
+    <!--  고도화 진행  -->
+    <!--  고도화 진행  -->
+
+    <!-- 상품 정보 등록 -->
+    <insert id="regProductInfo">
+        insert into product_info(category_id, reg_id, name, price, detail)
+        values(#{categoryId}, #{regId}, #{name}, #{price}, #{detail})
+    </insert>
+
+    <!--  상품 옵션 추가  -->
+    <insert id="regProductOption">
+        insert into product_option(product_id, name, image_url)
+        values
+        <foreach collection="optionDTOList" item="item" open="(" close=")" separator=",">
+            #{item.productId}, #{item.name}, #{item.image_url}
+        </foreach>
+    </insert>
+
+    <!--  상품 이미지 등록  -->
+    <insert id="regProductImage">
+        insert into product_images(product_id, image_url)
+        values
+        <foreach collection="productImages" item="item" open="(" close=")" separator=",">
+            #{product_id}, #{item}
+        </foreach>
+    </insert>
+
+    <!--  고도화 진행  -->
+    <!--  고도화 진행  -->
+    <!--  고도화 진행  -->
+
     <!-- 상품 삭제 -->
     <delete id="deleteProduct">
         delete from product where product_code = #{productCode}

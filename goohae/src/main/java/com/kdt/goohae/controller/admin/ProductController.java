@@ -1,14 +1,19 @@
 package com.kdt.goohae.controller.admin;
 
 
-import com.kdt.goohae.domain.admin.CategoryVO;
-import com.kdt.goohae.domain.admin.ProductImgVO;
 import com.kdt.goohae.domain.admin.ProductVO;
 import com.kdt.goohae.domain.forPaging.PageMaker;
 import com.kdt.goohae.domain.forPaging.SearchCri;
+import com.kdt.goohae.domain.product.CategoryDTO;
+import com.kdt.goohae.domain.product.OptionDTO;
+import com.kdt.goohae.domain.product.ProductInfoDTO;
+import com.kdt.goohae.service.admin.AdminCloudinaryService;
 import com.kdt.goohae.service.admin.ProductService;
+import com.kdt.goohae.service.base.CategoryService;
+import java.util.ArrayList;
+import java.util.Map;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,72 +26,81 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-
 
 @Slf4j
 @Controller
+@RequiredArgsConstructor
 public class ProductController {
 
     // 필드
     private final ProductService service;
-
+    private final AdminCloudinaryService cloudinaryService;
+    private final CategoryService categoryService;
     // 생성자
-    public ProductController(ProductService service) {
-        this.service = service;
-    }
 
     /**
      * 상품 등록 페이지를 위한 컨트롤러
      * @return 상품 등록 페이지
      */
     @GetMapping("/admin/reg-pro")
-    public String regProductF() {
+    public String regProductF(ModelAndView mv) {
+        mv.setViewName("admin/regProduct");
+        mv.addObject("category",categoryService.selectList());
         return "admin/regProduct";
     }
 
+    @PostMapping("/admin/upload/detail-images")
+    public Map<String,String> uploadDetailImages(
+            @RequestParam("detailPageImages") ArrayList<MultipartFile> detailPageImages,
+            @RequestParam("categoryName") String categoryName,
+            @RequestParam("productName") String productName){
+        Map<String, String> imgUrlList = cloudinaryService.uploadDetailImages(detailPageImages, categoryName, productName);
+        return imgUrlList;
+    }
 
-    /**
-     * 상품 등록 및 상품 이미지 등록을 위한 컨트롤러
-     * @param vo ProductVO
-     * @param img_vo ProductImgVO
-     * @param request HttpServletRequest
-     * @param mv ModelAndView
-     * @return 메시지와 함께 다시 상품페이지로
+    /***
+     *
+     * @param productInfoDTO
+     * @param optionDTOList
+     * @param request
+     * @param mv
+     * @return mv
      * @throws IOException
      */
     @PostMapping("/admin/reg-pro")
-    public ModelAndView regProduct(ProductVO vo, ProductImgVO img_vo, HttpServletRequest request, ModelAndView mv) throws IOException {
-        vo.setManagerId((String)request.getSession().getAttribute("adminID"));
+    public ModelAndView regProduct(@RequestParam("categoryDTO") CategoryDTO categoryDTO,
+                                    @RequestParam("productInfo") ProductInfoDTO productInfoDTO,
+                                    @RequestParam("productOptions") ArrayList<OptionDTO> optionDTOList,
+                                    HttpServletResponse response, HttpServletRequest request,
+                                    ModelAndView mv) throws IOException {
 
-        // 상품 테이블에 등록 성공 시
-        if (service.regProduct(vo) > 0) {
-            List<MultipartFile> files = vo.getFiles();
+        String category = categoryDTO.getLargeCategory() + "/" + categoryDTO.getMediumCategory();
+        String productName = productInfoDTO.getName();
+        String regId = (String) request.getSession().getAttribute("adminId");
+        productInfoDTO.setRegId(regId);
+        int res;
 
-            img_vo.setProductName(vo.getProductName());
-            img_vo.setProductOption(vo.getProductOption());
-            img_vo.setCategoryCode(vo.getCategoryCode());
 
-            int fileNum = 0;
+        ArrayList<String> mainUplodImages = cloudinaryService.uploadMainImages(productInfoDTO.getMainImages(),category, productName);
 
-            for (MultipartFile m : files) {
-                fileNum++;
-
-                if (service.regProductImg(img_vo, m, request, fileNum) < 1) {
-                    mv.addObject("message", "이미지 등록에 실패하였습니다.");
-                    mv.setViewName("admin/regProduct");
-                    return mv;
-                }
+        if(!optionDTOList.isEmpty()){
+            for(OptionDTO option : optionDTOList){
+                String url = cloudinaryService.uploadOptionImage(option.getImageFile(),category, productName);
+                option.setImageUrl(url);
             }
-
-            mv.addObject("message", "등록을 완료하였습니다.");
-            // 상품 테이블에 등록 실패 시
+            res = service.productUpload(productInfoDTO, mainUplodImages, optionDTOList);
         } else {
-            mv.addObject("message", "상품 등록에 실패하였습니다.");
+            res = service.productUpload(productInfoDTO, mainUplodImages);
         }
-        mv.setViewName("admin/regProduct");
+
+        if(res <= 0){
+            mv.setViewName("/admin/regProduct");
+            mv.addObject("message", "상품등록에 일부 오류가 있었습니다. 확인 후 재시도 바랍니다.");
+        } else {
+            mv.setViewName("/admin/main");
+            mv.addObject("message", "상품등록이 완료되었습니다.");
+        }
+
         return mv;
     }
 

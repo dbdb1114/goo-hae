@@ -14,8 +14,7 @@ public class ProductVO {
     private int productCode;
     private String productName;
     private int price;
-    private String productInfo;
-    private String productOption;
+    private String productDetail;
     private int discount;
     private int viewCount;
 
