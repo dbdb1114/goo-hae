@@ -1,7 +1,52 @@
-# spring-boot-goohae
 
 ## 프로젝트명 : 1인 가구를 위한 가구 쇼핑몰
 ### 팀원 : 경진우, 유정현, 이해선, 하영권
+
+## 🥅 프로젝트 개요
+
+1. 늘어나는 1인 가구 ( 비혼주의의 증가 ) ⇒ 1인 가구 위주의 쇼핑몰 
+2. 1인 가구를 타겟팅한 가구쇼핑몰은 있을까? ⇒ 있지만, 셀렉트샵 위주의 느낌은 없다. 
+3. 어떤 가구를 제일 많이 소비할까? ⇒ 명품에 대한 소비 급증
+
+**⇒ 1인 가구를 위한 셀렉트샵을 만들자** 
+
+## 🔨 사용 기술 및 라이브러리
+
+- SPRINGBOOT
+- MYBATIS
+- MYSQL
+
+## 📱 담당한 기능
+
+- 서비스에 필요한 데이터베이스 스키마 설계
+- 유저 관련 백엔드 API 설계
+- 전체적인 프로젝트 진행 관리
+
+## 💡 요구사항 정의
+
+| 대 분류 | 중 분류 | Screen ID | Description | Detail |
+| --- | --- | --- | --- | --- |
+| 메인화면 | 마이페이지 | MyPageMain | 마이페이지 | 내 정보 수정, 장바구니 관리, 위시리스트 관리, 내 작성글 관리, 주문 내역조회 |
+|  | 상품 목록 화면 | ProductList | 상품 목록 페이지 | 상품 조회 |
+|  | 상품상세페이지 | ProductDetail | 상품 상세 페이지 | 장바구니 추가, 위시리스트 추가, 구매하기 |
+|  | 고객문의 | Customer | 고객센터 페이지 | 공지사항 조회, Qna 등록, Qna 리스트 조회 |
+| 로그인 관련 | 로그인 페이지 | UserLogin | 로그인 페이지 | ID,PW 찾기, 회원가입 |
+|  | 로그인 페이지 | UserLogin | 로그인 페이지 | ID,PW 찾기, 회원가입 |
+| 마이페이지 | 회원 정보 수정 | UserInfo | 회원 정보 수정 | 회원 정보 수정 |
+|  | 장바구니 관리 | Cart | 장바구니 관리 | 장바구니 삭제, 구매 |
+|  | 위시리스트 관리 | WishList | 위시리스트 관리 | 위시리스트 삭제, 장바구니 추가 |
+|  | 내 작성글 관리 | MyPost | 작성 Qna/Review 관리 | Qna/Review 조회 |
+|  | 주문 내역 조회 | MyOrder | 주문 관리 | 주문내역/배송상태 조회 |
+| 상품 목록화면 | 상품 목록 페이지 | ProductList | 상품 목록 페이지 | 검색/카테고리 분류 조회 |
+| 고객문의 | 공지사항 조회 | CustomerNotice | 쇼핑몰 운영 및 고객 안내 공지 | GooHae의 공지사항 |
+|  | Qna 조회 | CustomerFaq | 다른 유저들의 Qna 리스트 | 다른 유저들의 Qna 리스트 |
+|  | Qna 등록 | InquiryForm | Qna 등록 | Qna 등록 |
+| 로그인 페이지 | ID/PW 찾기 | Find-ID/Find-PW | Id 조회, pw 조회 | Id 조회, pw 조회 |
+|  | 회원가입 | UserJoin | 신규 회원 가입 | 신규 회원 가입 |
+
+## 💡 ERD
+
+![Untitled](https://file.notion.so/f/f/2d8d8c15-cfb9-4a7d-baa5-6e6ab564ad3f/0439795c-40f3-4d01-8caf-a31afbabbfa2/Untitled.png?id=d876d3c5-a71a-405a-9cfe-02ddc23342e9&table=block&spaceId=2d8d8c15-cfb9-4a7d-baa5-6e6ab564ad3f&expirationTimestamp=1717567200000&signature=Z1RX8CL5WaEwLFDRthcp3dUe6guSCSmbG-R-dC_1vPQ&downloadName=Untitled.png)
 
 <br/>
 <br/>
